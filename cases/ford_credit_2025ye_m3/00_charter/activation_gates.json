@@ -1,0 +1,18 @@
+{
+  "schema_version": 2,
+  "case_gates": [
+    { "gate_id": "PUBLIC_ACCESS_RIGHTS", "status": "PASS", "evidence": "Official SEC locator and selected transformed facts only; no raw HTML retained" },
+    { "gate_id": "CUTOFF_VINTAGE", "status": "PASS", "evidence": "2025 10-K eligible; 2026 Q2 10-Q stored separately and excluded" },
+    { "gate_id": "DECISION_SCOPE", "status": "WITHHELD", "evidence": "Filer group disclosed; parent obligor accessible cash and debt assignment incomplete" },
+    { "gate_id": "FINANCIAL_DATA", "status": "PASS", "evidence": "2025 audited group cash rollforward and disclosed debt/liquidity bridge; historical slice only" },
+    { "gate_id": "DRIVER_OR_CONTRACT_EVIDENCE", "status": "WITHHELD", "evidence": "No dated obligor CFADS or full facility draw/covenant evidence" }
+  ],
+  "module_states": {
+    "M1_PERFORMANCE": "NOT_APPLICABLE",
+    "M1_VALUATION": "NOT_APPLICABLE",
+    "M2_CAPITAL_ALLOCATION": "NOT_APPLICABLE",
+    "M3_CREDIT_LIQUIDITY": "WITHHELD",
+    "O1_FINANCIAL_SERVICES": "NOT_EVALUATED"
+  }
+}
+

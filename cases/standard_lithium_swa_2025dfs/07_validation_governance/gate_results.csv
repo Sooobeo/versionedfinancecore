@@ -1,0 +1,13 @@
+gate_id,module_id,status,evidence,limitation,evaluated_at,evaluated_by,reviewed_by,release_effect
+
+PUBLIC_ACCESS_RIGHTS,,PASS,01_evidence_core/source_ledger.csv,SEC locator and minimal transformed numbers only; report not retained,2026-09-29T04:44:55.957337+00:00,codex_case_review,,NONE
+CUTOFF_VINTAGE,,PASS,SEC accepted 2025-10-14 08:42:38 ET; 2025-10-14 end-of-day bound,Effective 2025-09-03 is not first-public,2026-09-29T04:44:55.957337+00:00,codex_case_review,,NONE
+DECISION_SCOPE,,WITHHELD,00_charter/case.json; 04_m2_capital_allocation/alternatives.csv,No-build cash path incomplete,2026-09-29T04:44:55.957337+00:00,codex_case_review,,BLOCK
+SEMANTIC_SCOPE_UNIT,,PASS,01_evidence_core/scope_bridges.csv; 04_m2_capital_allocation/dfs_project_model.csv,Only 100% project model; no parent attribution,2026-09-29T04:44:55.957337+00:00,codex_case_review,,NONE
+FINANCIAL_RECONCILIATION,,WITHHELD,04_m2_capital_allocation/dfs_reproduction.json,Published row total checked; no as-of integrated statements/cash trough,2026-09-29T04:44:55.957337+00:00,codex_case_review,,BLOCK
+SCENARIO_EVIDENCE,,WITHHELD,07_validation_governance/review_findings.csv,No-build obligations and current capital timing unknown,2026-09-29T04:44:55.957337+00:00,codex_case_review,,BLOCK
+CLAIM_INTEGRITY,,PASS,04_m2_capital_allocation/decision_memo.md,Project forecast and corporate recommendation separated,2026-09-29T04:44:55.957337+00:00,codex_case_review,,NONE
+REVIEW,,WITHHELD,07_validation_governance/review_findings.csv,Independent effective challenge absent,2026-09-29T04:44:55.957337+00:00,codex_case_review,,BLOCK
+REPRODUCTION_HANDOVER,,WITHHELD,01_evidence_core/extract_dfs.py; 07_validation_governance/reproduce_dfs.py,Rounded model check reproducible; full decision path incomplete,2026-09-29T04:44:55.957337+00:00,codex_case_review,,BLOCK
+M2_CAPITAL_ALLOCATION,M2,WITHHELD,04_m2_capital_allocation/dfs_reproduction.json,Cannot calculate actual option minus status-quo or approve FID,2026-09-29T04:44:55.957337+00:00,codex_case_review,,BLOCK
+DFS_PROJECT_MODEL_ARITHMETIC,M2,PASS,04_m2_capital_allocation/dfs_reproduction.json,Mid-year timing is inference; not corporate M2 gate pass,2026-09-29T04:44:55.957337+00:00,codex_case_review,,NONE

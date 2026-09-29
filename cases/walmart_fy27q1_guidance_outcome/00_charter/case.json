@@ -1,0 +1,23 @@
+{
+  "schema_version": 2,
+  "program_id": "public_data_corporate_finance_system",
+  "case_id": "walmart_fy27q1_guidance_outcome",
+  "release_id": null,
+  "status": "FEASIBILITY_ONLY",
+  "decision_question": "At the 2026-05-21 public Q1 FY27 release, which same-definition consolidated results fell outside Walmart guidance published earlier in the quarter, and what remains unexplained?",
+  "perspective_id": "PERFORMANCE_MANAGEMENT",
+  "as_of_date": "2026-05-21",
+  "analysis_cutoff": "2026-05-21T23:59:59-04:00",
+  "horizon_end": "2026-05-21",
+  "economic_scope_id": "walmart_consolidated_group",
+  "legal_entity_id": "walmart_inc_us_de",
+  "instrument_id": null,
+  "jurisdiction": "US",
+  "functional_currency": "USD",
+  "reporting_currency": "USD",
+  "active_modules": [
+    "M1"
+  ],
+  "intended_use": "Personal research, learning and portfolio evidence; public guidance outcome comparison only",
+  "decision_authority": "PERSONAL_ANALYST_SIMULATION"
+}

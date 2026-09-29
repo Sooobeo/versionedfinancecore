@@ -1,5 +1,11 @@
 """M1: performance, reforecast and valuation."""
 
+from versioned_finance_core.modules.m1.guidance_range import (
+    GuidanceRangeComparison,
+    PublicGuidanceRange,
+    RangePosition,
+    compare_actual_to_public_guidance_range,
+)
 from versioned_finance_core.modules.m1.pvm import (
     PriceVolumeMixBridge,
     ProductComparison,
@@ -45,9 +51,12 @@ __all__ = [
     "EnterpriseToEquityInputs",
     "EquityClaimBridgeResult",
     "ForecastCashFlow",
+    "GuidanceRangeComparison",
     "MetricVariance",
     "PriceVolumeMixBridge",
     "ProductComparison",
+    "PublicGuidanceRange",
+    "RangePosition",
     "RateBasis",
     "ValuationEligibilityResult",
     "ValuationEligibilityReview",
@@ -55,6 +64,7 @@ __all__ = [
     "assess_equity_bridge_eligibility",
     "bridge_enterprise_to_equity",
     "compare_actual_to_baseline",
+    "compare_actual_to_public_guidance_range",
     "eligible_valuation_amount",
     "enterprise_to_equity",
     "price_volume_mix_bridge",

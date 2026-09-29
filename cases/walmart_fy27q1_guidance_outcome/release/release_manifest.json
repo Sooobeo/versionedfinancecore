@@ -1,0 +1,31 @@
+{
+  "schema_version": 2,
+  "contract_version": 2,
+  "program_id": "public_data_corporate_finance_system",
+  "case_id": "walmart_fy27q1_guidance_outcome",
+  "release_id": null,
+  "cutoff_timestamp": "2026-05-21T23:59:59-04:00",
+  "coverage_state": "FEASIBILITY_ONLY",
+  "review_state": "SELF_REVIEWED_LIMITED_USE",
+  "publication_state": "WITHHELD",
+  "source_snapshot_hash": null,
+  "input_hash": null,
+  "config_hash": null,
+  "formula_or_code_hash": null,
+  "output_hash": null,
+  "memo_hash": null,
+  "content_hash": null,
+  "file_hashes": {},
+  "gate_results": [],
+  "known_limitations": [
+    "Guidance outcome only; no attributable actual-to-plan driver bridge or linked P&L-BS-CF model",
+    "No independent analyst forecast or rolling reforecast",
+    "No independent human review",
+    "Raw Walmart PDF redistribution unconfirmed; locator and short numeric facts only"
+  ],
+  "runtime_environment": null,
+  "reproduction_command": "python cases/walmart_fy27q1_guidance_outcome/reproduce_comparison.py",
+  "generated_at": null,
+  "released_at": null,
+  "supersedes_release_id": null
+}

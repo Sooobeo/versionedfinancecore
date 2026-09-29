@@ -1,0 +1,7 @@
+entity_id,legal_name,entity_type,parent_entity_id,economic_scope_id,obligor_flag,issuer_flag,guarantor_flag,collateral_provider_flag,jurisdiction,currency,source_id,availability_limitations
+fmcc_consolidated_group,Ford Motor Credit Company LLC and subsidiaries,ACCOUNTING_GROUP,,fmcc_consolidated_group,NO,NO,NO,NO,MULTI,USD,sec_fmcc_2025_10k,Group is not one legal obligor; includes securitization entities
+ford_motor_credit_company_llc,Ford Motor Credit Company LLC,LEGAL_ENTITY,ford_motor_company,fmcc_consolidated_group,YES,YES,YES,NO,US-DE,USD,sec_fmcc_2025_10k,Parent-only cash and debt are not separately disclosed in this slice
+ford_motor_company,Ford Motor Company,LEGAL_ENTITY,,ford_motor_group,NO,NO,NO,NO,US-DE,USD,sec_fmcc_2025_10k,Automaker cash is not assumed available to Ford Credit
+fmcc_securitization_entity_pool,Various consolidated securitization entities,AGGREGATE_NOT_SINGLE_ENTITY,ford_motor_credit_company_llc,fmcc_consolidated_group,NO,YES,NO,YES,MULTI,USD,sec_fmcc_2025_10k,Separate SPE obligations payable from related securitized assets only
+fce_bank_plc,FCE Bank plc,LEGAL_ENTITY,ford_motor_credit_company_llc,fmcc_consolidated_group,YES,YES,NO,NO,GB,GBP,sec_fmcc_2025_10k,Regulatory and support-agreement restrictions
+ford_bank_gmbh,Ford Bank GmbH,LEGAL_ENTITY,ford_motor_credit_company_llc,fmcc_consolidated_group,YES,YES,NO,NO,DE,EUR,sec_fmcc_2025_10k,Regulatory restrictions and Ford Credit guarantee for specified facility

@@ -1,0 +1,5 @@
+assumption_id,variable,scenario_id,value,unit,basis,source_id,mechanism,range_low,range_high,dependency,owner,reviewer,expires_at,trigger,claim_tag,status
+
+DFS_LCE_PRICE,lce_sale_price,DFS_BASE,22400,2025_real_USD_per_tonne,DFS consensus-based constant price; not contracted,sec_sli_swa_dfs_20251014,production times assumed price,,,,DFS_REPORT_AUTHORS,,,,A,DISCLOSED_FORECAST
+DFS_DISCOUNT_8PCT,project_discount_rate,DFS_BASE,0.08,real_annual_fraction,Published NPV(8%) scenario; not company hurdle or financing rate,sec_sli_swa_dfs_20251014,discount after-tax unlevered cash to start of execution,,,,DFS_REPORT_AUTHORS,,,,A,DISCLOSED_MODEL_ASSUMPTION
+DFS_CAPITAL_EQUITY_ONLY,model_financing_share_equity,DFS_BASE,1,fraction,DFS assumes 100% equity and excludes debt financing costs,sec_sli_swa_dfs_20251014,unlevered project basis,,,,DFS_REPORT_AUTHORS,,,,A,DISCLOSED_MODEL_ASSUMPTION

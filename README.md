@@ -9,9 +9,10 @@ P0의 첫 합성 검증 흐름(D0)은 실행 가능하다. 첫 실제 공개자�
 - D0: 원문 snapshot/receipt → raw fact → cutoff 기반 정규화 → 현금 대사 → 근거 ID가 있는 scenario → output ID를 참조하는 memo field → fail-closed manifest 경로를 구현했다.
 - R0: 공통 계약·권리·시점·scope·version 검증 기반과 [오리온 case 차터](cases/orion_jincheon_2026h1/00_charter/decision_object.md)를 준비했다. 실제 DART 현금 24개 사실을 4개 접수본·범위로 보존하고 [공식 투자 근거](cases/orion_jincheon_2026h1/01_evidence_core/investment_evidence.md)와 대조했다. 현금 slice는 재현됐으나 R0의 투자 판단 자료 gate는 통과하지 않았다.
 - R1~R3: 합성 데이터로 기간 연결 재무제표·versioned forecast path, M1 variance/근거 검토형 DCF, M2 증분 세후 FCFF·NPV·closing funding, M3 채무자 cash path·시설/만기·reverse stress·covenant·회수 제한 상태와 M2/M3 교차 판단을 검증했다. 오리온의 실제 운영 전망·투자 대안·신용 판단은 근거 부족으로 `WITHHELD`다.
+- 모듈별 실제 공개자료 후보: [Walmart 실적 대조](cases/walmart_fy27q1_guidance_outcome/), [South West Arkansas 프로젝트 DFS](cases/standard_lithium_swa_2025dfs/), [Ford Credit 채무·유동성](cases/ford_credit_2025ye_m3/)을 각각의 cutoff와 법인·현금흐름 범위로 분리했다. 공개근거가 충분한 계산 slice만 재현하며 각 의사결정 release는 `WITHHELD`다.
 - O1: 금융서비스 overlay는 오리온의 식품 제조업 사례에 적용하지 않는다.
 
-세부 범위와 남은 gate는 [P0 실행 상태](docs/p0_execution_status.md)에 기록한다.
+세부 범위와 남은 gate는 [P0 실행 상태](docs/p0_execution_status.md), 사례 선택 이유는 [case 목록](cases/README.md)에 기록한다.
 
 ## 구현 경계
 

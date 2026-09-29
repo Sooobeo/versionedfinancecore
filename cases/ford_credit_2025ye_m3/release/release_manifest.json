@@ -1,0 +1,27 @@
+{
+  "schema_version": 2,
+  "contract_version": 2,
+  "program_id": "public_data_corporate_finance_system",
+  "case_id": "ford_credit_2025ye_m3",
+  "release_id": null,
+  "cutoff_timestamp": "2026-02-11T23:59:59-05:00",
+  "coverage_state": "FEASIBILITY_ONLY",
+  "review_state": "SELF_REVIEWED_LIMITED_USE",
+  "publication_state": "WITHHELD",
+  "source_snapshot_hash": null,
+  "input_hash": null,
+  "config_hash": null,
+  "formula_or_code_hash": null,
+  "output_hash": null,
+  "memo_hash": null,
+  "content_hash": null,
+  "file_hashes": {},
+  "gate_results": [],
+  "known_limitations": ["Case-local draft only; use generated staging manifest for reproducibility", "Obligor-accessible cash, dated CFADS and debt service, draw conditions, covenant and independent review remain unresolved"],
+  "runtime_environment": null,
+  "reproduction_command": null,
+  "generated_at": null,
+  "released_at": null,
+  "supersedes_release_id": null
+}
+

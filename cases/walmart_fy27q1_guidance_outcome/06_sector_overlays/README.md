@@ -1,0 +1,8 @@
+# Sector overlays
+
+기본 상태는 `INACTIVE`다. 금융회사·Fintech, REIT 또는 PF처럼 일반기업의 재무·가치·신용 정의를 그대로 사용할 수 없는 case에서만 적용한다.
+
+현재 outline에는 P5 상세 annex가 없으므로 금융서비스 overlay의 세부 구현은 보류한다.
+
+Walmart 소매업 연결 실적 비교에는 O1 금융서비스 overlay를 적용하지 않는다. 상태: `NOT_APPLICABLE`.
+

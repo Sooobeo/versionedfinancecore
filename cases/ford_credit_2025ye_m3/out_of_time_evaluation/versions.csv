@@ -1,0 +1,2 @@
+version_id,version_type,as_of_date,forecast_origin,publication_status,supersedes_version_id,information_cutoff,created_at,created_by,immutable,notes
+fmcc_2026h1_filed_20260729,PUBLIC_ACTUAL,2026-06-30,,FILED,,2026-07-29T23:59:59-04:00,,SEC_EDGAR,true,"Later outcome, excluded from case decision cutoff"

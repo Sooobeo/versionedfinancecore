@@ -1,0 +1,2 @@
+action_id,risk_or_opportunity,trigger,proposed_action,proposed_accountable_role,lead_time,decision_effect,status,evidence_or_assumption_id,review_status
+wmt_m1_monitor_001,UNADJUSTED_OPERATING_INCOME_BELOW_PUBLIC_GUIDANCE,Next official comparable operating-income disclosure or correction to Q1 actual,Recheck metric definitions and refresh outcome comparison on a new cutoff,personal_analyst,at_new_publication,Could change limited outcome interpretation; no company action implied,monitoring,wmt_actual_fy27q1_presentation_20260521,SELF_REVIEWED_LIMITED

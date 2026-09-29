@@ -1,0 +1,12 @@
+gate_id,module_id,status,evidence,limitation,evaluated_at,evaluated_by,reviewed_by,release_effect
+DECISION_SCOPE,,PASS,00_charter/decision_object.md,Only public guidance outcome question; no management decision,2026-09-29T04:46:12+00:00,codex_self_review,,NONE
+PUBLIC_ACCESS_RIGHTS,,PASS,01_evidence_core/source_ledger.csv; 01_evidence_core/guidance_actual_evidence.md,Personal noncommercial use of a few numeric facts; no raw PDF redistribution,2026-09-29T04:46:12+00:00,codex_self_review,,NONE
+CUTOFF_VINTAGE,,PASS,01_evidence_core/source_ledger.csv; 02_financial_core/versions.csv,"07:00 ET is a conservative scheduled-release bound, not observed exact first public second",2026-09-29T04:46:12+00:00,codex_self_review,,NONE
+SEMANTIC_SCOPE_UNIT,,PASS,01_evidence_core/metric_dictionary.csv; 03_m1_operating_forecast_valuation/guidance_range_comparison.json,Three same-definition metrics only; headline total revenue and adjusted OI excluded,2026-09-29T04:46:12+00:00,codex_self_review,,NONE
+FINANCIAL_RECONCILIATION,,WITHHELD,02_financial_core/normalized_actuals.csv,No linked P&L BS CF or cash roll-forward for this outcome slice,2026-09-29T04:46:12+00:00,codex_self_review,,BLOCK
+SCENARIO_EVIDENCE,,WITHHELD,03_m1_operating_forecast_valuation/forecast_versions.csv,Public guidance is not analyst forecast; no evidenced reforecast scenario,2026-09-29T04:46:12+00:00,codex_self_review,,BLOCK
+CLAIM_INTEGRITY,,PASS,03_m1_operating_forecast_valuation/memo.md,Range boundary outcome only; no driver cause or actual investment conclusion,2026-09-29T04:46:12+00:00,codex_self_review,,NONE
+REVIEW,,WITHHELD,07_validation_governance/review_findings.csv,Independent human review absent,2026-09-29T04:46:12+00:00,codex_self_review,,BLOCK
+REPRODUCTION_HANDOVER,,WITHHELD,reproduce_comparison.py; 07_validation_governance/handover.md,Limited result reproducible; full M1 financial model handover absent,2026-09-29T04:46:12+00:00,codex_self_review,,BLOCK
+M1_PERFORMANCE,M1,WITHHELD,03_m1_operating_forecast_valuation/guidance_range_comparison.json,P0 driver-attributed material variance and reforecast/linked statement gates unmet,2026-09-29T04:46:12+00:00,codex_self_review,,BLOCK
+M1_VALUATION,M1,NOT_APPLICABLE,00_charter/activation_gates.json,Valuation inactive for this case,2026-09-29T04:46:12+00:00,codex_self_review,,NONE

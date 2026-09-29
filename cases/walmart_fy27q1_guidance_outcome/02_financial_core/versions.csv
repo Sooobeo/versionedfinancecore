@@ -1,0 +1,3 @@
+version_id,version_type,as_of_date,forecast_origin,publication_status,supersedes_version_id,information_cutoff,created_at,created_by,immutable,notes
+wmt_fy27q1_guidance_20260219,PUBLIC_TARGET_OR_GUIDANCE,2026-02-19,PUBLIC_COMPANY_GUIDANCE,FILED,,2026-02-19T12:00:00+00:00,,Walmart Inc.,true,Original Q1 FY27 public guidance; 8-K Exhibit 99.1 furnished. Not an analyst plan.
+wmt_fy27q1_actual_20260521,PUBLIC_ACTUAL,2026-04-30,,FILED,,2026-05-21T11:00:00+00:00,,Walmart Inc.,true,Q1 FY27 published actual; 8-K exhibits furnished. Includes separately labeled non-GAAP cc and adjusted EPS metrics.

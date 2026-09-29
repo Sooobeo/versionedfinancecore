@@ -1,0 +1,2 @@
+option_id,scenario_id,period_start,period_end,cash_component_id,option_world_cash,status_quo_world_cash,incremental_after_tax_cash,currency,unit,assumption_id,double_count_check
+

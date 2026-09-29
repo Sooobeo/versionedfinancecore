@@ -1,0 +1,33 @@
+{
+  "schema_version": 2,
+  "contract_version": 2,
+  "program_id": "public_data_corporate_finance_system",
+  "case_id": "standard_lithium_swa_2025dfs",
+  "release_id": null,
+  "cutoff_timestamp": "2025-10-15T23:59:59-04:00",
+  "coverage_state": "FEASIBILITY_ONLY",
+  "review_state": "SELF_REVIEWED_LIMITED_USE",
+  "publication_state": "WITHHELD",
+  "source_snapshot_hash": null,
+  "input_hash": null,
+  "config_hash": null,
+  "formula_or_code_hash": null,
+  "output_hash": null,
+  "memo_hash": null,
+  "content_hash": null,
+  "file_hashes": {},
+  "gate_results": [],
+  "known_limitations": [
+    "No complete same-scope no-build or hold cash-flow path; incremental NPV is withheld",
+    "DFS reports only relative project years; as-of remaining capex and exact discount timing are unknown",
+    "100% unlevered project forecast is not Standard Lithium attributable or accessible cash",
+    "FID funding, contractual execution and independent review are not evidenced",
+    "Full SEC technical report is locator-only; redistribution rights not confirmed"
+  ],
+  "runtime_environment": null,
+  "reproduction_command": "python cases/standard_lithium_swa_2025dfs/07_validation_governance/reproduce_dfs.py",
+  "generated_at": null,
+  "released_at": null,
+  "supersedes_release_id": null
+}
+

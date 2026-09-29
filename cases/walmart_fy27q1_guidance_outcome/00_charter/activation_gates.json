@@ -1,0 +1,37 @@
+{
+  "schema_version": 2,
+  "case_gates": [
+    {
+      "gate_id": "PUBLIC_ACCESS_RIGHTS",
+      "status": "PASS",
+      "evidence": "01_evidence_core/source_ledger.csv; 03_m1_operating_forecast_valuation/guidance_range_comparison.json"
+    },
+    {
+      "gate_id": "CUTOFF_VINTAGE",
+      "status": "PASS",
+      "evidence": "01_evidence_core/source_ledger.csv; 03_m1_operating_forecast_valuation/guidance_range_comparison.json"
+    },
+    {
+      "gate_id": "DECISION_SCOPE",
+      "status": "PASS",
+      "evidence": "01_evidence_core/source_ledger.csv; 03_m1_operating_forecast_valuation/guidance_range_comparison.json"
+    },
+    {
+      "gate_id": "FINANCIAL_DATA",
+      "status": "WITHHELD",
+      "evidence": "01_evidence_core/source_ledger.csv; 03_m1_operating_forecast_valuation/guidance_range_comparison.json"
+    },
+    {
+      "gate_id": "DRIVER_OR_CONTRACT_EVIDENCE",
+      "status": "WITHHELD",
+      "evidence": "01_evidence_core/source_ledger.csv; 03_m1_operating_forecast_valuation/guidance_range_comparison.json"
+    }
+  ],
+  "module_states": {
+    "M1_PERFORMANCE": "WITHHELD",
+    "M1_VALUATION": "NOT_APPLICABLE",
+    "M2_CAPITAL_ALLOCATION": "NOT_APPLICABLE",
+    "M3_CREDIT_LIQUIDITY": "NOT_APPLICABLE",
+    "O1_FINANCIAL_SERVICES": "NOT_APPLICABLE"
+  }
+}

@@ -1,0 +1,4 @@
+option_id,decision_id,option_type,display_name,status_quo_flag,defer_flag,economic_scope_id,legal_entity_allocation,start_date,end_date,decision_condition,no_go_condition,evidence_state,review_status
+
+NO_BUILD_HOLD,swa_fid_feasibility_20251015,NO_BUILD_OR_HOLD,Retain rights pending review,YES,YES,swa_project_100pct_unlevered,swa_lithium_llc_us,,,"Requires full lease maintenance, cancellation and grant obligations",Public no-build cash path incomplete; TETRA lease maintenance is $1m annually,UNKNOWN,WITHHELD
+BUILD_DFS,swa_fid_feasibility_20251015,BUILD,Execute DFS project model,NO,NO,swa_project_100pct_unlevered,swa_lithium_llc_us,,,"FID, financing, permits, offtake and execution contracts",DFS economics alone do not establish financeable FID,PUBLIC_FORECAST_ONLY,WITHHELD

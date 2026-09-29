@@ -1,0 +1,21 @@
+{
+  "schema_version": 2,
+  "program_id": "public_data_corporate_finance_system",
+  "case_id": "standard_lithium_swa_2025dfs",
+  "release_id": null,
+  "status": "FEASIBILITY_ONLY",
+  "decision_question": "2025-10-15 공개정보에서 SWA Lithium LLC의 South West Arkansas 프로젝트 100% 기준으로 DFS 건설·운영 경로와 미개발·보류 경로를 증분 세후현금흐름으로 비교할 수 있는가? 그 결과를 Standard Lithium의 최종투자결정·자금조달 판단으로 확장하려면 무엇이 더 필요한가?",
+  "perspective_id": "CORPORATE_VALUE",
+  "as_of_date": "2025-10-15",
+  "analysis_cutoff": "2025-10-15T23:59:59-04:00",
+  "horizon_end": null,
+  "economic_scope_id": "swa_project_100pct_unlevered",
+  "legal_entity_id": "swa_lithium_llc_us",
+  "instrument_id": null,
+  "jurisdiction": "US-AR",
+  "functional_currency": "USD",
+  "reporting_currency": "USD",
+  "active_modules": ["M2"],
+  "intended_use": "Personal research, learning and portfolio evidence",
+  "decision_authority": "PERSONAL_ANALYST_SIMULATION"
+}

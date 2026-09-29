@@ -4,9 +4,11 @@ import csv
 import json
 import re
 import shutil
+from datetime import datetime
 from pathlib import Path
 
 from versioned_finance_core.contracts.models import CaseContract
+from versioned_finance_core.evidence import load_provenanced_facts, load_source_ledger
 
 CASE_ID_PATTERN = re.compile(r"^[a-z0-9][a-z0-9_-]*$")
 
@@ -105,6 +107,12 @@ def initialize_case(case_id: str, cases_dir: Path, template_dir: Path) -> Path:
     data["case_id"] = case_id
     data["status"] = "DRAFT"
     case_path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    manifest_path = destination / "release" / "release_manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    manifest["case_id"] = case_id
+    manifest_path.write_text(
+        json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
     return destination
 
 
@@ -134,7 +142,20 @@ def validate_case(case_dir: Path, release_ready: bool = False) -> tuple[list[str
                 f"Missing CSV columns in {relative_path}: {', '.join(sorted(missing))}"
             )
 
+    evidence_dir = case_dir / "01_evidence_core"
+    if (evidence_dir / "source_ledger.csv").is_file():
+        try:
+            load_source_ledger(evidence_dir)
+        except (ValueError, TypeError, KeyError, csv.Error) as exc:
+            errors.append(f"Invalid source_ledger.csv: {exc}")
+    if (evidence_dir / "raw_facts.csv").is_file():
+        try:
+            load_provenanced_facts(evidence_dir)
+        except (ValueError, TypeError, KeyError, csv.Error) as exc:
+            errors.append(f"Invalid raw_facts.csv lineage: {exc}")
+
     case_path = case_dir / "00_charter" / "case.json"
+    contract: CaseContract | None = None
     if case_path.is_file():
         try:
             data = json.loads(case_path.read_text(encoding="utf-8"))
@@ -148,6 +169,27 @@ def validate_case(case_dir: Path, release_ready: bool = False) -> tuple[list[str
                 warnings.extend(readiness)
         except (ValueError, TypeError, json.JSONDecodeError) as exc:
             errors.append(f"Invalid case.json: {exc}")
+
+    manifest_path = case_dir / "release" / "release_manifest.json"
+    if case_dir.name != "_template" and manifest_path.is_file():
+        try:
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            if not isinstance(manifest, dict):
+                raise TypeError("manifest must be a JSON object")
+            if manifest.get("case_id") != case_dir.name:
+                errors.append("release_manifest.json case_id does not match the case directory")
+            if manifest.get("publication_state") != "WITHHELD":
+                errors.append("case-local release_manifest.json must remain WITHHELD")
+            if contract and contract.status != "DRAFT" and contract.analysis_cutoff:
+                raw_cutoff = manifest.get("cutoff_timestamp")
+                if not isinstance(raw_cutoff, str):
+                    errors.append("release_manifest.json cutoff differs from case.json")
+                else:
+                    manifest_cutoff = datetime.fromisoformat(raw_cutoff)
+                    if manifest_cutoff.tzinfo is None or manifest_cutoff != contract.analysis_cutoff:
+                        errors.append("release_manifest.json cutoff differs from case.json")
+        except (ValueError, TypeError, json.JSONDecodeError) as exc:
+            errors.append(f"Invalid release_manifest.json: {exc}")
 
     return errors, warnings
 

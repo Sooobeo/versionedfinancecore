@@ -1,0 +1,11 @@
+# M3 evidence-gap memo — Ford Credit 2025 year-end
+
+**State: `FEASIBILITY_ONLY / WITHHELD`.** The 2025 Form 10-K supports a consolidated liquidity/debt disclosure bridge and a 2026 annual maturity bucket. It does not support a dated obligor cash trough, a first failure date or a lending/investment conclusion. Core cash identity output: `cash_53d0fbaa0858b786e3977797a3dc31079a0f9610fbf06d40ec11e691b6c274af`.
+
+At **2025-12-31**, Ford Credit reported consolidated net liquidity available for use of USD **24.6 billion**, as defined in its MD&A. Note 9 presents USD **51,806 million** of debt in the 2026 maturity bucket, consisting of **30,053 million** unsecured and **21,753 million** asset-backed debt. These are different constructs: the latter is an annual debt bucket and includes obligations of securitization entities, while the former includes committed capacity subject to draw conditions and is not a parent-only cash amount. Their simple difference is **not** a cash gap or a predicted default. See [source locations](../01_evidence_core/evidence_notes.md).
+
+The same Note 9 shows gross maturity-category debt of USD **141,904 million** and consolidated carrying debt of **141,417 million** after the disclosed accounting adjustments. Asset-backed debt is payable only from the relevant securitized assets. The group total therefore cannot be assigned to Ford Credit LLC as a single obligor. Facility commitments are kept separate from utilization and from actual drawable funds; uncommitted future market issuance is not treated as cash.
+
+**Not testable from the public slice:** Ford Credit LLC parent-only free cash; an issuer-level 2026 monthly/quarterly CFADS and mandatory operating floor; exact debt dates, instrument terms and allocated interest; eligible receivables by facility at each draw date; committed refinancing that can meet each payment; covenant calculations and cure paths; legally supported recovery waterfall and market spread/rating inference. The 2026 Q2 10-Q is an out-of-time observation excluded from this cutoff.
+
+The next valid step is a dated legal-entity and instrument schedule with eligible collateral, facility draw conditions, 2026 operating/receivable cash path and independent reviewer challenge. Until then, M3 release gate remains `WITHHELD`.

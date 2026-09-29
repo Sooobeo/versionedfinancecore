@@ -1,0 +1,31 @@
+{
+  "schema_version": 2,
+  "available_lenses": [
+    {
+      "perspective_id": "PERFORMANCE_MANAGEMENT",
+      "module": "M1",
+      "question": "What changed, why, and how does the forecast and action set change?"
+    },
+    {
+      "perspective_id": "CORPORATE_VALUE",
+      "module": "M1",
+      "question": "What operating path and claim bridge support the value range?"
+    },
+    {
+      "perspective_id": "CORPORATE_VALUE",
+      "module": "M2",
+      "question": "Which option creates the strongest incremental value, subject to funding constraints?"
+    },
+    {
+      "perspective_id": "ISSUER_CAPACITY",
+      "module": "M3",
+      "question": "When can the obligor no longer meet liquidity and debt-service requirements?"
+    },
+    {
+      "perspective_id": "INSTRUMENT_RECOVERY",
+      "module": "M3",
+      "question": "What public evidence supports the claim and recovery range?"
+    }
+  ]
+}
+

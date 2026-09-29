@@ -1,0 +1,21 @@
+{
+  "schema_version": 2,
+  "program_id": "public_data_corporate_finance_system",
+  "case_id": "ford_credit_2025ye_m3",
+  "release_id": null,
+  "status": "FEASIBILITY_ONLY",
+  "decision_question": "At the 2026-02-11 public-information cutoff, what can Ford Credit's 2025 year-end disclosed liquidity, debt maturities and facility terms establish about 2026 issuer capacity without assuming refinancing or upstream access?",
+  "perspective_id": "ISSUER_CAPACITY",
+  "as_of_date": "2026-02-11",
+  "analysis_cutoff": "2026-02-11T23:59:59-05:00",
+  "horizon_end": "2026-12-31",
+  "economic_scope_id": "fmcc_consolidated_group",
+  "legal_entity_id": "ford_motor_credit_company_llc",
+  "instrument_id": "fmcc_unsecured_debt_aggregate_2025ye",
+  "jurisdiction": "US-DE",
+  "functional_currency": "USD",
+  "reporting_currency": "USD",
+  "active_modules": ["M3"],
+  "intended_use": "Personal research, learning and portfolio evidence",
+  "decision_authority": "PERSONAL_ANALYST_SIMULATION"
+}

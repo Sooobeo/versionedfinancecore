@@ -1,0 +1,18 @@
+{
+  "schema_version": 2,
+  "case_gates": [
+    { "gate_id": "PUBLIC_ACCESS_RIGHTS", "status": "PASS", "evidence": "SEC locator and source SHA-256; raw report not retained" },
+    { "gate_id": "CUTOFF_VINTAGE", "status": "PASS", "evidence": "2025-10-14 SEC acceptance with end-of-day public-by bound; cutoff 2025-10-15" },
+    { "gate_id": "DECISION_SCOPE", "status": "WITHHELD", "evidence": "100% project model scope is clear; no-build cash obligations incomplete" },
+    { "gate_id": "FINANCIAL_DATA", "status": "WITHHELD", "evidence": "Rounded DFS annual cash row is reproducible; current as-of capex and corporate funding are unknown" },
+    { "gate_id": "DRIVER_OR_CONTRACT_EVIDENCE", "status": "WITHHELD", "evidence": "Model price is a forecast and offtake is not binding at the DFS cutoff" }
+  ],
+  "module_states": {
+    "M1_PERFORMANCE": "NOT_APPLICABLE",
+    "M1_VALUATION": "NOT_APPLICABLE",
+    "M2_CAPITAL_ALLOCATION": "WITHHELD",
+    "M3_CREDIT_LIQUIDITY": "NOT_APPLICABLE",
+    "O1_FINANCIAL_SERVICES": "NOT_APPLICABLE"
+  }
+}
+

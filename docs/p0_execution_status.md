@@ -1,6 +1,6 @@
 # P0 실행 상태
 
-기준일: 2026-09-28. 이 표는 **재사용 가능한 코드 검증**과 **실제 공개자료 case의 release gate**를 구분한다. 합성 fixture의 통과를 오리온의 전망·투자·신용 판단으로 옮기지 않는다.
+기준일: 2026-09-29. 이 표는 **재사용 가능한 코드 검증**과 **실제 공개자료 case의 release gate**를 구분한다. 합성 fixture의 통과를 오리온의 전망·투자·신용 판단으로 옮기지 않는다.
 
 | 단계 | 구현·검증된 범위 | 오리온 진천센터 case |
 |---|---|---|
@@ -11,6 +11,18 @@
 | R3 — M3 | Core CFADS·debt service·liquidity를 쓰는 채무자 cash path, 시설·채무 이벤트, 현금 floor·DSCR·단조 reverse stress, 만기·차환 gap, covenant/회수 제한 상태 | 모회사 접근 가능 현금·시설 사용 조건·채무계약·청구권 근거가 부족해 `WITHHELD` |
 | O1 — 금융업 overlay | opt-in 적격성 규칙 | 식품 제조 case에는 `NOT_APPLICABLE` |
 
+## 모듈별 공개자료 사례 선택
+
+오리온은 기존 R0 현금 검증 후보로 유지한다. P0의 같은 회사를 강제하지 않는 원칙에 따라 다른 모듈에는 [별도 사례](../cases/README.md)를 선정했다. 어느 사례도 실제 회사의 내부 계획·승인 판단을 주장하지 않는다.
+
+| 모듈 | 공개자료 사례와 확인된 범위 | 현재 gate |
+|---|---|---|
+| M1 Performance | [Walmart FY27 Q1](../cases/walmart_fy27q1_guidance_outcome/): 2026-02-19 공개 가이던스와 2026-05-21 실제치의 동일 정의 3개 지표를 범위 기준으로 대조한다. 범위 중간값은 forecast로 만들지 않고 원인 미귀속 차이를 잔차로 둔다. | 연결 P&L·BS·CF, driver 귀속, 재전망과 독립 검토가 없어 `WITHHELD`. Valuation 비활성. |
+| M2 | [South West Arkansas DFS](../cases/standard_lithium_swa_2025dfs/): 공개된 프로젝트 100% 기준 2025 실질 USD 세후 비차입 현금흐름·연차 합계를 재현한다. 공시 NPV의 할인 시점은 확정하지 않는다. | 미개발·보류 대안의 기회비용, 잔여 집행액·시점, JV 지분 귀속과 확약 자금 근거가 없어 FID·자본배분 결론 `WITHHELD`. |
+| M3 | [Ford Credit 2025 연말](../cases/ford_credit_2025ye_m3/): 2026-02-11 기준으로 10-K 현금 대사와 공시 유동성·채무 만기 범위를 분리한다. 2026년 2분기 10-Q는 기준시점 이후 관찰값으로 분리한다. | 채무자별 가용 현금·시점별 CFADS·인출조건·covenant·청구권 근거가 부족해 `WITHHELD`. |
+
+공통 `validate-case`는 이제 source receipt와 raw fact의 ID·hash·시점 계보를 CSV 계약으로 파싱하고 case 내부 draft manifest의 case ID·cutoff·`WITHHELD` 상태를 확인한다. 이 구조 검사와 모듈별 계산 검증은 최종 release gate 또는 독립적인 사람 검토를 대신하지 않는다.
+
 ## 실제 case에서 확인된 것
 
 1. [차터](../cases/orion_jincheon_2026h1/00_charter/decision_object.md)는 ㈜오리온의 진천센터 계획 지속과 적법하게 가능한 단계화·이연을 비교하는 질문을 2026-08-18 23:59:59 KST 기준으로 고정한다. 경제적 관점은 모회사 별도이고, 연결 현금과 섞지 않는다.
@@ -18,7 +30,7 @@
 3. [DART cash 수집기](../cases/orion_jincheon_2026h1/01_evidence_core/ingest_dart_cash.py)는 연결·별도 × 최초·정정 현금흐름표를 범위·기간·버전별로 분리한다. 24개 정규화 사실의 현금흐름 대사 차액은 0원이다. 모회사 별도 2026-06-30 현금은 254,143,639,226원이다. 이는 2026-08-18 현재 자유롭게 사용할 수 있는 프로젝트 자금액이라는 뜻이 아니다.
 4. [최종 판단 요약](../cases/orion_jincheon_2026h1/executive_summary.md), [gate 기록](../cases/orion_jincheon_2026h1/07_validation_governance/gate_results.csv), [미해결 finding](../cases/orion_jincheon_2026h1/07_validation_governance/review_findings.csv)은 M1/M2/M3 판단을 `WITHHELD`로 유지한다. 계획 총액 4,600억 원, 건설 부분 2,280억 원 및 물리적 공정률 36%는 미집행 프로젝트 현금흐름이나 이연권을 계산하는 입력이 아니다.
 
-## 다음 공개자료 gate
+## 오리온 case의 다음 공개자료 gate
 
 - **M1:** 같은 범위의 역사적 재무·운영 driver와 공개시점이 확인된 과거 plan/forecast, 예측·valuation 가정 근거가 필요하다.
 - **M2:** 프로젝트별 이미 지급한 금액과 남은 지급 일정, 취소·이연 가능 범위, 지연의 비용·편익을 확인해야 한다.

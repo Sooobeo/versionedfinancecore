@@ -1,0 +1,12 @@
+gate_id,module_id,status,evidence,limitation,evaluated_at,evaluated_by,reviewed_by,release_effect
+PUBLIC_ACCESS_RIGHTS,,PASS,01_evidence_core/source_ledger.csv,Official locator and selected transformed facts only,2026-09-29T04:46:17Z,codex_public_case,,NONE
+CUTOFF_VINTAGE,,PASS,01_evidence_core/source_ledger.csv; out_of_time_evaluation/README.md,Later 10-Q held outside decision-input ledger,2026-09-29T04:46:17Z,codex_public_case,,NONE
+DECISION_SCOPE,,WITHHELD,00_charter/decision_object.md,Issuer-level capacity cannot be established from group-only liquidity,2026-09-29T04:46:17Z,codex_public_case,,BLOCK
+SEMANTIC_SCOPE_UNIT,,WITHHELD,01_evidence_core/scope_bridges.csv; 05_m3_credit_liquidity_claims/entities_obligors.csv,Group figures cannot establish parent-only accessible cash,2026-09-29T04:46:17Z,codex_public_case,,BLOCK
+FINANCIAL_RECONCILIATION,,PASS,staged core_outputs.json; 01_evidence_core/evidence_notes.md,2025 consolidated cash identity and disclosed debt/liquidity bridges only,2026-09-29T04:46:17Z,codex_public_case,,NONE
+SCENARIO_EVIDENCE,,WITHHELD,05_m3_credit_liquidity_claims/credit_memo.md,No dated CFADS or evidence-grounded downside path,2026-09-29T04:46:17Z,codex_public_case,,BLOCK
+CLAIM_INTEGRITY,,WITHHELD,05_m3_credit_liquidity_claims/credit_memo.md,No legal claim and recovery waterfall or first-failure calculation,2026-09-29T04:46:17Z,codex_public_case,,BLOCK
+REVIEW,,WITHHELD,07_validation_governance/review_findings.csv,Independent challenge absent,2026-09-29T04:46:17Z,codex_public_case,,BLOCK
+REPRODUCTION_HANDOVER,,WITHHELD,01_evidence_core/ingest_sec_fmcc.py,Source digests pinned but full M3 case not reproducible,2026-09-29T04:46:17Z,codex_public_case,,BLOCK
+M3_CREDIT_LIQUIDITY,M3,WITHHELD,05_m3_credit_liquidity_claims/credit_memo.md,Issuer first failure and legal accessible funds not established,2026-09-29T04:46:17Z,codex_public_case,,BLOCK
+CASH_SLICE_RECONCILIATION,,PASS,staged core_outputs.json,2025 consolidated cash rollforward residual 0 USD million,2026-09-29T04:46:17Z,codex_public_case,,NONE

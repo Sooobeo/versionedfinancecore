@@ -74,7 +74,7 @@ def main(argv: list[str] | None = None) -> int:
                 print("Case structure, source eligibility, and release gates are valid.")
                 print("Output and reproduction controls are checked at staging and publication.")
             else:
-                print("Case structure is valid.")
+                print("Case structure is valid; evidence lineage is valid.")
             return 0
 
         if args.command == "build-manifest":

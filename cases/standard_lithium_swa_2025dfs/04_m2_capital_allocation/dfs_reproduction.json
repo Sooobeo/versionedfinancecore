@@ -1,0 +1,19 @@
+{
+  "model_version_id": "swa_dfs_model_20251014",
+  "economic_scope_id": "swa_project_100pct_unlevered",
+  "basis": "real_2025_USD_million",
+  "relative_periods": "-4,-3,-2,-1,1..20",
+  "excluded_dash_period": "-4",
+  "published_total_fcff_F": "4701.5",
+  "sum_of_rounded_annual_fcff_D": "4701.5",
+  "published_npv_8pct_F": "1275.0",
+  "npv_start_year_D": "1324.785557069703246772945029927332",
+  "npv_mid_year_hypothesis_D": "1274.775496654535825574257041970007",
+  "npv_end_year_D": "1226.653293583058561826800953636418",
+  "mid_year_difference_from_published_D": "-0.224503345464174425742958029993",
+  "maximum_annual_row_rounding_effect_D": "0.5388960307021230124874572551312060",
+  "published_irr_F": "0.182",
+  "irr_from_rounded_annual_fcff_D": "0.1820264531999255785234229590846934",
+  "timing_state": "MID_YEAR_IS_AN_INFERENCE_NOT_A_DISCLOSED_CONVENTION",
+  "decision_state": "FEASIBILITY_ONLY"
+}

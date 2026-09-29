@@ -1,0 +1,4 @@
+finding_id,reviewed_at,reviewer,scope,severity,finding,evidence,response,resolution,retest_result,remaining_limitation,status
+wmt_m1_001,2026-09-29T04:46:12+00:00,codex_self_review,M1_PERFORMANCE,BLOCKER,No published ex-ante expected fuel/mix driver path to attribute actual-to-guidance range miss,01_evidence_core/guidance_actual_evidence.md,Keep full nearest-bound deviation as unexplained residual,,,Cannot assert causal driver effect from public sources,OPEN
+wmt_m1_002,2026-09-29T04:46:12+00:00,codex_self_review,FINANCIAL_CORE,BLOCKER,Three outcome metrics do not constitute linked P&L BS CF and cash model,02_financial_core/normalized_actuals.csv,Limit claim to published metric comparison and withhold release,,,No full M1 release,OPEN
+wmt_m1_003,2026-09-29T04:46:12+00:00,codex_self_review,REVIEW,BLOCKER,No independent human effective challenge,07_validation_governance/gate_results.csv,Mark reviewer empty and release WITHHELD,,,Self-reviewed research only,OPEN
