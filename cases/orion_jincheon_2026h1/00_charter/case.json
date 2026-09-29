@@ -1,0 +1,21 @@
+{
+  "schema_version": 2,
+  "program_id": "public_data_corporate_finance_system",
+  "case_id": "orion_jincheon_2026h1",
+  "release_id": null,
+  "status": "FEASIBILITY_ONLY",
+  "decision_question": "㈜오리온 진천센터의 기준시점 이후 미집행 지출을 계획대로 진행하는 경우와 단계적 집행 또는 이연하는 경우 중 어느 쪽이 모회사 범위의 증분 세후현금흐름과 접근 가능 유동성에 더 적합한가?",
+  "perspective_id": "CORPORATE_VALUE",
+  "as_of_date": "2026-08-18",
+  "analysis_cutoff": "2026-08-18T23:59:59+09:00",
+  "horizon_end": "2027-12-31",
+  "economic_scope_id": "orion_parent_standalone",
+  "legal_entity_id": "orion_co_ltd_kr",
+  "instrument_id": null,
+  "jurisdiction": "KR",
+  "functional_currency": "KRW",
+  "reporting_currency": "KRW",
+  "active_modules": ["M1", "M2", "M3"],
+  "intended_use": "Personal research, learning and portfolio evidence",
+  "decision_authority": "PERSONAL_ANALYST_SIMULATION"
+}

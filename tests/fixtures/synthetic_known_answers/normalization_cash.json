@@ -1,0 +1,32 @@
+{
+  "fixture_class": "SYNTHETIC_TEST_ONLY",
+  "source_id": "synthetic_disclosure",
+  "snapshot_id": "synthetic_receipt_1",
+  "content_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "first_public_at": "2026-02-15T09:00:00+00:00",
+  "retrieved_at": "2026-02-16T09:00:00+00:00",
+  "version_id": "actual_filed_v1",
+  "information_cutoff": "2026-03-01T00:00:00+00:00",
+  "case_id": "synthetic_cash_case",
+  "economic_scope_id": "synthetic_group",
+  "accounting_scope": "CONSOLIDATED",
+  "currency": "USD",
+  "unit": "USD",
+  "cash_identity": {
+    "identity_id": "synthetic_fy2025_cash",
+    "opening_cash": "100",
+    "operating_cash_flow": "40",
+    "investing_cash_flow": "-25",
+    "financing_cash_flow": "10",
+    "fx_and_other": "5",
+    "closing_cash": "130",
+    "expected_residual": "0"
+  },
+  "scenario": {
+    "scenario_id": "synthetic_downside",
+    "scenario_version_id": "scenario_v1",
+    "operating_cash_flow_override": "20",
+    "expected_closing_cash": "110",
+    "assumption_id": "synthetic_assumption_1"
+  }
+}

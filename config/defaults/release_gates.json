@@ -1,0 +1,25 @@
+{
+  "schema_version": 2,
+  "common_gates": [
+    "DECISION_SCOPE",
+    "PUBLIC_ACCESS_RIGHTS",
+    "CUTOFF_VINTAGE",
+    "SEMANTIC_SCOPE_UNIT",
+    "FINANCIAL_RECONCILIATION",
+    "SCENARIO_EVIDENCE",
+    "CLAIM_INTEGRITY",
+    "REVIEW",
+    "REPRODUCTION_HANDOVER"
+  ],
+  "module_gates": {
+    "M1": {
+      "PERFORMANCE_MANAGEMENT": "M1_PERFORMANCE",
+      "CORPORATE_VALUE": "M1_VALUATION"
+    },
+    "M2": "M2_CAPITAL_ALLOCATION",
+    "M3": "M3_CREDIT_LIQUIDITY",
+    "O1": "O1_FINANCIAL_SERVICES"
+  },
+  "statuses": ["NOT_EVALUATED", "PASS", "FAIL", "NOT_APPLICABLE", "WITHHELD"]
+}
+

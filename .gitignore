@@ -1,0 +1,23 @@
+.env
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+dist/
+*.egg-info/
+
+# Rebuildable local work products
+build/*
+!build/README.md
+*.duckdb
+*.duckdb.wal
+
+# Secrets and quarantined/licence-restricted material
+**/private/
+**/quarantine/
+**/*.secret.*
+**/.evidence_write.lock
+

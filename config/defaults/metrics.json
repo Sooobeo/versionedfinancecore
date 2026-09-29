@@ -1,0 +1,6 @@
+{
+  "schema_version": 2,
+  "metrics": [],
+  "note": "Case-specific definitions belong in 01_evidence_core/metric_dictionary.csv. No universal thresholds are defined here."
+}
+

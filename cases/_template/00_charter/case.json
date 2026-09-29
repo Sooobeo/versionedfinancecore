@@ -1,0 +1,22 @@
+{
+  "schema_version": 2,
+  "program_id": "public_data_corporate_finance_system",
+  "case_id": "replace_me",
+  "release_id": null,
+  "status": "TEMPLATE",
+  "decision_question": null,
+  "perspective_id": null,
+  "as_of_date": null,
+  "analysis_cutoff": null,
+  "horizon_end": null,
+  "economic_scope_id": null,
+  "legal_entity_id": null,
+  "instrument_id": null,
+  "jurisdiction": null,
+  "functional_currency": null,
+  "reporting_currency": null,
+  "active_modules": [],
+  "intended_use": "Personal research, learning and portfolio evidence",
+  "decision_authority": "PERSONAL_ANALYST_SIMULATION"
+}
+

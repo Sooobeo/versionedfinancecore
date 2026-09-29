@@ -1,0 +1,14 @@
+gate_id,module_id,status,evidence,limitation,evaluated_at,evaluated_by,reviewed_by,release_effect
+DECISION_SCOPE,,WITHHELD,00_charter/decision_object.md,Option execution right and unspent project spend unknown,2026-09-28T08:44:32.257393+00:00,codex_case_review,,BLOCK
+PUBLIC_ACCESS_RIGHTS,,PASS,01_evidence_core/source_ledger.csv; 01_evidence_core/investment_evidence.md,Transformed facts only; raw redistribution right unconfirmed,2026-09-28T08:44:32.257393+00:00,codex_case_review,,NONE
+CUTOFF_VINTAGE,,PASS,01_evidence_core/source_ledger.csv,Official DART minute precision; :59 is conservative bound,2026-09-28T08:44:32.257393+00:00,codex_case_review,,NONE
+SEMANTIC_SCOPE_UNIT,,WITHHELD,01_evidence_core/scope_bridges.csv; 01_evidence_core/investment_evidence.md,Cash scope verified; project capex attribution unknown,2026-09-28T08:44:32.257393+00:00,codex_case_review,,BLOCK
+FINANCIAL_RECONCILIATION,,WITHHELD,02_financial_core/cash_identity_checks.csv; staged core_outputs.json,Cash identity residual zero; linked project model absent,2026-09-28T08:44:32.257393+00:00,codex_case_review,,BLOCK
+SCENARIO_EVIDENCE,,WITHHELD,01_evidence_core/investment_evidence.md,Option rights and payment schedule unavailable,2026-09-28T08:44:32.257393+00:00,codex_case_review,,BLOCK
+CLAIM_INTEGRITY,,PASS,01_evidence_core/investment_evidence.md,No investment or credit conclusion released,2026-09-28T08:44:32.257393+00:00,codex_case_review,,NONE
+REVIEW,,WITHHELD,07_validation_governance/review_findings.csv,Independent review absent,2026-09-28T08:44:32.257393+00:00,codex_case_review,,BLOCK
+REPRODUCTION_HANDOVER,,WITHHELD,01_evidence_core/ingest_dart_cash.py,Cash slice reproducible; full decision handover incomplete,2026-09-28T08:44:32.257393+00:00,codex_case_review,,BLOCK
+M1_VALUATION,M1,WITHHELD,03_m1_operating_forecast_valuation/README.md,Forecast and valuation not built for real case,2026-09-28T08:44:32.257393+00:00,codex_case_review,,BLOCK
+M2_CAPITAL_ALLOCATION,M2,WITHHELD,04_m2_capital_allocation/README.md,Incremental project cash flows and option rights unknown,2026-09-28T08:44:32.257393+00:00,codex_case_review,,BLOCK
+M3_CREDIT_LIQUIDITY,M3,WITHHELD,05_m3_credit_liquidity_claims/README.md,Accessible cash and contractual claims not established,2026-09-28T08:44:32.257393+00:00,codex_case_review,,BLOCK
+CASH_SLICE_RECONCILIATION,,PASS,staged core_outputs.json,Revised parent 2026 H1 cash roll-forward residual 0 KRW,2026-09-28T08:44:32.257393+00:00,codex_case_review,,NONE

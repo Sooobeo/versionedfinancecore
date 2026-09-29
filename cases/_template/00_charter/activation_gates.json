@@ -1,0 +1,18 @@
+{
+  "schema_version": 2,
+  "case_gates": [
+    { "gate_id": "PUBLIC_ACCESS_RIGHTS", "status": "NOT_EVALUATED", "evidence": "" },
+    { "gate_id": "CUTOFF_VINTAGE", "status": "NOT_EVALUATED", "evidence": "" },
+    { "gate_id": "DECISION_SCOPE", "status": "NOT_EVALUATED", "evidence": "" },
+    { "gate_id": "FINANCIAL_DATA", "status": "NOT_EVALUATED", "evidence": "" },
+    { "gate_id": "DRIVER_OR_CONTRACT_EVIDENCE", "status": "NOT_EVALUATED", "evidence": "" }
+  ],
+  "module_states": {
+    "M1_PERFORMANCE": "NOT_EVALUATED",
+    "M1_VALUATION": "NOT_EVALUATED",
+    "M2_CAPITAL_ALLOCATION": "NOT_EVALUATED",
+    "M3_CREDIT_LIQUIDITY": "NOT_EVALUATED",
+    "O1_FINANCIAL_SERVICES": "NOT_EVALUATED"
+  }
+}
+

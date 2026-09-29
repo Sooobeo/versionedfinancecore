@@ -1,0 +1,11 @@
+{
+  "analysis_cutoff": "2026-08-18T23:59:59+09:00",
+  "case_id": "orion_jincheon_2026h1",
+  "claim_tag": "I",
+  "credit_reference_id": "M3_CREDIT_LIQUIDITY",
+  "credit_state": "UNKNOWN",
+  "output_id": "cross_lens_a48b8fa08704df4c5c6e91e9ef61105c70f0ab7ba9f08bc332f37a1b657d67ae",
+  "state": "DEFER_FOR_EVIDENCE",
+  "value_reference_id": "M2_CAPITAL_ALLOCATION",
+  "value_state": "UNKNOWN"
+}

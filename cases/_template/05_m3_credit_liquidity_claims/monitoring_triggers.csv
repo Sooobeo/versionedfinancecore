@@ -1,0 +1,2 @@
+trigger_id,metric_or_event,threshold_or_state,direction,observation_source,frequency,proposed_monitoring_role,decision_effect,lead_time,status,review_status
+

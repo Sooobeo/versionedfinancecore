@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1120" viewBox="0 0 1600 1120" role="img" aria-labelledby="title desc">
+  <title id="title">Public-Data Corporate Finance Decision System 프로젝트 도메인 관계도</title>
+  <desc id="desc">P0 공통 근거·시간·범위·재무상태·버전 도메인을 P1과 P2의 M1, P3의 M2, P4의 M3가 공유하고, M2와 M3가 자금조달 요청과 신용 제약 결과를 교환한 뒤 독립적인 판단 결과를 release하는 구조다.</desc>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#52647a"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4775c5"/>
+    </marker>
+    <style>
+      .canvas { fill: #f8fafc; }
+      .title { font: 700 28px Pretendard, "Noto Sans KR", system-ui, sans-serif; fill: #142238; }
+      .subtitle { font: 400 15px Pretendard, "Noto Sans KR", system-ui, sans-serif; fill: #53647a; }
+      .band-title { font: 700 19px Pretendard, "Noto Sans KR", system-ui, sans-serif; fill: #1d2d44; }
+      .band-subtitle { font: 400 13px Pretendard, "Noto Sans KR", system-ui, sans-serif; fill: #5b6b80; }
+      .card-title { font: 700 16px Pretendard, "Noto Sans KR", system-ui, sans-serif; fill: #17263b; }
+      .card-body { font: 400 13px Pretendard, "Noto Sans KR", system-ui, sans-serif; fill: #46576c; }
+      .inverse-title { font: 700 17px Pretendard, "Noto Sans KR", system-ui, sans-serif; fill: #ffffff; }
+      .inverse-body { font: 400 13px Pretendard, "Noto Sans KR", system-ui, sans-serif; fill: #dce7f4; }
+      .edge { fill: none; stroke: #52647a; stroke-width: 2; marker-end: url(#arrow); }
+      .edge-no-arrow { fill: none; stroke: #52647a; stroke-width: 2; }
+      .feedback { fill: none; stroke: #4775c5; stroke-width: 2.2; stroke-dasharray: 8 7; marker-end: url(#arrow-blue); }
+      .constraint { fill: none; stroke: #52647a; stroke-width: 2; stroke-dasharray: 7 6; marker-end: url(#arrow); }
+      .edge-label { font: 600 12px Pretendard, "Noto Sans KR", system-ui, sans-serif; fill: #42546a; text-anchor: middle; }
+      .legend { font: 400 12px Pretendard, "Noto Sans KR", system-ui, sans-serif; fill: #5b6b80; }
+      .pill { fill: #ffffff; stroke: #c8d2df; stroke-width: 1; }
+    </style>
+  </defs>
+
+  <rect class="canvas" x="0" y="0" width="1600" height="1120"/>
+
+  <text class="title" x="50" y="46">프로젝트 도메인 관계도</text>
+  <text class="subtitle" x="50" y="75">같은 공개 근거와 재무 경로를 공유하되, 각 프로젝트는 서로 다른 판단 대상을 독립적으로 평가한다.</text>
+
+  <g role="group" aria-label="공개 원천과 이후 사건">
+    <rect x="500" y="100" width="600" height="78" rx="14" fill="#203650"/>
+    <text class="inverse-title" x="800" y="130" text-anchor="middle">공개 원천과 이후 사건</text>
+    <text class="inverse-body" x="800" y="154" text-anchor="middle">공시 · IR · 계약 · 시장관측 · 공식통계 · later actual</text>
+    <path class="edge" d="M 800 178 L 800 198 L 238 198 L 238 216"/>
+    <rect class="pill" x="438" y="186" width="160" height="24" rx="12"/>
+    <text class="edge-label" x="518" y="202">근거 수집 + cutoff</text>
+  </g>
+
+  <g role="group" aria-label="P0 공통 도메인">
+    <rect x="50" y="220" width="1500" height="250" rx="18" fill="#edf4ff" stroke="#6693dc" stroke-width="2"/>
+    <text class="band-title" x="78" y="252">P0 · 공통 커널과 공유 도메인</text>
+    <text class="band-subtitle" x="370" y="252">원천·scope·현금 component·version을 한 번 정의하고 모든 프로젝트가 참조</text>
+
+    <rect x="80" y="280" width="315" height="145" rx="13" fill="#ffffff" stroke="#acc4ea" stroke-width="1.5"/>
+    <text class="card-title" x="104" y="310">근거·시간 도메인</text>
+    <text class="card-body" x="104" y="338">
+      <tspan x="104" dy="0">SourceDocument · EvidenceSnapshot</tspan>
+      <tspan x="104" dy="21">rights · first_public_at · retrieved_at</tspan>
+      <tspan x="104" dy="21">append-only revision · content hash</tspan>
+      <tspan x="104" dy="21">cutoff eligibility</tspan>
+    </text>
+
+    <rect x="420" y="280" width="315" height="145" rx="13" fill="#ffffff" stroke="#acc4ea" stroke-width="1.5"/>
+    <text class="card-title" x="444" y="310">정체성·범위 도메인</text>
+    <text class="card-body" x="444" y="338">
+      <tspan x="444" dy="0">Case · MetricDefinition · Period</tspan>
+      <tspan x="444" dy="21">currency · unit · sign · grain</tspan>
+      <tspan x="444" dy="21">economic ↔ legal scope bridge</tspan>
+      <tspan x="444" dy="21">entity · segment · instrument</tspan>
+    </text>
+
+    <rect x="760" y="280" width="355" height="145" rx="13" fill="#ffffff" stroke="#acc4ea" stroke-width="1.5"/>
+    <text class="card-title" x="784" y="310">공통 재무상태 도메인</text>
+    <text class="card-body" x="784" y="338">
+      <tspan x="784" dy="0">NormalizedActual · DriverPath</tspan>
+      <tspan x="784" dy="21">linked P&amp;L · BS · CF</tspan>
+      <tspan x="784" dy="21">cash · debt · interest schedules</tspan>
+      <tspan x="784" dy="21">CashComponent inclusion flags</tspan>
+    </text>
+
+    <rect x="1140" y="280" width="380" height="145" rx="13" fill="#ffffff" stroke="#acc4ea" stroke-width="1.5"/>
+    <text class="card-title" x="1164" y="310">버전·시나리오 도메인</text>
+    <text class="card-body" x="1164" y="338">
+      <tspan x="1164" dy="0">plan · forecast · actual · scenario</tspan>
+      <tspan x="1164" dy="21">STATUS_QUO · OPTION_CASE</tspan>
+      <tspan x="1164" dy="21">ANALYST_BASE · DOWNSIDE</tspan>
+      <tspan x="1164" dy="21">REVERSE_STRESS · immutable version</tspan>
+    </text>
+
+    <path class="edge" d="M 395 352 L 416 352"/>
+    <path class="edge" d="M 735 352 L 756 352"/>
+    <path class="edge" d="M 1140 352 L 1119 352"/>
+    <text class="edge-label" x="405" y="342">검증 fact</text>
+    <text class="edge-label" x="748" y="342">scope 확정</text>
+    <text class="edge-label" x="1128" y="342">version path</text>
+  </g>
+
+  <g role="group" aria-label="공통 baseline 배포 계약">
+    <path class="edge-no-arrow" d="M 937 425 L 937 500 M 350 500 L 1350 500"/>
+    <path class="edge" d="M 350 500 L 350 526"/>
+    <path class="edge" d="M 895 500 L 895 526"/>
+    <path class="edge" d="M 1350 500 L 1350 526"/>
+    <rect class="pill" x="674" y="477" width="448" height="28" rx="14"/>
+    <text class="edge-label" x="898" y="495">EvidenceSnapshotRef + FinancialStateSnapshot + ScenarioSetRef</text>
+  </g>
+
+  <g role="group" aria-label="M1 P1 P2 사업상태 전망 가치 도메인">
+    <rect x="50" y="530" width="600" height="320" rx="18" fill="#f1edff" stroke="#775cc5" stroke-width="2"/>
+    <text class="band-title" x="78" y="562">M1 · P1 + P2</text>
+    <text class="band-subtitle" x="205" y="562">사업상태 · 전망 · 가치</text>
+
+    <rect x="176" y="583" width="348" height="54" rx="12" fill="#ffffff" stroke="#9d8ad8" stroke-width="1.5"/>
+    <text class="card-title" x="350" y="606" text-anchor="middle">Core 재무상태 / 전망 version refs</text>
+    <text class="card-body" x="350" y="625" text-anchor="middle">read-only · core-owned · version-pinned</text>
+
+    <rect x="77" y="668" width="250" height="145" rx="13" fill="#ffffff" stroke="#9d8ad8" stroke-width="1.5"/>
+    <text class="card-title" x="101" y="697">P2 · 성과관리 관점</text>
+    <text class="card-body" x="101" y="724">
+      <tspan x="101" dy="0">frozen plan/forecast ↔ actual</tspan>
+      <tspan x="101" dy="21">variance effects + residual</tspan>
+      <tspan x="101" dy="21">future-only reforecast</tspan>
+      <tspan x="101" dy="21">action · monitoring trigger</tspan>
+    </text>
+
+    <rect x="373" y="668" width="250" height="145" rx="13" fill="#ffffff" stroke="#9d8ad8" stroke-width="1.5"/>
+    <text class="card-title" x="397" y="697">P1 · 가치판단 관점</text>
+    <text class="card-body" x="397" y="724">
+      <tspan x="397" dy="0">operating forecast · FCFF/FCFE</tspan>
+      <tspan x="397" dy="21">valuation eligibility</tspan>
+      <tspan x="397" dy="21">EV → equity claim bridge</tspan>
+      <tspan x="397" dy="21">value range · thesis-break</tspan>
+    </text>
+
+    <path class="constraint" d="M 202 668 C 202 646, 250 645, 298 637"/>
+    <text class="edge-label" x="211" y="655">새 version 요청</text>
+    <path class="edge" d="M 430 637 C 468 646, 498 650, 498 664"/>
+    <text class="edge-label" x="494" y="655">cash-flow refs</text>
+  </g>
+
+  <g role="group" aria-label="M2 P3 자본배분 도메인">
+    <rect x="700" y="530" width="390" height="320" rx="18" fill="#eaf8ef" stroke="#389162" stroke-width="2"/>
+    <text class="band-title" x="728" y="562">M2 · P3</text>
+    <text class="band-subtitle" x="825" y="562">자본배분 · 기업행동</text>
+
+    <rect x="735" y="610" width="320" height="180" rx="13" fill="#ffffff" stroke="#84c3a0" stroke-width="1.5"/>
+    <text class="card-title" x="759" y="640">CapitalAllocationDecision</text>
+    <text class="card-body" x="759" y="669">
+      <tspan x="759" dy="0">① status quo · defer · alternatives</tspan>
+      <tspan x="759" dy="23">② option − status quo 증분 세후 CF</tspan>
+      <tspan x="759" dy="23">③ funding plan · sources/uses</tspan>
+      <tspan x="759" dy="23">④ NPV · max price · break-even</tspan>
+      <tspan x="759" dy="23">⑤ conditional value preference</tspan>
+    </text>
+  </g>
+
+  <g role="group" aria-label="M3 P4 신용 유동성 청구권 도메인">
+    <rect x="1140" y="530" width="410" height="320" rx="18" fill="#fff3e5" stroke="#d47b27" stroke-width="2"/>
+    <text class="band-title" x="1168" y="562">M3 · P4</text>
+    <text class="band-subtitle" x="1270" y="562">신용 · 유동성 · 청구권</text>
+
+    <rect x="1177" y="610" width="336" height="180" rx="13" fill="#ffffff" stroke="#e4ad75" stroke-width="1.5"/>
+    <text class="card-title" x="1201" y="640">CreditCase / LiquidityAssessment</text>
+    <text class="card-body" x="1201" y="669">
+      <tspan x="1201" dy="0">① obligor · instrument · claim scope</tspan>
+      <tspan x="1201" dy="23">② accessible cash · CFADS</tspan>
+      <tspan x="1201" dy="23">③ debt service · maturity · refi</tspan>
+      <tspan x="1201" dy="23">④ covenant · first failure boundary</tspan>
+      <tspan x="1201" dy="23">⑤ recovery state · credit trigger</tspan>
+    </text>
+  </g>
+
+  <g role="group" aria-label="프로젝트 간 계약">
+    <path class="edge" d="M 650 694 L 696 694"/>
+    <rect class="pill" x="620" y="655" width="110" height="27" rx="13"/>
+    <text class="edge-label" x="675" y="673">가치범위 · thesis</text>
+
+    <path class="edge" d="M 1090 673 L 1136 673"/>
+    <rect class="pill" x="1065" y="634" width="100" height="27" rx="13"/>
+    <text class="edge-label" x="1115" y="652">core pro-forma ref</text>
+
+    <path class="constraint" d="M 1140 748 L 1094 748"/>
+    <rect class="pill" x="1060" y="760" width="110" height="27" rx="13"/>
+    <text class="edge-label" x="1115" y="778">신용 제약 결과</text>
+  </g>
+
+  <g role="group" aria-label="P0 판단과 release 거버넌스">
+    <path class="edge-no-arrow" d="M 350 850 L 350 875 L 630 875 M 895 850 L 895 861 M 1345 850 L 1345 875 L 970 875"/>
+    <rect class="pill" x="630" y="861" width="340" height="28" rx="14"/>
+    <text class="edge-label" x="800" y="879">M1 / M2 / M3 DecisionArtifact · output_id</text>
+    <path class="edge" d="M 800 889 L 800 920"/>
+
+    <rect x="170" y="925" width="1260" height="150" rx="18" fill="#edf1f5" stroke="#596a7f" stroke-width="2"/>
+    <text class="band-title" x="198" y="955">P0 · 판단 거버넌스와 릴리스</text>
+
+    <rect x="200" y="975" width="350" height="72" rx="12" fill="#ffffff" stroke="#aeb9c6" stroke-width="1.5"/>
+    <text class="card-title" x="375" y="1002" text-anchor="middle">Lens별 결과 보존</text>
+    <text class="card-body" x="375" y="1025" text-anchor="middle">운영/가치 ≠ 자본배분 ≠ 신용 · 총점 금지</text>
+
+    <rect x="625" y="975" width="350" height="72" rx="12" fill="#ffffff" stroke="#aeb9c6" stroke-width="1.5"/>
+    <text class="card-title" x="800" y="1002" text-anchor="middle">조건부 판단 · 독자별 memo</text>
+    <text class="card-body" x="800" y="1025" text-anchor="middle">근거 · 반대근거 · unknown · 전환조건</text>
+
+    <rect x="1050" y="975" width="350" height="72" rx="12" fill="#ffffff" stroke="#aeb9c6" stroke-width="1.5"/>
+    <text class="card-title" x="1225" y="1002" text-anchor="middle">Release · monitoring · outcome</text>
+    <text class="card-body" x="1225" y="1025" text-anchor="middle">gate/review · immutable snapshot · trigger</text>
+
+    <path class="edge" d="M 550 1011 L 621 1011"/>
+    <path class="edge" d="M 975 1011 L 1046 1011"/>
+  </g>
+
+  <g role="group" aria-label="이후 실제값 피드백">
+    <path class="feedback" d="M 1400 1011 L 1582 1011 L 1582 139 L 1104 139"/>
+    <text class="edge-label" x="1567" y="565" transform="rotate(-90 1567 565)">trigger 발생 · later actual → 새 evidence / version</text>
+  </g>
+
+  <g role="group" aria-label="범례">
+    <line x1="230" y1="1098" x2="280" y2="1098" stroke="#52647a" stroke-width="2" marker-end="url(#arrow)"/>
+    <text class="legend" x="290" y="1102">canonical data/output contract</text>
+    <line x1="535" y1="1098" x2="585" y2="1098" stroke="#52647a" stroke-width="2" stroke-dasharray="7 6" marker-end="url(#arrow)"/>
+    <text class="legend" x="595" y="1102">constraint / review contract</text>
+    <line x1="820" y1="1098" x2="870" y2="1098" stroke="#4775c5" stroke-width="2.2" stroke-dasharray="8 7" marker-end="url(#arrow-blue)"/>
+    <text class="legend" x="880" y="1102">monitoring / outcome feedback</text>
+    <text class="legend" x="1160" y="1102">snapshot = immutable version + content hash</text>
+  </g>
+</svg>

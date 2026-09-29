@@ -1,0 +1,18 @@
+{
+  "schema_version": 2,
+  "perspectives": [
+    "CORPORATE_VALUE",
+    "PERFORMANCE_MANAGEMENT",
+    "ISSUER_CAPACITY",
+    "INSTRUMENT_RECOVERY"
+  ],
+  "required_flags": [
+    "included_in_fcff",
+    "included_in_fcfe",
+    "included_in_cfads",
+    "included_in_debt_service",
+    "included_in_liquidity",
+    "included_in_sources_uses"
+  ]
+}
+

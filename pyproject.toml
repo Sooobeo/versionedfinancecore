@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "versioned-finance-core"
+version = "0.1.0"
+description = "Versioned public-data corporate finance decision system"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Proprietary - license not yet selected" }
+authors = [{ name = "Project owner" }]
+dependencies = []
+
+[project.optional-dependencies]
+analytics = [
+  "duckdb>=1.0",
+  "pyarrow>=15",
+  "PyYAML>=6",
+]
+dev = [
+  "pytest>=8",
+  "ruff>=0.6",
+]
+
+[project.scripts]
+vfc = "versioned_finance_core.cli:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+

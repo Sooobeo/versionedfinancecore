@@ -1,0 +1,37 @@
+{
+  "schema_version": 2,
+  "case_gates": [
+    {
+      "gate_id": "PUBLIC_ACCESS_RIGHTS",
+      "status": "PASS",
+      "evidence": "01_evidence_core/source_ledger.csv; 01_evidence_core/investment_evidence.md"
+    },
+    {
+      "gate_id": "CUTOFF_VINTAGE",
+      "status": "PASS",
+      "evidence": "01_evidence_core/source_ledger.csv; filed and revised DART receipt times"
+    },
+    {
+      "gate_id": "DECISION_SCOPE",
+      "status": "WITHHELD",
+      "evidence": "Project-specific unspent capex and enforceable phasing rights unknown"
+    },
+    {
+      "gate_id": "FINANCIAL_DATA",
+      "status": "WITHHELD",
+      "evidence": "Parent cash identity passes; project-specific cash flow absent"
+    },
+    {
+      "gate_id": "DRIVER_OR_CONTRACT_EVIDENCE",
+      "status": "WITHHELD",
+      "evidence": "Payment schedule and option rights are not publicly evidenced"
+    }
+  ],
+  "module_states": {
+    "M1_PERFORMANCE": "WITHHELD",
+    "M1_VALUATION": "WITHHELD",
+    "M2_CAPITAL_ALLOCATION": "WITHHELD",
+    "M3_CREDIT_LIQUIDITY": "WITHHELD",
+    "O1_FINANCIAL_SERVICES": "NOT_APPLICABLE"
+  }
+}
