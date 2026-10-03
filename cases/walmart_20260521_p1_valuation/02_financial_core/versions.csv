@@ -1,0 +1,6 @@
+version_id,version_type,as_of_date,forecast_origin,publication_status,supersedes_version_id,information_cutoff,created_at,created_by,immutable,notes
+
+wmt_actual_fy25_10k_20250314,PUBLIC_ACTUAL,2025-01-31,,FILED,,2026-05-21T23:59:59-04:00,,Walmart Inc.; SEC EDGAR,true,Original SEC 10-K XBRL filing snapshot.
+wmt_actual_fy26_10k_20260313,PUBLIC_ACTUAL,2026-01-31,,FILED,,2026-05-21T23:59:59-04:00,,Walmart Inc.; SEC EDGAR,true,Original SEC 10-K XBRL filing snapshot.
+wmt_actual_fy27q1_8k_20260521,PUBLIC_ACTUAL,2026-04-30,,FILED,,2026-05-21T23:59:59-04:00,,Walmart Inc.; SEC EDGAR,true,Original SEC filing snapshot; as-of analysis cutoff does not imply filed at period end. EX-99.1 is furnished.
+wmt_conditional_analyst_base_20260521_v1,SCENARIO,2026-05-21,RETROSPECTIVE_CONSTRUCTION_2026-10-01,PRELIMINARY,,2026-05-21T23:59:59-04:00,,personal_analyst_simulation,true,Conditional FY27 remainder to FY31 reconstruction; scenario evidence and valuation release WITHHELD.

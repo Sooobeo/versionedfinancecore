@@ -1,0 +1,21 @@
+{
+  "schema_version": 2,
+  "program_id": "public_data_corporate_finance_system",
+  "case_id": "walmart_20260521_p1_valuation",
+  "release_id": null,
+  "status": "FEASIBILITY_ONLY",
+  "decision_question": "As of 2026-05-21, which publicly supportable operating cash flow and reinvestment paths could sustain a range of Walmart consolidated enterprise values, and which growth, margin, reinvestment or discount-rate conditions would change the conditional conclusion?",
+  "perspective_id": "CORPORATE_VALUE",
+  "as_of_date": "2026-05-21",
+  "analysis_cutoff": "2026-05-21T23:59:59-04:00",
+  "horizon_end": "2031-01-31",
+  "economic_scope_id": "walmart_consolidated_group",
+  "legal_entity_id": "walmart_inc_us_de",
+  "instrument_id": null,
+  "jurisdiction": "US",
+  "functional_currency": "USD",
+  "reporting_currency": "USD",
+  "active_modules": ["M1"],
+  "intended_use": "Personal research, learning and portfolio evidence; conditional P1 forecast and valuation arithmetic for review only",
+  "decision_authority": "PERSONAL_ANALYST_SIMULATION"
+}

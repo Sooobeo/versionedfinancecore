@@ -1,0 +1,18 @@
+{
+  "schema_version": 2,
+  "case_gates": [
+    { "gate_id": "PUBLIC_ACCESS_RIGHTS", "status": "PASS", "evidence": "01_evidence_core/source_ledger.csv; 01_evidence_core/evidence_pilot.md" },
+    { "gate_id": "CUTOFF_VINTAGE", "status": "PASS", "evidence": "01_evidence_core/source_ledger.csv; 02_financial_core/versions.csv" },
+    { "gate_id": "DECISION_SCOPE", "status": "PASS", "evidence": "00_charter/case.json; 00_charter/decision_object.md" },
+    { "gate_id": "FINANCIAL_DATA", "status": "WITHHELD", "evidence": "01_evidence_core/evidence_pilot.md; 02_financial_core/conditional_linked_forecast.json; 07_validation_governance/gate_results.csv" },
+    { "gate_id": "DRIVER_OR_CONTRACT_EVIDENCE", "status": "WITHHELD", "evidence": "02_financial_core/conditional_model_config.json; 01_evidence_core/assumption_evidence.csv; 03_m1_operating_forecast_valuation/conditional_valuation_screen.json" }
+  ],
+  "module_states": {
+    "M1_PERFORMANCE": "NOT_APPLICABLE",
+    "M1_VALUATION": "WITHHELD",
+    "M2_CAPITAL_ALLOCATION": "NOT_APPLICABLE",
+    "M3_CREDIT_LIQUIDITY": "NOT_APPLICABLE",
+    "O1_FINANCIAL_SERVICES": "NOT_APPLICABLE"
+  }
+}
+

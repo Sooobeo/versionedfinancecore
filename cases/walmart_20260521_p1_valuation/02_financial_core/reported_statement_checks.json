@@ -1,0 +1,633 @@
+{
+  "analysis_cutoff": "2026-05-21T23:59:59-04:00",
+  "annual_reported_trend_facts": [
+    {
+      "currency": "USD",
+      "metric_id": "net_sales_year",
+      "normalized_fact_id": "nf_e40f2ae4d7cd02c8cb7c5505f53cc4d9b70bf3b1b2eae39ff177e2b831537bfe",
+      "period_end": "2024-01-31",
+      "period_start": "2023-02-01",
+      "source_content_sha256": "07c72faa90cf8515eb1ff1ca264361ca8741c2663202d2f5a25ff9c694f4ef67",
+      "source_fact_id": "raw_wmt_fy26_10k_xbrl_20260313_ed1bbf929d543ebe",
+      "source_id": "wmt_fy26_10k_xbrl_20260313",
+      "unit": "USD",
+      "value": "642637000000",
+      "version_id": "wmt_actual_fy26_10k_20260313"
+    },
+    {
+      "currency": "USD",
+      "metric_id": "operating_income_year",
+      "normalized_fact_id": "nf_d2f1b2c4b9ec35d4b66d2968e5ee026b68f0cc68d3ee9425223e3f90972852fb",
+      "period_end": "2024-01-31",
+      "period_start": "2023-02-01",
+      "source_content_sha256": "07c72faa90cf8515eb1ff1ca264361ca8741c2663202d2f5a25ff9c694f4ef67",
+      "source_fact_id": "raw_wmt_fy26_10k_xbrl_20260313_b1026deb45d437d3",
+      "source_id": "wmt_fy26_10k_xbrl_20260313",
+      "unit": "USD",
+      "value": "27012000000",
+      "version_id": "wmt_actual_fy26_10k_20260313"
+    },
+    {
+      "currency": "USD",
+      "metric_id": "operating_cash_flow_year",
+      "normalized_fact_id": "nf_87a4d30875b274a84db95a94c230acd04109f1bbfee87c89dfa670f8791a17c9",
+      "period_end": "2024-01-31",
+      "period_start": "2023-02-01",
+      "source_content_sha256": "07c72faa90cf8515eb1ff1ca264361ca8741c2663202d2f5a25ff9c694f4ef67",
+      "source_fact_id": "raw_wmt_fy26_10k_xbrl_20260313_7a90a682ee7ef582",
+      "source_id": "wmt_fy26_10k_xbrl_20260313",
+      "unit": "USD",
+      "value": "35726000000",
+      "version_id": "wmt_actual_fy26_10k_20260313"
+    },
+    {
+      "currency": "USD",
+      "metric_id": "capital_expenditure_payments_year",
+      "normalized_fact_id": "nf_72753e08d13a1498ac06b6a57df5981fa0a1df739e47917efa4c2c076dea2d3c",
+      "period_end": "2024-01-31",
+      "period_start": "2023-02-01",
+      "source_content_sha256": "07c72faa90cf8515eb1ff1ca264361ca8741c2663202d2f5a25ff9c694f4ef67",
+      "source_fact_id": "raw_wmt_fy26_10k_xbrl_20260313_4da7028ea836e12b",
+      "source_id": "wmt_fy26_10k_xbrl_20260313",
+      "unit": "USD",
+      "value": "20606000000",
+      "version_id": "wmt_actual_fy26_10k_20260313"
+    },
+    {
+      "currency": "USD",
+      "metric_id": "net_sales_year",
+      "normalized_fact_id": "nf_24e2eed051b6961ee87bf5f91bb97fd934da9a07c77cf64289fa0ce169dc028d",
+      "period_end": "2025-01-31",
+      "period_start": "2024-02-01",
+      "source_content_sha256": "07c72faa90cf8515eb1ff1ca264361ca8741c2663202d2f5a25ff9c694f4ef67",
+      "source_fact_id": "raw_wmt_fy26_10k_xbrl_20260313_7acb95c530777f98",
+      "source_id": "wmt_fy26_10k_xbrl_20260313",
+      "unit": "USD",
+      "value": "674538000000",
+      "version_id": "wmt_actual_fy26_10k_20260313"
+    },
+    {
+      "currency": "USD",
+      "metric_id": "operating_income_year",
+      "normalized_fact_id": "nf_297631d6e296f8400dec163cbbfddde0097140acb43645ee454b19720801f208",
+      "period_end": "2025-01-31",
+      "period_start": "2024-02-01",
+      "source_content_sha256": "07c72faa90cf8515eb1ff1ca264361ca8741c2663202d2f5a25ff9c694f4ef67",
+      "source_fact_id": "raw_wmt_fy26_10k_xbrl_20260313_ce598c0b8e73d388",
+      "source_id": "wmt_fy26_10k_xbrl_20260313",
+      "unit": "USD",
+      "value": "29348000000",
+      "version_id": "wmt_actual_fy26_10k_20260313"
+    },
+    {
+      "currency": "USD",
+      "metric_id": "operating_cash_flow_year",
+      "normalized_fact_id": "nf_201edbda74c497d9b42889558fb94296ff0afe65c37714334ac7b199c276b9f5",
+      "period_end": "2025-01-31",
+      "period_start": "2024-02-01",
+      "source_content_sha256": "07c72faa90cf8515eb1ff1ca264361ca8741c2663202d2f5a25ff9c694f4ef67",
+      "source_fact_id": "raw_wmt_fy26_10k_xbrl_20260313_7f1418e241fecedf",
+      "source_id": "wmt_fy26_10k_xbrl_20260313",
+      "unit": "USD",
+      "value": "36443000000",
+      "version_id": "wmt_actual_fy26_10k_20260313"
+    },
+    {
+      "currency": "USD",
+      "metric_id": "capital_expenditure_payments_year",
+      "normalized_fact_id": "nf_57e108e013fa93edafeeb1dc24a396f953e4846f8c46d33ee9f8bfb8287bb4cc",
+      "period_end": "2025-01-31",
+      "period_start": "2024-02-01",
+      "source_content_sha256": "07c72faa90cf8515eb1ff1ca264361ca8741c2663202d2f5a25ff9c694f4ef67",
+      "source_fact_id": "raw_wmt_fy26_10k_xbrl_20260313_caa03fe5c816fd9f",
+      "source_id": "wmt_fy26_10k_xbrl_20260313",
+      "unit": "USD",
+      "value": "23783000000",
+      "version_id": "wmt_actual_fy26_10k_20260313"
+    },
+    {
+      "currency": "USD",
+      "metric_id": "net_sales_year",
+      "normalized_fact_id": "nf_193aa31cfbfb416ef16542578702062c23ce2069a215128f674a33c607a17d8a",
+      "period_end": "2026-01-31",
+      "period_start": "2025-02-01",
+      "source_content_sha256": "07c72faa90cf8515eb1ff1ca264361ca8741c2663202d2f5a25ff9c694f4ef67",
+      "source_fact_id": "raw_wmt_fy26_10k_xbrl_20260313_b01ac1ae5a1d2ddd",
+      "source_id": "wmt_fy26_10k_xbrl_20260313",
+      "unit": "USD",
+      "value": "706413000000",
+      "version_id": "wmt_actual_fy26_10k_20260313"
+    },
+    {
+      "currency": "USD",
+      "metric_id": "operating_income_year",
+      "normalized_fact_id": "nf_6fa23c9816b7634b4ac623119b7aa4c7d4027f0dca7e5eb8fa6d8a0b31321a8c",
+      "period_end": "2026-01-31",
+      "period_start": "2025-02-01",
+      "source_content_sha256": "07c72faa90cf8515eb1ff1ca264361ca8741c2663202d2f5a25ff9c694f4ef67",
+      "source_fact_id": "raw_wmt_fy26_10k_xbrl_20260313_3bfce768cf490713",
+      "source_id": "wmt_fy26_10k_xbrl_20260313",
+      "unit": "USD",
+      "value": "29825000000",
+      "version_id": "wmt_actual_fy26_10k_20260313"
+    },
+    {
+      "currency": "USD",
+      "metric_id": "operating_cash_flow_year",
+      "normalized_fact_id": "nf_d7e9e51b8354a840bebc8f7ef2d5fa2610d5ca50072ed6c2a87e8c0c03924237",
+      "period_end": "2026-01-31",
+      "period_start": "2025-02-01",
+      "source_content_sha256": "07c72faa90cf8515eb1ff1ca264361ca8741c2663202d2f5a25ff9c694f4ef67",
+      "source_fact_id": "raw_wmt_fy26_10k_xbrl_20260313_fb50df92cb89ae55",
+      "source_id": "wmt_fy26_10k_xbrl_20260313",
+      "unit": "USD",
+      "value": "41565000000",
+      "version_id": "wmt_actual_fy26_10k_20260313"
+    },
+    {
+      "currency": "USD",
+      "metric_id": "capital_expenditure_payments_year",
+      "normalized_fact_id": "nf_44120c6e633012f89baf7c2316b12b87258ddaf49d0a8227c262ed1f0217b44c",
+      "period_end": "2026-01-31",
+      "period_start": "2025-02-01",
+      "source_content_sha256": "07c72faa90cf8515eb1ff1ca264361ca8741c2663202d2f5a25ff9c694f4ef67",
+      "source_fact_id": "raw_wmt_fy26_10k_xbrl_20260313_b4b6189076e4608a",
+      "source_id": "wmt_fy26_10k_xbrl_20260313",
+      "unit": "USD",
+      "value": "26642000000",
+      "version_id": "wmt_actual_fy26_10k_20260313"
+    }
+  ],
+  "annual_reported_trend_missing": [],
+  "case_id": "walmart_20260521_p1_valuation",
+  "check_count": 11,
+  "checks": [
+    {
+      "accounting_scope": "CONSOLIDATED",
+      "calculated_amount": "252399000000",
+      "case_id": "walmart_20260521_p1_valuation",
+      "currency": "USD",
+      "economic_legal_scope_bridge_id": "wmt_fy25_10k_xbrl_20250314_consolidated_bridge",
+      "economic_scope_id": "walmart_consolidated_group",
+      "identity_kind": "BALANCE_SHEET",
+      "instrument_id": null,
+      "knowledge_state": "KNOWN",
+      "legal_entity_id": "walmart_inc_us_de",
+      "normalized_fact_ids": [
+        "nf_93953ad11bbfdf9f0e2964fd7f00857159f65490a8253cd033833c739f056d4f",
+        "nf_3ebff784b976bbaf8173837207d2f383915eb617ae95532ca4419d51a36b6c7d"
+      ],
+      "output_id": "stmt_3361df08b288cf5e44dfb95d35132ead5bc571e3589ebad1a032f1fcf35f6ee7",
+      "period_end": "2024-01-31",
+      "period_start": "2024-01-31",
+      "period_type": "INSTANT",
+      "reconciled": true,
+      "reported_amount": "252399000000",
+      "residual": "0",
+      "segment_id": null,
+      "source_content_sha256": [
+        "5fcf3e216138d1e38cd8365f789f7f76a083295f5424fa0b4e1794c43f2a40ff",
+        "5fcf3e216138d1e38cd8365f789f7f76a083295f5424fa0b4e1794c43f2a40ff"
+      ],
+      "source_fact_ids": [
+        "raw_wmt_fy25_10k_xbrl_20250314_5619efdc7027d3c4",
+        "raw_wmt_fy25_10k_xbrl_20250314_f6eb5d829c6f7cbb"
+      ],
+      "source_ids": [
+        "wmt_fy25_10k_xbrl_20250314",
+        "wmt_fy25_10k_xbrl_20250314"
+      ],
+      "unit": "USD",
+      "version_id": "wmt_actual_fy25_10k_20250314"
+    },
+    {
+      "accounting_scope": "CONSOLIDATED",
+      "calculated_amount": "27012000000",
+      "case_id": "walmart_20260521_p1_valuation",
+      "currency": "USD",
+      "economic_legal_scope_bridge_id": "wmt_fy26_10k_xbrl_20260313_consolidated_bridge",
+      "economic_scope_id": "walmart_consolidated_group",
+      "identity_kind": "OPERATING_INCOME",
+      "instrument_id": null,
+      "knowledge_state": "KNOWN",
+      "legal_entity_id": "walmart_inc_us_de",
+      "normalized_fact_ids": [
+        "nf_7405371c1f25639cfc7fb1ad822d08c190ff939eab9a17a220ba388c312dc09c",
+        "nf_bf1dd2bd4d9bbde106db1a3c98f053e38e7ebcaaaff16735f6d54f06d9c45713",
+        "nf_81587174108519ae7064e7a098ae10db3ba86e5246c1aabf506c9c4f9af8cfb9",
+        "nf_d2f1b2c4b9ec35d4b66d2968e5ee026b68f0cc68d3ee9425223e3f90972852fb"
+      ],
+      "output_id": "stmt_3f9b2bc5ec6980a237f2d398bcd5530af343187a898de3cafe014bf814d0ed1e",
+      "period_end": "2024-01-31",
+      "period_start": "2023-02-01",
+      "period_type": "YEAR",
+      "reconciled": true,
+      "reported_amount": "27012000000",
+      "residual": "0",
+      "segment_id": null,
+      "source_content_sha256": [
+        "07c72faa90cf8515eb1ff1ca264361ca8741c2663202d2f5a25ff9c694f4ef67",
+        "07c72faa90cf8515eb1ff1ca264361ca8741c2663202d2f5a25ff9c694f4ef67",
+        "07c72faa90cf8515eb1ff1ca264361ca8741c2663202d2f5a25ff9c694f4ef67",
+        "07c72faa90cf8515eb1ff1ca264361ca8741c2663202d2f5a25ff9c694f4ef67"
+      ],
+      "source_fact_ids": [
+        "raw_wmt_fy26_10k_xbrl_20260313_34f06775da751e03",
+        "raw_wmt_fy26_10k_xbrl_20260313_6065a1de41606ae6",
+        "raw_wmt_fy26_10k_xbrl_20260313_bd80fa0115f389de",
+        "raw_wmt_fy26_10k_xbrl_20260313_b1026deb45d437d3"
+      ],
+      "source_ids": [
+        "wmt_fy26_10k_xbrl_20260313",
+        "wmt_fy26_10k_xbrl_20260313",
+        "wmt_fy26_10k_xbrl_20260313",
+        "wmt_fy26_10k_xbrl_20260313"
+      ],
+      "unit": "USD",
+      "version_id": "wmt_actual_fy26_10k_20260313"
+    },
+    {
+      "accounting_scope": "CONSOLIDATED",
+      "calculated_amount": "29348000000",
+      "case_id": "walmart_20260521_p1_valuation",
+      "currency": "USD",
+      "economic_legal_scope_bridge_id": "wmt_fy26_10k_xbrl_20260313_consolidated_bridge",
+      "economic_scope_id": "walmart_consolidated_group",
+      "identity_kind": "OPERATING_INCOME",
+      "instrument_id": null,
+      "knowledge_state": "KNOWN",
+      "legal_entity_id": "walmart_inc_us_de",
+      "normalized_fact_ids": [
+        "nf_1a0e6cf5b011161106167054f50e5b700767b9282489f06657713a5937ae8bc0",
+        "nf_1b4d181a5cbdae47ea4192e5fc0246482cb36687ce20d9c25f041499c7e46e0c",
+        "nf_c00e0cd23f1b2ee72cbde6d3e671f813f4d1e020d9255da6d6e3f10bc243b019",
+        "nf_297631d6e296f8400dec163cbbfddde0097140acb43645ee454b19720801f208"
+      ],
+      "output_id": "stmt_ec0d6090b469b37ec46025726d82f0c057e96f6ebe992b503a6a8f1c9757d3a1",
+      "period_end": "2025-01-31",
+      "period_start": "2024-02-01",
+      "period_type": "YEAR",
+      "reconciled": true,
+      "reported_amount": "29348000000",
+      "residual": "0",
+      "segment_id": null,
+      "source_content_sha256": [
+        "07c72faa90cf8515eb1ff1ca264361ca8741c2663202d2f5a25ff9c694f4ef67",
+        "07c72faa90cf8515eb1ff1ca264361ca8741c2663202d2f5a25ff9c694f4ef67",
+        "07c72faa90cf8515eb1ff1ca264361ca8741c2663202d2f5a25ff9c694f4ef67",
+        "07c72faa90cf8515eb1ff1ca264361ca8741c2663202d2f5a25ff9c694f4ef67"
+      ],
+      "source_fact_ids": [
+        "raw_wmt_fy26_10k_xbrl_20260313_11a664f913fa172a",
+        "raw_wmt_fy26_10k_xbrl_20260313_22bb8b768197d19f",
+        "raw_wmt_fy26_10k_xbrl_20260313_fc08dea74112e60e",
+        "raw_wmt_fy26_10k_xbrl_20260313_ce598c0b8e73d388"
+      ],
+      "source_ids": [
+        "wmt_fy26_10k_xbrl_20260313",
+        "wmt_fy26_10k_xbrl_20260313",
+        "wmt_fy26_10k_xbrl_20260313",
+        "wmt_fy26_10k_xbrl_20260313"
+      ],
+      "unit": "USD",
+      "version_id": "wmt_actual_fy26_10k_20260313"
+    },
+    {
+      "accounting_scope": "CONSOLIDATED",
+      "calculated_amount": "260823000000",
+      "case_id": "walmart_20260521_p1_valuation",
+      "currency": "USD",
+      "economic_legal_scope_bridge_id": "wmt_fy26_10k_xbrl_20260313_consolidated_bridge",
+      "economic_scope_id": "walmart_consolidated_group",
+      "identity_kind": "BALANCE_SHEET",
+      "instrument_id": null,
+      "knowledge_state": "KNOWN",
+      "legal_entity_id": "walmart_inc_us_de",
+      "normalized_fact_ids": [
+        "nf_18703bedbd5a62dc8eea9722f231b5d8ccdc46942c4a8d47e23a669feb1e97cd",
+        "nf_e18c8ba591026fe224f7324cba3808b314f87636fb1dc52bc859d789c414e3fc"
+      ],
+      "output_id": "stmt_a2c09d6220ff59315937b06df7dd312d32b49fe7f4ec1de2a6eaf8f8a4c1c066",
+      "period_end": "2025-01-31",
+      "period_start": "2025-01-31",
+      "period_type": "INSTANT",
+      "reconciled": true,
+      "reported_amount": "260823000000",
+      "residual": "0",
+      "segment_id": null,
+      "source_content_sha256": [
+        "07c72faa90cf8515eb1ff1ca264361ca8741c2663202d2f5a25ff9c694f4ef67",
+        "07c72faa90cf8515eb1ff1ca264361ca8741c2663202d2f5a25ff9c694f4ef67"
+      ],
+      "source_fact_ids": [
+        "raw_wmt_fy26_10k_xbrl_20260313_e9243ed800a6688a",
+        "raw_wmt_fy26_10k_xbrl_20260313_e974deecfb850a65"
+      ],
+      "source_ids": [
+        "wmt_fy26_10k_xbrl_20260313",
+        "wmt_fy26_10k_xbrl_20260313"
+      ],
+      "unit": "USD",
+      "version_id": "wmt_actual_fy26_10k_20260313"
+    },
+    {
+      "accounting_scope": "CONSOLIDATED",
+      "calculated_amount": "29825000000",
+      "case_id": "walmart_20260521_p1_valuation",
+      "currency": "USD",
+      "economic_legal_scope_bridge_id": "wmt_fy26_10k_xbrl_20260313_consolidated_bridge",
+      "economic_scope_id": "walmart_consolidated_group",
+      "identity_kind": "OPERATING_INCOME",
+      "instrument_id": null,
+      "knowledge_state": "KNOWN",
+      "legal_entity_id": "walmart_inc_us_de",
+      "normalized_fact_ids": [
+        "nf_fce56c473de1a879417327ea45b75787d9f4a0fea5fde90ca684b8cfb772c3e4",
+        "nf_943514624da8bf6cc540b61edf66f39ad3bd33f15fa43c066cb76cbc9f3afa41",
+        "nf_78677816f0a0b36c3b613d62bc1398bd6920beffe187ff5f845725583ec3d7fa",
+        "nf_6fa23c9816b7634b4ac623119b7aa4c7d4027f0dca7e5eb8fa6d8a0b31321a8c"
+      ],
+      "output_id": "stmt_feccd43a1b576bdbf52d6d6a17f27143efb869c2bcc320548f61fe676000946a",
+      "period_end": "2026-01-31",
+      "period_start": "2025-02-01",
+      "period_type": "YEAR",
+      "reconciled": true,
+      "reported_amount": "29825000000",
+      "residual": "0",
+      "segment_id": null,
+      "source_content_sha256": [
+        "07c72faa90cf8515eb1ff1ca264361ca8741c2663202d2f5a25ff9c694f4ef67",
+        "07c72faa90cf8515eb1ff1ca264361ca8741c2663202d2f5a25ff9c694f4ef67",
+        "07c72faa90cf8515eb1ff1ca264361ca8741c2663202d2f5a25ff9c694f4ef67",
+        "07c72faa90cf8515eb1ff1ca264361ca8741c2663202d2f5a25ff9c694f4ef67"
+      ],
+      "source_fact_ids": [
+        "raw_wmt_fy26_10k_xbrl_20260313_3e0c94340aee82d2",
+        "raw_wmt_fy26_10k_xbrl_20260313_9712420ad5848300",
+        "raw_wmt_fy26_10k_xbrl_20260313_1b8a4a47a1d5eff1",
+        "raw_wmt_fy26_10k_xbrl_20260313_3bfce768cf490713"
+      ],
+      "source_ids": [
+        "wmt_fy26_10k_xbrl_20260313",
+        "wmt_fy26_10k_xbrl_20260313",
+        "wmt_fy26_10k_xbrl_20260313",
+        "wmt_fy26_10k_xbrl_20260313"
+      ],
+      "unit": "USD",
+      "version_id": "wmt_actual_fy26_10k_20260313"
+    },
+    {
+      "accounting_scope": "CONSOLIDATED",
+      "calculated_amount": "284668000000",
+      "case_id": "walmart_20260521_p1_valuation",
+      "currency": "USD",
+      "economic_legal_scope_bridge_id": "wmt_fy26_10k_xbrl_20260313_consolidated_bridge",
+      "economic_scope_id": "walmart_consolidated_group",
+      "identity_kind": "BALANCE_SHEET",
+      "instrument_id": null,
+      "knowledge_state": "KNOWN",
+      "legal_entity_id": "walmart_inc_us_de",
+      "normalized_fact_ids": [
+        "nf_563c40480f3818ecd78dca402d9f5c148e1587f86aec0b4e413fc6ef9d205046",
+        "nf_e55c5298d69a8fefe1db681438afa2eded31a5c32bfb8da342670ec514420012"
+      ],
+      "output_id": "stmt_ac95cb1f49042d33744d9c76804669978f6db9449aa1cb99696267383de30758",
+      "period_end": "2026-01-31",
+      "period_start": "2026-01-31",
+      "period_type": "INSTANT",
+      "reconciled": true,
+      "reported_amount": "284668000000",
+      "residual": "0",
+      "segment_id": null,
+      "source_content_sha256": [
+        "07c72faa90cf8515eb1ff1ca264361ca8741c2663202d2f5a25ff9c694f4ef67",
+        "07c72faa90cf8515eb1ff1ca264361ca8741c2663202d2f5a25ff9c694f4ef67"
+      ],
+      "source_fact_ids": [
+        "raw_wmt_fy26_10k_xbrl_20260313_a82b78d68e2ac1c7",
+        "raw_wmt_fy26_10k_xbrl_20260313_f0fc3b61ef722f3c"
+      ],
+      "source_ids": [
+        "wmt_fy26_10k_xbrl_20260313",
+        "wmt_fy26_10k_xbrl_20260313"
+      ],
+      "unit": "USD",
+      "version_id": "wmt_actual_fy26_10k_20260313"
+    },
+    {
+      "accounting_scope": "CONSOLIDATED",
+      "calculated_amount": "7135000000",
+      "case_id": "walmart_20260521_p1_valuation",
+      "currency": "USD",
+      "economic_legal_scope_bridge_id": "wmt_fy27q1_8k_ex991_20260521_consolidated_bridge",
+      "economic_scope_id": "walmart_consolidated_group",
+      "identity_kind": "OPERATING_INCOME",
+      "instrument_id": null,
+      "knowledge_state": "KNOWN",
+      "legal_entity_id": "walmart_inc_us_de",
+      "normalized_fact_ids": [
+        "nf_213380dc564b7ee6df3066938d85a819156d74d94d31e60d74ee06ef5337e766",
+        "nf_8c125a3fdf615d604c12e86de092954743a1b9aa0675d78ca23c434e436f71b6",
+        "nf_f917d49ce3d641a2a486c117f31640d5591a1b7df285294ae3fc3efeaa180e7f",
+        "nf_9fc8126e07e5fa29ea7525283361620d5ac37b8c5a1ca153d1a0a1050ee862cf"
+      ],
+      "output_id": "stmt_9f4606ecf39ac345c169d6aa673df42fa8d4dcc6b70c28d92ccc7f895e6f9c40",
+      "period_end": "2025-04-30",
+      "period_start": "2025-02-01",
+      "period_type": "QUARTER",
+      "reconciled": true,
+      "reported_amount": "7135000000",
+      "residual": "0",
+      "segment_id": null,
+      "source_content_sha256": [
+        "0107dd5fe2d6677d96f95b409c9a59d420da337eba515e4204fc34ea0e66b93d",
+        "0107dd5fe2d6677d96f95b409c9a59d420da337eba515e4204fc34ea0e66b93d",
+        "0107dd5fe2d6677d96f95b409c9a59d420da337eba515e4204fc34ea0e66b93d",
+        "0107dd5fe2d6677d96f95b409c9a59d420da337eba515e4204fc34ea0e66b93d"
+      ],
+      "source_fact_ids": [
+        "raw_wmt_fy27q1_8k_ex991_20260521_5cb198c49bc72462",
+        "raw_wmt_fy27q1_8k_ex991_20260521_4b031ffdb0c917d9",
+        "raw_wmt_fy27q1_8k_ex991_20260521_c31bbdaae857598b",
+        "raw_wmt_fy27q1_8k_ex991_20260521_d422098aec9229b6"
+      ],
+      "source_ids": [
+        "wmt_fy27q1_8k_ex991_20260521",
+        "wmt_fy27q1_8k_ex991_20260521",
+        "wmt_fy27q1_8k_ex991_20260521",
+        "wmt_fy27q1_8k_ex991_20260521"
+      ],
+      "unit": "USD",
+      "version_id": "wmt_actual_fy27q1_8k_20260521"
+    },
+    {
+      "accounting_scope": "CONSOLIDATED",
+      "calculated_amount": "262372000000",
+      "case_id": "walmart_20260521_p1_valuation",
+      "currency": "USD",
+      "economic_legal_scope_bridge_id": "wmt_fy27q1_8k_ex991_20260521_consolidated_bridge",
+      "economic_scope_id": "walmart_consolidated_group",
+      "identity_kind": "BALANCE_SHEET",
+      "instrument_id": null,
+      "knowledge_state": "KNOWN",
+      "legal_entity_id": "walmart_inc_us_de",
+      "normalized_fact_ids": [
+        "nf_3449b08fef7e4da1fafb07d027685528e3a3109e4185d11d8d21f98639739216",
+        "nf_c4394a3c258bdbe11d2b4b8d32a349ddd74149b40e8e372b22b1b8ead6520d81"
+      ],
+      "output_id": "stmt_de8d75d83deddd172dc129557d31eb8420f4f83241475a4e1a810d9323307b3f",
+      "period_end": "2025-04-30",
+      "period_start": "2025-04-30",
+      "period_type": "INSTANT",
+      "reconciled": true,
+      "reported_amount": "262372000000",
+      "residual": "0",
+      "segment_id": null,
+      "source_content_sha256": [
+        "0107dd5fe2d6677d96f95b409c9a59d420da337eba515e4204fc34ea0e66b93d",
+        "0107dd5fe2d6677d96f95b409c9a59d420da337eba515e4204fc34ea0e66b93d"
+      ],
+      "source_fact_ids": [
+        "raw_wmt_fy27q1_8k_ex991_20260521_c3b271d13065b6b7",
+        "raw_wmt_fy27q1_8k_ex991_20260521_f9155a158ab5a8ef"
+      ],
+      "source_ids": [
+        "wmt_fy27q1_8k_ex991_20260521",
+        "wmt_fy27q1_8k_ex991_20260521"
+      ],
+      "unit": "USD",
+      "version_id": "wmt_actual_fy27q1_8k_20260521"
+    },
+    {
+      "accounting_scope": "CONSOLIDATED",
+      "calculated_amount": "284668000000",
+      "case_id": "walmart_20260521_p1_valuation",
+      "currency": "USD",
+      "economic_legal_scope_bridge_id": "wmt_fy27q1_8k_ex991_20260521_consolidated_bridge",
+      "economic_scope_id": "walmart_consolidated_group",
+      "identity_kind": "BALANCE_SHEET",
+      "instrument_id": null,
+      "knowledge_state": "KNOWN",
+      "legal_entity_id": "walmart_inc_us_de",
+      "normalized_fact_ids": [
+        "nf_7e900908264e0612ad98ca17be92f8e452a0621f692ad05479287e6b860c059c",
+        "nf_8b44dd8b6b5c0b2ef15f7705be0edaa0669679f60cd668111a19451e8967ae48"
+      ],
+      "output_id": "stmt_0a7a6d53cc6eeceb485273ebe4062c03869309af75d93fd39aad3fe899c5241c",
+      "period_end": "2026-01-31",
+      "period_start": "2026-01-31",
+      "period_type": "INSTANT",
+      "reconciled": true,
+      "reported_amount": "284668000000",
+      "residual": "0",
+      "segment_id": null,
+      "source_content_sha256": [
+        "0107dd5fe2d6677d96f95b409c9a59d420da337eba515e4204fc34ea0e66b93d",
+        "0107dd5fe2d6677d96f95b409c9a59d420da337eba515e4204fc34ea0e66b93d"
+      ],
+      "source_fact_ids": [
+        "raw_wmt_fy27q1_8k_ex991_20260521_068889c4cd8b1830",
+        "raw_wmt_fy27q1_8k_ex991_20260521_0906020c835c9f4b"
+      ],
+      "source_ids": [
+        "wmt_fy27q1_8k_ex991_20260521",
+        "wmt_fy27q1_8k_ex991_20260521"
+      ],
+      "unit": "USD",
+      "version_id": "wmt_actual_fy27q1_8k_20260521"
+    },
+    {
+      "accounting_scope": "CONSOLIDATED",
+      "calculated_amount": "7493000000",
+      "case_id": "walmart_20260521_p1_valuation",
+      "currency": "USD",
+      "economic_legal_scope_bridge_id": "wmt_fy27q1_8k_ex991_20260521_consolidated_bridge",
+      "economic_scope_id": "walmart_consolidated_group",
+      "identity_kind": "OPERATING_INCOME",
+      "instrument_id": null,
+      "knowledge_state": "KNOWN",
+      "legal_entity_id": "walmart_inc_us_de",
+      "normalized_fact_ids": [
+        "nf_92e26cee9c117ef12a586f17e3fc50eed17dfeca0e761e74912c205230f2c60f",
+        "nf_2417fc8d444b1230d49d2e2f993a11159e8d3a73dbf20c9fe6f322db267b0df4",
+        "nf_6ee157bdbb86963bbe596aeae6411d00bfe26256820766b5c80a2f55e45509c5",
+        "nf_8b72f94929dc48344db95e888976ab8458acbe6dd3a6f1a240bdb8dea0931c63"
+      ],
+      "output_id": "stmt_46309817b8db49c862dccccc2e5b87fd82527b439b2c64b9f0a6de629ade0fff",
+      "period_end": "2026-04-30",
+      "period_start": "2026-02-01",
+      "period_type": "QUARTER",
+      "reconciled": true,
+      "reported_amount": "7493000000",
+      "residual": "0",
+      "segment_id": null,
+      "source_content_sha256": [
+        "0107dd5fe2d6677d96f95b409c9a59d420da337eba515e4204fc34ea0e66b93d",
+        "0107dd5fe2d6677d96f95b409c9a59d420da337eba515e4204fc34ea0e66b93d",
+        "0107dd5fe2d6677d96f95b409c9a59d420da337eba515e4204fc34ea0e66b93d",
+        "0107dd5fe2d6677d96f95b409c9a59d420da337eba515e4204fc34ea0e66b93d"
+      ],
+      "source_fact_ids": [
+        "raw_wmt_fy27q1_8k_ex991_20260521_865db68876d50fc1",
+        "raw_wmt_fy27q1_8k_ex991_20260521_f3e776fae08ed94a",
+        "raw_wmt_fy27q1_8k_ex991_20260521_eb8cbdda70eb8a88",
+        "raw_wmt_fy27q1_8k_ex991_20260521_393771220ca3d9a1"
+      ],
+      "source_ids": [
+        "wmt_fy27q1_8k_ex991_20260521",
+        "wmt_fy27q1_8k_ex991_20260521",
+        "wmt_fy27q1_8k_ex991_20260521",
+        "wmt_fy27q1_8k_ex991_20260521"
+      ],
+      "unit": "USD",
+      "version_id": "wmt_actual_fy27q1_8k_20260521"
+    },
+    {
+      "accounting_scope": "CONSOLIDATED",
+      "calculated_amount": "289607000000",
+      "case_id": "walmart_20260521_p1_valuation",
+      "currency": "USD",
+      "economic_legal_scope_bridge_id": "wmt_fy27q1_8k_ex991_20260521_consolidated_bridge",
+      "economic_scope_id": "walmart_consolidated_group",
+      "identity_kind": "BALANCE_SHEET",
+      "instrument_id": null,
+      "knowledge_state": "KNOWN",
+      "legal_entity_id": "walmart_inc_us_de",
+      "normalized_fact_ids": [
+        "nf_4febdb73525f2a0e037eb37493f7ac53a30c0fbfc50ce05ee1af4d0bf8768dfd",
+        "nf_b065223a0d8b7c5e0da5d19210198acab4071c06568d41815dfe4cba598925c7"
+      ],
+      "output_id": "stmt_f6edd018f524b2f1ff177c67f033f59ba842cb07522a82fc1b67178946df249c",
+      "period_end": "2026-04-30",
+      "period_start": "2026-04-30",
+      "period_type": "INSTANT",
+      "reconciled": true,
+      "reported_amount": "289607000000",
+      "residual": "0",
+      "segment_id": null,
+      "source_content_sha256": [
+        "0107dd5fe2d6677d96f95b409c9a59d420da337eba515e4204fc34ea0e66b93d",
+        "0107dd5fe2d6677d96f95b409c9a59d420da337eba515e4204fc34ea0e66b93d"
+      ],
+      "source_fact_ids": [
+        "raw_wmt_fy27q1_8k_ex991_20260521_905144fc034af113",
+        "raw_wmt_fy27q1_8k_ex991_20260521_655246b4174987fa"
+      ],
+      "source_ids": [
+        "wmt_fy27q1_8k_ex991_20260521",
+        "wmt_fy27q1_8k_ex991_20260521"
+      ],
+      "unit": "USD",
+      "version_id": "wmt_actual_fy27q1_8k_20260521"
+    }
+  ],
+  "incomplete_checks": [],
+  "limitations": [
+    "Balance-sheet check compares reported assets with reported liabilities-and-equity total; it does not derive a standalone liabilities total.",
+    "P&L check covers reported revenue, cost of sales, operating SG&A, and operating income only; it is not a linked forecast or valuation model.",
+    "Reported source identity checks do not constitute independent evidence review or release approval."
+  ],
+  "normalized_actuals_sha256": "ede45aa3d70f86c4ef9be58beeca2a4210da341328fcd1ecaaca72fce5cb80bd",
+  "normalized_fact_count": 205,
+  "reconciled_count": 11
+}

@@ -1,0 +1,4 @@
+change_id,changed_at,object_type,object_id,old_version_id,new_version_id,reason,decision_impact,changed_by,reviewed_by
+P1_CH01,2026-09-29T12:25:02+00:00,EVIDENCE_PILOT,walmart_20260521_p1_valuation,source_locator_only,sec_20260521_facts_v1,Ingest three cutoff-eligible SEC receipts and normalize 161 reported financial facts,Historical checks available but valuation remains WITHHELD,codex_self_review,
+P1_CH02,2026-09-29T12:25:02+00:00,MODEL_CONTRACT,core_fcff_fcfe_v1,not_implemented,core_free_cash_flow_v1,Make Core own FCF claims and pin M1 DCF inputs to Core output IDs,No Walmart numeric FCF forecast or valuation eligibility,codex_self_review,
+

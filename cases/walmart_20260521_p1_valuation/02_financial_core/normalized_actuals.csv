@@ -1,0 +1,1 @@
+fact_id,source_fact_id,case_id,economic_scope_id,legal_entity_id,segment_id,metric_id,period_start,period_end,period_type,currency,unit,value,version_id,publication_status,normalization_rule,mapping_version,claim_tag,review_status,source_id,snapshot_id,content_sha256,first_public_at,retrieved_at,accounting_scope,instrument_id,economic_legal_scope_bridge_id

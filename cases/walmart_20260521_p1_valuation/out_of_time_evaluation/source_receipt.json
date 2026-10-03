@@ -1,0 +1,18 @@
+{
+  "source_id": "wmt_fy27q2_8k_ex991_20260820_outcome_only",
+  "authority": "Walmart Inc.; U.S. SEC EDGAR",
+  "title": "FY27 Q2 Form 8-K Exhibit 99.1 earnings release",
+  "url": "https://www.sec.gov/Archives/edgar/data/104169/000010416926000145/earningsreleasefy27q2.htm",
+  "document_id": "0000104169-26-000145;EX-99.1",
+  "first_public_at": "2026-08-20T11:00:00Z",
+  "first_public_basis": "Conservative 07:00 EDT bound after SEC 06:59:01 EDT acceptance",
+  "retrieved_at": "2026-09-29T12:22:08.168632Z",
+  "content_sha256": "a235789b73bd7d496d511639d72d76ec1424fd13b4567c3f59516c60c171e2c9",
+  "hash_basis": "Raw HTTP response bytes received at retrieved_at; later SEC transport responses may differ",
+  "access_class": "PUBLIC_REGULATORY",
+  "retention_right": false,
+  "transformation_right": true,
+  "redistribution_right": false,
+  "main_case_cutoff_eligible": false,
+  "use": "Out-of-time public-guidance outcome context only; excluded from the 2026-05-21 Core actuals, assumptions, forecast, and valuation"
+}

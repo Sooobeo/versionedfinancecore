@@ -1,0 +1,25 @@
+# Walmart P1 corporate value memo: WITHHELD
+
+**Information cutoff:** May 21, 2026 at 23:59:59 EDT. **Scope:** Walmart Inc. consolidated group and nominal USD enterprise value. **Use:** personal research, study, and portfolio work; no investment, lending, or company authorization claim. The user stated that earlier material was reviewed. A named, dated independent challenge and response for this new conditional model has not been recorded.
+
+## Decision
+
+`[R]` **No enterprise value range, equity value, price target, or buy/sell opinion is released.** The [conditional Core path](../02_financial_core/conditional_linked_forecast.json) and [M1 valuation screen](conditional_valuation_screen.json) make a linked remaining-FY27-through-FY31 three-statement forecast, FCFF/FCFE, WACC, terminal, DCF arithmetic, and a partial claim bridge reviewable. This is a single analyst scenario constructed on October 1, 2026 using a May 21 information cutoff. Market availability and rights, lease and D&A classification, the first-period cash-flow stub, terminal sustainability, complete claims, and independent review have not passed their gates. The release state remains `WITHHELD`.
+
+## Source facts and conditional assumptions
+
+`[F]` The [FY26 10-K](https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/wmt-20260131.htm) and [FY27 Q1 8-K exhibit](https://www.sec.gov/Archives/edgar/data/104169/000010416926000095/earningsreleasefy27q1.htm) support 205 normalized consolidated facts. Forty-four additional comparative balance-sheet facts were appended under a separate retrieval receipt without replacing the original 161. April 30 asset, current-liability, and liability-plus-equity subtotals reconcile to the reported totals. The FY26 cash and restricted-cash identity and the reported income and balance-sheet checks have zero residual. The company's historical CFO less capex is not FCFF or FCFE.
+
+`[A]` The Core path uses explicit sales, margin, D&A, working capital, capex, tax, debt, and dividend assumptions in the [conditional config](../02_financial_core/conditional_model_config.json). Some FY27 company guidance is in constant currency or adjusted operating-income terms; the reported-USD GAAP path is a separate analyst choice. Cash, debt, tax, PPE, dividend, and balance-sheet identities link. Holding leases, goodwill, other liabilities, and some noncash movements static is an assumption, not evidence that their future changes are zero. Applying total historical D&A to PPE and equating cash tax with the income-tax provision require further review.
+
+`[I]` M1 pairs Core FCFF output IDs with a nominal WACC and calculates a dated DCF. Its WACC uses retrospectively retrieved May 21 price and Treasury observations, sector beta and ERP estimates, a March share count, April carrying debt, and an April issue spread. The [assumption evidence](../01_evidence_core/assumption_evidence.csv) separates observation dates from publication times. Some first-public times and rights are unverified, and sector beta is not Walmart-specific. Terminal next-year NOPAT and `g/ROIC` reinvestment are a declared scenario, not proof of Walmart's long-run returns. The terminal artifact records a roughly 1.77 times jump from final Core FCFF to next-year terminal FCFF; no operating or reinvestment evidence supports that transition.
+
+`[I]` The first cash-flow period begins 20 days before the valuation date. The screen discounts that full period from May 21 without a separate May 1-20 realized-flow reconciliation. The partial bridge includes known April debt, finance leases, and noncontrolling interests. It keeps excess cash, nonoperating assets, and other senior claims unknown rather than assigning favorable zero values. The known subtotal is not equity value; `equity_value=None`. A consistent operating- and finance-lease policy across FCFF, WACC, and the claim bridge is still needed.
+
+## Switching conditions and monitoring
+
+`[JUDG]` The [method screen](method_screen.md) records FCFF-WACC arithmetic only. An eligible FCFE DCF, peer valuation, and dividend model have not been established. A joint growth, margin, reinvestment, terminal, and WACC sensitivity with a price-based thesis break requires an aligned market enterprise value, complete claims, and a defensible downside path. The investment switching value is currently `NOT_TESTABLE_FROM_PUBLIC_DATA`.
+
+`[M]` New filings, guidance, shares, leases, and cash restrictions belong to new source vintages and are not retroactive May 21 inputs. [Later Q2 results](../out_of_time_evaluation/README.md) give limited context for guidance published in May. This retrospectively built analyst DCF was not frozen in May, so those results are not its predictive backtest.
+
+The [gates](../07_validation_governance/gate_results.csv), [findings](../07_validation_governance/review_findings.csv), and [handover](../07_validation_governance/handover.md) record the remaining work. The user's earlier review is acknowledged, while the `REVIEW` gate remains `WITHHELD` until an independent reviewer records a challenge, response, and retest for these artifacts.

@@ -1,0 +1,258 @@
+{
+  "assumption_available_at_semantics": "Hypothetical May 21 scenario effective time; retrospective market locator first-public availability is not established and cannot pass release review.",
+  "case_id": "walmart_20260521_p1_valuation",
+  "cash_flow_path_output_id": "core_free_cash_flow_path_2f6e8373ae89465c833f0b19e1e30a9507a229615fb1ac2389e56181e6a89135",
+  "config_sha256": "a451e64df44fe478bb5ec31ecef00ffaeb1e0e855347f6c420b73130b2425fd7",
+  "dcf_screen": {
+    "conditional_enterprise_value_usd": "317520053339.15808000593226932067512553462038125070",
+    "discount_timing": "ACT_365_FIXED",
+    "eligibility_status": "WITHHELD",
+    "explicit_period_value_usd": "56305925884.347761921503598772635003906900941910935",
+    "first_forecast_period_start": "2026-05-01",
+    "output_id": "m1_dcf_0070f93fb63db59566669233062bcfddc798819e398d545744988dca1ee36d23",
+    "period_year_fractions": [
+      "0.69863013698630136986301369863013698630136986301370",
+      "1.6986301369863013698630136986301369863013698630137",
+      "2.7013698630136986301369863013698630136986301369863",
+      "3.7013698630136986301369863013698630136986301369863",
+      "4.7013698630136986301369863013698630136986301369863"
+    ],
+    "present_terminal_value_usd": "261214127454.81031808442867054804012162771943933977",
+    "terminal_value_at_horizon_usd": "377151392042.99330984350907265115739138487954874978",
+    "valuation_date": "2026-05-21",
+    "value_claim": "ENTERPRISE_VALUE"
+  },
+  "forecast_version_id": "wmt_conditional_analyst_base_20260521_v1",
+  "information_cutoff": "2026-05-21T23:59:59-04:00",
+  "limitations": [
+    "Built retrospectively on 2026-10-01; no May 21 frozen analyst forecast existed, so it is not an out-of-time backtest.",
+    "Some market locator observations have no verified first_public_at or rights; WACC is an illustrative screening assumption.",
+    "Reported USD GAAP net sales scenario is not a conversion of constant-currency or adjusted company guidance.",
+    "FY27 remaining sales growth of 3.05% on the FY26 comparable nine months gives approximately 4% full-year reported USD growth after the already-reported Q1; it is an analyst choice, not company guidance.",
+    "Future lease, FX, goodwill, restricted cash, deferred tax and share buyback changes are intentionally held static in this scenario without evidence they would be zero.",
+    "Historical total depreciation and amortization is used as modeled PPE depreciation; amortization of lease or other assets is not separately identified, so asset economics are incomplete.",
+    "FY27 year-end working-capital ratios applied to the seasonal April opening balances create a cash release; an observed FY27 year-end working-capital path is unavailable.",
+    "Interest driver uses net P&L interest as a proxy while the cash schedule treats it as paid; the difference from cash interest and finance lease classification is unresolved.",
+    "FCFF unlevered cash tax is an EBIT times 24% proxy, not jurisdictional cash tax evidence.",
+    "Current-date excess cash, nonoperating asset and other senior claim amounts are unknown; April 30 debt and NCI amounts are book balances and date-stale at the May 21 valuation date.",
+    "The terminal g/ROIC policy implies a material upward FCFF step from the final explicit year; its reinvestment transition is not evidenced.",
+    "The first forecast spans May 1-January 31, while dated DCF discounts its entire flow from May 21; unobserved May 1-20 cash realization is not separated."
+  ],
+  "market_input_review": {
+    "us_implied_erp_20260501": {
+      "event_at": "2026-05-01",
+      "first_public_at": null,
+      "observed_value": "4.24",
+      "rights_state": "RESEARCH_RIGHTS_UNVERIFIED_LOCATOR_ONLY",
+      "source_id": "nyu_erp_may26",
+      "temporal_state": "AUTHOR_VINTAGE_PUBLICATION_UNVERIFIED"
+    },
+    "us_retail_general_beta_202601": {
+      "event_at": null,
+      "first_public_at": null,
+      "observed_value": "0.81",
+      "rights_state": "RESEARCH_RIGHTS_UNVERIFIED_LOCATOR_ONLY",
+      "source_id": "nyu_sector_betas_jan26",
+      "temporal_state": "AUTHOR_VINTAGE_PUBLICATION_UNVERIFIED"
+    },
+    "us_retail_grocery_beta_202601": {
+      "event_at": null,
+      "first_public_at": null,
+      "observed_value": "1.12",
+      "rights_state": "RESEARCH_RIGHTS_UNVERIFIED_LOCATOR_ONLY",
+      "source_id": "nyu_sector_betas_jan26",
+      "temporal_state": "AUTHOR_VINTAGE_PUBLICATION_UNVERIFIED"
+    },
+    "usd_ust10y_20260521": {
+      "event_at": "2026-05-21T15:30:00-04:00",
+      "first_public_at": null,
+      "observed_value": "4.57",
+      "rights_state": "GOVERNMENT_LOCATOR_ONLY",
+      "source_id": "ust_daily_par_202605",
+      "temporal_state": "PUBLICATION_TIME_UNVERIFIED"
+    },
+    "wmt_2036_bond_spread_20260427": {
+      "event_at": "2026-04-27",
+      "first_public_at": "2026-04-28T06:07:00-04:00",
+      "observed_value": "43",
+      "rights_state": "PUBLIC_REGULATORY_LOCATOR_ONLY",
+      "source_id": "wmt_20260428_fwp_2036",
+      "temporal_state": "PUBLIC_BEFORE_CUTOFF"
+    },
+    "wmt_close_20260521": {
+      "event_at": "2026-05-21T16:00:00-04:00",
+      "first_public_at": null,
+      "observed_value": "121.34",
+      "rights_state": "RIGHTS_UNVERIFIED_LOCATOR_ONLY",
+      "source_id": "nasdaq_wmt_historical_20260521",
+      "temporal_state": "RETROSPECTIVE_OBSERVATION"
+    },
+    "wmt_fy27_etr_guidance_20260521": {
+      "event_at": "2026-05-21",
+      "first_public_at": "2026-05-21T07:00:00-04:00",
+      "observed_value": "23.5-24.5",
+      "rights_state": "PUBLIC_REGULATORY_LOCATOR_ONLY",
+      "source_id": "wmt_fy27q1_8k_ex991_20260521",
+      "temporal_state": "PUBLIC_BEFORE_CUTOFF"
+    },
+    "wmt_shares_20260311": {
+      "event_at": "2026-03-11",
+      "first_public_at": "2026-03-13T16:06:24-04:00",
+      "observed_value": "7972402501",
+      "rights_state": "PUBLIC_REGULATORY_LOCATOR_ONLY",
+      "source_id": "wmt_fy26_10k_html_20260313",
+      "temporal_state": "PUBLIC_BEFORE_CUTOFF"
+    }
+  },
+  "model_origin": "RETROSPECTIVE_CONSTRUCTION_2026-10-01",
+  "normalized_actuals_sha256": "ede45aa3d70f86c4ef9be58beeca2a4210da341328fcd1ecaaca72fce5cb80bd",
+  "partial_equity_bridge": {
+    "eligibility_status": "WITHHELD",
+    "equity_value": null,
+    "failed_structural_checks": [
+      "debt_like_claims_as_of_date",
+      "minority_interest_as_of_date",
+      "lease_valuation_treatment"
+    ],
+    "known_claims": {
+      "debt_and_finance_leases_usd": "58129000000",
+      "debt_claim_source_id": "m1_claim_aggregate_9998e960437d4022e0cebfc0ad8c06ddd2491b70da64d4ac6fdbf2bf96bce5c9",
+      "debt_component_source_ids": [
+        "nf_39e282f8f6d0e6c60bbf65e18ef9a9e968c6cc0cd79bbf0aef9ac7cc4c31088c",
+        "nf_4a1252e76c78ec47140645e3d46da76d481d6f82525f1fcf36e40f554dca006b",
+        "nf_7343c692c06b8bcd995ab830615ec911fa3e3942a7dc06b386921fcd17df0866",
+        "nf_8abba62158140636e77b349e278aa0844b04b7740a401985cd80267fbaf1dc3d",
+        "nf_d49acf85e57f858d15fb7531ac8fa11449c490e10b1de225eedcfc560fb21740"
+      ],
+      "minority_claim_source_id": "m1_claim_aggregate_93eab618bbb5506f40b10a20b8e62936fc041796c52996725886b77c61f67924",
+      "minority_component_source_ids": [
+        "nf_63af239438c65a5be87d0c83a661a08a39ede3885f7490faad820ad95197ccdd",
+        "nf_a307240bc969ace1e56bc2f0518083589a0a9a5afc609f65eb15d44c1fdfd5f9"
+      ],
+      "redeemable_and_nonredeemable_nci_usd": "6645000000"
+    },
+    "known_subtotal_usd": "252746053339.15808000593226932067512553462038125070",
+    "output_id": "m1_partial_equity_bridge_003eaef57a8b5d3d7a166825255e9cc6bf6f28d91e7aa320ac2e921365bfce6c",
+    "unknown_components": [
+      "excess_cash",
+      "nonoperating_assets",
+      "other_senior_claims"
+    ]
+  },
+  "release_status": "WITHHELD",
+  "scenario_id": "wmt_conditional_base_v1",
+  "schema_version": 1,
+  "source_availability_review": "WITHHELD",
+  "source_ids": [
+    "wmt_fy27q1_8k_ex991_20260521",
+    "wmt_fy26_10k_xbrl_20260313"
+  ],
+  "terminal": {
+    "assumption_id": "A_TERMINAL_OPERATING_ECONOMICS_V1",
+    "final_core_fcff": "13034427803.29307512440000000000000",
+    "final_core_fcff_output_id": "core_fcff_ae34016f1b0296328fa6e9de4fd5c4ccd864f804e2420579804e4e3f28364734",
+    "growth_rate": "0.02",
+    "next_year_ebit": "36480757834.30234436280000000000000",
+    "next_year_fcff": "23104479961.724818096440000000000000000000000000000",
+    "next_year_unlevered_nopat": "27725375954.0697817157280000000000000",
+    "rationale": "Analyst long-run screen only. Macro 2% Fed SEP is context, not Walmart firm-specific support; ROIC is unvalidated.",
+    "reinvestment_rate": "0.16666666666666666666666666666666666666666666666667",
+    "sustainable_roic": "0.12",
+    "transition_difference": "10070052158.431742972040000000000000000000000000000",
+    "transition_ratio": "1.7725733964238614861561749432029448443516484453764"
+  },
+  "wacc": {
+    "after_tax_cost_of_debt": "0.038000",
+    "conditional_rate": "0.081260492335902678487997263627830592378058859081179",
+    "cost_of_equity": "0.083860",
+    "debt_book_proxy_usd": "58129000000",
+    "debt_weight": "0.05668355133225733781078797148210657701572483468863",
+    "eligibility_status": "WITHHELD",
+    "equity_weight": "0.94331644866774266218921202851789342298427516531137",
+    "failed_structural_checks": [
+      "beta_company_fit",
+      "market_debt_value_basis",
+      "shares_outstanding_as_of_date",
+      "debt_value_as_of_date",
+      "lease_valuation_treatment"
+    ],
+    "input_lineage": [
+      [
+        "risk_free_rate_assumption",
+        "A_UST10Y_PAR_YIELD_PROXY"
+      ],
+      [
+        "levered_beta_assumption",
+        "A_SECTOR_BETA_0_90"
+      ],
+      [
+        "equity_risk_premium_assumption",
+        "A_NYU_ERP_SUSTAINABLE_4_24"
+      ],
+      [
+        "marginal_tax_rate_assumption",
+        "A_MARGINAL_TAX_RATE_24_PROXY"
+      ],
+      [
+        "share_price_assumption",
+        "A_NASDAQ_CLOSE_SCREEN"
+      ],
+      [
+        "shares_outstanding_assumption",
+        "A_MARCH_SHARE_COUNT_PROXY"
+      ],
+      [
+        "debt_value_assumption",
+        "A_APRIL_BOOK_DEBT_PROXY"
+      ],
+      [
+        "marginal_debt_spread_assumption",
+        "A_APRIL_2036_SPREAD_PROXY"
+      ],
+      [
+        "risk_free_rate_source_1",
+        "usd_ust10y_20260521"
+      ],
+      [
+        "levered_beta_source_1",
+        "us_retail_general_beta_202601"
+      ],
+      [
+        "levered_beta_source_2",
+        "us_retail_grocery_beta_202601"
+      ],
+      [
+        "equity_risk_premium_source_1",
+        "us_implied_erp_20260501"
+      ],
+      [
+        "marginal_tax_rate_source_1",
+        "wmt_fy27_etr_guidance_20260521"
+      ],
+      [
+        "share_price_source_1",
+        "wmt_close_20260521"
+      ],
+      [
+        "shares_outstanding_source_1",
+        "wmt_shares_20260311"
+      ],
+      [
+        "debt_value_source_1",
+        "m1_claim_aggregate_9998e960437d4022e0cebfc0ad8c06ddd2491b70da64d4ac6fdbf2bf96bce5c9"
+      ],
+      [
+        "marginal_debt_spread_source_1",
+        "wmt_2036_bond_spread_20260427"
+      ],
+      [
+        "lease_policy",
+        "A_LEASE_CLAIM_POLICY_UNRESOLVED"
+      ]
+    ],
+    "market_equity_proxy_usd": "967371319471.34",
+    "output_id": "m1_wacc_846cc5b59c58bf31a5e1638d3ae5857e0c60433dc0d2d4f48d1713113086131f",
+    "pre_tax_cost_of_debt": "0.0500",
+    "risk_free_rate": "0.0457"
+  }
+}

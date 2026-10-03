@@ -1,0 +1,21 @@
+{
+  "case_id": "walmart_20260521_p1_valuation",
+  "fields": [
+    {
+      "name": "conditional_forecast_review_status",
+      "output_id": "operating_baseline_b110aed0f1952c8b60651333a4fd1d43722aacc8d038d8f5a4b306c299a5d9d3",
+      "value": "WITHHELD"
+    },
+    {
+      "name": "conditional_dcf_release_status",
+      "output_id": "m1_dcf_0070f93fb63db59566669233062bcfddc798819e398d545744988dca1ee36d23",
+      "value": "WITHHELD"
+    },
+    {
+      "name": "common_equity_value_state",
+      "output_id": "m1_partial_equity_bridge_003eaef57a8b5d3d7a166825255e9cc6bf6f28d91e7aa320ac2e921365bfce6c",
+      "value": "UNKNOWN"
+    }
+  ],
+  "schema_version": 1
+}
