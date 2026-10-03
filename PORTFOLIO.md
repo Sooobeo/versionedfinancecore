@@ -10,7 +10,7 @@
 |---|---|---|
 | [오리온 진천센터 R0](cases/orion_jincheon_2026h1/executive_summary.md) | 2026-08-18 23:59:59 KST. 원공시·정정공시, 연결·별도 현금흐름의 24개 사실을 보존했다. 모회사 **별도** 현금 대사 잔차는 0원이다. | 2026-06-30 장부상 현금은 진천센터에 자유롭게 쓸 수 있는 잔여 재원이 아니다. 프로젝트 지출·이연 판단 `WITHHELD`. |
 | [Walmart M1](cases/walmart_fy27q1_guidance_outcome/README.md) | 2026-05-21 23:59:59 EDT. 분기 **중** 2월 19일 공개 가이던스 대비 같은 정의의 실제치: 고정환율 순매출 성장률은 상단보다 +1.2%p, 비조정 고정환율 영업이익 성장률은 하단보다 −1.5%p, 조정 EPS는 상단보다 USD 0.01 높다. | 차이의 원인 귀속, 연결 3표·재전망 검증이 없다. M1 전체 release `WITHHELD`, Valuation 비활성. |
-| [Walmart P1 가치평가 pilot](cases/walmart_20260521_p1_valuation/README.md) | 2026-05-21 23:59:59 EDT. SEC 문서 3건의 출처·문서 해시로 161개 연결 재무 fact를 정규화했다. FY26 현금 및 reported 손익·재무상태 11개 항등식의 잔차는 0이다. | 실제 연결 operating forecast·FCFF·WACC·terminal·EV→equity bridge와 독립 검토가 없다. 기업가치·투자의견·release `WITHHELD`. |
+| [Walmart P1 가치평가 pilot](cases/walmart_20260521_p1_valuation/README.md) | 2026-05-21 23:59:59 EDT. 기존 SEC 문서 3건·receipt 4개의 205개 연결 재무 fact와 공시 산술을 검증했다. 후속 리스·현금세금 진단용 HTML receipt는 별도로 보존했다. 조건부 연결 3표·FCFF/FCFE·WACC·DCF·부분 claim bridge를 재현한다. | 사후 작성 시나리오이며 입력 적격성·미래 리스·세금·terminal·평가일 현금과 claim·독립 검토가 미해결이다. 기업가치·투자의견·release `WITHHELD`. |
 | [South West Arkansas M2](cases/standard_lithium_swa_2025dfs/04_m2_capital_allocation/decision_memo.md) | 2025-10-15 23:59:59 EDT. DFS의 프로젝트 **100%** 기준 세후 비차입 현금흐름 중 숫자가 있는 23개 연차를 대조해 표시 합계 USD 4,701.5 million을 재현했다. | 보고서의 NPV는 전체 건설 경로의 저자 전망이다. 보유·미개발 대안, 잔여 투자와 자금 귀속이 없어 증분 NPV·최종투자결정 `WITHHELD`. |
 | [Ford Credit M3](cases/ford_credit_2025ye_m3/executive_summary.md) | 2026-02-11 23:59:59 EST 공개정보로 2025-12-31 연결 현금 대사 잔차 0 USD million을 재현했다. 공시 순유동성 USD 24.6 billion과 2026년 채무 만기 USD 51,806 million의 범위를 분리했다. | 순유동성은 조건부 시설을 포함한 회사 정의이고 만기는 연간·복수 법인 합계다. 두 수치의 차이는 현금 부족액이 아니다. 채무자별 지급능력 `WITHHELD`. |
 
@@ -50,8 +50,12 @@ Walmart 실적 대조 표준출력을 [고정 결과 JSON](cases/walmart_fy27q1_
 
 ## 현재 완료 기준
 
-- 공통 계산·계약·release 통제와 위 공개자료의 제한된 재현 경로를 테스트했다. 2026-09-29 최종 `python -m pytest`는 **235개 통과**, 컴파일과 Ruff 검사도 통과했다. 상세 결과는 [P1 실행 상태](docs/p1_execution_status.md)에 기록한다.
+- 공통 계산·계약·release 통제와 위 공개자료의 제한된 재현 경로를 테스트한다. 2026-10-03에는 다섯 사례의 공통 `build-case`·`verify-build`, 검토 보고서 gate, atomic staging과 오프라인 CI를 추가했다. 실행 명령과 범위는 [case build 안내](docs/case_build.md)에 기록한다. 이전 235개라는 테스트 수는 2026-09-29 시점의 기록이며 현재 전체 테스트 수가 아니다.
 - 다섯 사례는 모두 `FEASIBILITY_ONLY`이며 의사결정 release는 `WITHHELD`다. `build/`의 staging은 검토용이고 `releases/`에 발행된 실제 사례 release는 없다.
 - 실제 의사결정 release에는 대안별 증분 현금흐름, 법인·계약상 가용 자금과 지급일별 채무 경로, 독립적인 사람의 challenge·response가 추가로 필요하다. 해당 근거가 없으면 gate를 통과 처리하지 않는다.
+
+검토용 산출물은 `python -m versioned_finance_core build-case cases/<case_id> --build-root <fresh-root>`로 새로 계산한다. 출력 경로의 `outputs/review_memo.md`에서 완료된 계산과 남은 gate·finding을 확인한다. 같은 입력을 별도 root에서 재실행해 output hash를 비교할 수 있고 `verify-build`로 무결성을 검사할 수 있다. 이 검토 bundle은 실제 회사의 의사결정 release와 구분한다.
+
+후속 `reproduce-case cases/<case_id> --output-dir <new-directory>`는 두 번의 fresh build와 hash 비교를 자동으로 묶고 `verify-reproduction <directory>`로 검증한다. [2026-10-03 후속 기록](docs/nonhuman_followup_20261003.md)에 M1 리스·세금·평가일 통제, M2 공개근거 충족 검사, M3 공시 부채·만기·조건 대사와 남은 자료·구현 한계를 구분했다. 자동 재현은 독립 사람 검토가 아니다.
 
 [설계 원본](outline/P0_통합_기업재무_의사결정_시스템_마스터_설계서.md) · [구현 경계](docs/architecture.md) · [상세 실행 상태](docs/p0_execution_status.md) · [사례 목록](cases/README.md)

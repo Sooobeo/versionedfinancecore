@@ -44,3 +44,95 @@
 
 CSV 파일의 첫 행은 최소 계약이다. 실제 case에서 필드를 추가할 수 있지만 의미가 같은 필드를 새 이름으로 복제하지 않는다.
 
+## Offline case build 계약
+
+기존 재무·증거 schema v2와 별도로 선택적 `00_charter/build_recipe.json`은 adapter 실행 계약 v1을 사용한다. 필드는 `schema_version=1`, 순서 있는 `steps`, 중복 없는 문자열 목록 `scope_limitations`다. 템플릿의 `steps=[]`는 미설정 상태로, `validate-case`는 허용하지만 `build-case`는 계산 없이 완료로 처리하지 않는다. 기존 recipe 없는 case는 이전 명령과 호환되며 새 `build-case` 사용 전 recipe를 추가해야 한다.
+
+허용 step은 `core_cash`, `conditional_valuation`, `guidance_comparison`, `dfs_reproduction`, `capital_evidence`, `credit_evidence`다. 중복·미등록 step과 임의 script/command 필드는 거부한다. 조건부 가치평가와 credit evidence는 먼저 같은 case의 `core_cash`를 실행해야 한다. 모듈 adapter는 차터의 활성 모듈과 일치해야 한다. `capital_evidence`는 M2 공개근거의 충족·부분·누락 상태를 재현하며 cash/NPV를 생성하지 않는다. 숫자 가정은 기존 case config/assumption register에 두며 recipe에 계산식을 넣지 않는다.
+
+`outputs/review_report.json`은 [release 절차](release_process.md)의 검토 보고서 v1을 따른다. `executed_steps`의 `REPRODUCED`는 실행 성공을 의미하며 모듈 release 적격성을 의미하지 않는다. `artifact_hashes`는 이번 실행에서 생성한 계산물 전체를 가리킨다. 보고서의 `output_id`는 생성시각을 제외한 내용의 hash로 계산하고 검토 memo가 이를 참조한다.
+
+`credit_evidence`는 같은 Core의 closing cash fact ID, 범위·기준일·단위를 보존해 그룹 현금 참고값으로 표시한다. 법인별 현금과 접근제약이 없으면 `UNKNOWN`, 정의가 불완전한 covenant는 M3 함수를 통해 `NOT_TESTABLE_FROM_PUBLIC_DATA`로 남긴다. 연간 만기를 날짜별 지급 경로로 변환하거나 공개 기준액 문자열을 임의 숫자로 해석하지 않는다. 수치 covenant 재계산에는 별도 계약별 component adapter가 필요하다.
+
+## Conditional consolidated-model adapter metadata (v2)
+
+`conditional_model_config.json` is an optional, case-local adapter contract for a
+review-only M1 conditional forecast. It is not a generic financial-assumption
+template and the case template deliberately does not ship one. A new case may
+opt in only after it supplies its own pinned fact selectors, source versions,
+and reviewed assumptions; copying Walmart's numerical assumptions would not
+create support for another company.
+
+The supported `adapter_metadata` shape (`metadata_required`) has
+`schema_version=2`, `review_status=WITHHELD`, `assumption_evidence_path`,
+`source_ledger_path`, `version_type`, `scenario_purpose`, `fact_contract`,
+`source_versions`, `opening_balance`, `historical_fact_selectors`,
+`claim_aggregates`, `lease_policy`, `wacc`, `terminal`,
+`unlevered_cash_tax`, `dcf`, `artifacts`, `review_csv`, and `valuation_controls`. Its paths are
+relative to the case root; all company/date/source choices therefore remain in
+the case config rather than in orchestration code.
+
+The adapter accepts only a full Core `normalized_actuals.csv` contract. Before
+using a fact it validates the CSV shape plus every row's case ID, economic and
+legal scope, accounting scope, currency/unit, timezone-bearing public and
+retrieval times, and cutoff. Each configured source version must also be in the
+case source ledger, have the configured economic scope, be cutoff eligible, and
+have been public by the case cutoff. It builds review artifacts only; it does
+not fetch data, overwrite raw facts, calculate a release decision, or promote a
+withheld screen.
+
+The current adapter requires an exact integer metadata version 2. The preserved
+v1 config is a provenance snapshot, not a runnable current-engine config; it is
+rejected early rather than silently given new controls. The top-level config
+schema remains version 1, separate from this adapter-metadata version.
+
+The October 3 metadata v2 adds `valuation_controls` with
+`historical_lease_cash_tax` and `dated_stub`. Historical controls declare their
+period and unit, an `evidence_by_field` mapping for each numeric observation,
+a `source_receipt` object (`source_id`, `locator_entity_scope`, `snapshot_id`,
+`content_sha256`, `first_public_at`, `retrieved_at`) and explicit model-policy
+booleans. Values, units, period and source identity
+must agree with the referenced assumption-evidence rows and their eligible
+receipts. These observations are diagnostic inputs, not replacement Core
+forecast facts. The diagnostic preserves `historical_evidence_state=KNOWN`
+separately from `forward_application_state=UNKNOWN`; neither the residual D&A
+nor a historical cash-tax ratio silently becomes a forecast assumption.
+
+The dated-stub control consumes the Core period dates, dated DCF output ID and
+dated evidence for the last disclosed period. An unavailable realized cash
+flow before the valuation date keeps the boundary `WITHHELD` and
+`release_consumable_enterprise_value=null`. It does not allocate cash pro rata
+or infer missing cash from annual guidance. Both controls have independent
+output IDs nested in the valuation artifact, while the old conditional
+arithmetic remains identifiable as a diagnostic screen.
+
+Config revisions carry `revision_id`, `revises_version_id`,
+`prior_config_sha256` and a reason. The Walmart v2 scenario preserves its exact
+v1 config separately; existing numerical v1 artifacts are not rewritten. A
+declared `MIXED_OPERATING_AND_FINANCE` lease policy describes the conditional
+model's choices, not verified lease-treatment eligibility. A stale bond issue
+yield is labeled as such and cannot become an as-of marginal borrowing rate
+merely by changing its name.
+
+## Automated reproduction handover (v1)
+
+`contracts/reproduction.py`는 두 번의 fresh build가 비교해야 하는 manifest 필드를 고정한다. `reproduce-case`는 새 출력 폴더의 `first/<case_id>/<stage_id>`와 `second/<case_id>/<stage_id>`에 독립적으로 계산하고, 생성시각을 제외한 source/input/config/code/output/memo/content identity, 파일 목록·hash, gate 및 limitation을 대조한다.
+
+생성 전용 `reproduction_report.json`의 `schema_version=1`, `kind=AUTOMATED_REPRODUCTION_HANDOVER`다. `case_id`, `analysis_cutoff`, 두 상대 stage 경로, `compared_fields`, `verified_identity`, 원 검토 보고서의 `review_output_id`, 미해결 `remaining_release_blockers`, limitation과 내용 기반 `output_id`를 보존한다. 템플릿 case에 사전 작성할 입력이 아니며 모든 값은 실제 두 build 검증에서 생성한다. 자동재현 `PASS`와 `human_review_state=NOT_PERFORMED`, `publication_state=WITHHELD`, `release_ready=false`는 서로 다른 축이다.
+
+`verify-reproduction`은 현재 code/config로 양쪽 stage, 보고서 재계산, memo 일치와 전체 파일 inventory를 다시 확인한다. 경로 탈출·symlink·중복 JSON key·비유한 수치를 허용하지 않는다. 이 artifact는 사람 검토나 underlying source/model 적격성 gate를 대체하거나 변경하지 않는다.
+
+## M2 public evidence coverage (v1)
+
+선택적 `04_m2_capital_allocation/public_m2_evidence.csv`와 case template의 같은 헤더는 `evidence_id`, `criterion`, `coverage`, `source_id`, `snapshot_id`, `first_public_at`, `claim_tag`, `disclosed_value`, `unit`, `currency`, `economic_scope_id`, `timing_basis`, `statement`, `limitation`을 보존한다. criterion은 status quo/option 현금 경로, 공통 기준시점, 세후 기준, 법적·경제적 범위, 자금 접근성, 실행권리의 일곱 종류다.
+
+완전·부분 근거는 적격 source receipt를 참조해야 하고 output에 receipt의 hash와 수집시각까지 포함한다. 값이 있으면 단위·범위·시점 근거가 필요하다. 출처 없는 MISSING은 조사 범위의 누락에 대한 추론으로만 기록하며 실제 사실·숫자로 취급하지 않는다. 한 criterion의 PARTIAL/MISSING은 별도 supersession 없이 COMPLETE 한 행으로 상쇄할 수 없다. 이 계약은 cash component나 실제 option value의 입력 계약이 아니므로 충족 상태만으로 NPV·funding 합계를 만들지 않는다.
+
+## M3 public credit terms (v1)
+
+선택적 `05_m3_credit_liquidity_claims/public_terms.csv`는 template과 같은 필드로 공시된 조건을 기록한다. `term_id`, `instrument_id`, `legal_entity_id`, `term_type`, `value`, `currency`, `unit`, `as_of_date`, `source_id`, `snapshot_id`, `content_sha256`, `first_public_at`, `retrieved_at`, `verified_at`, `source_location`, `claim_tag`, `limitation`이 필수다.
+
+지원 유형은 `CAPACITY_EXPIRY_WITHIN_TWELVE_MONTHS`, `CAPACITY_EXCEEDS_ELIGIBLE_RECEIVABLES`, `ISSUER_REPORTED_AVAILABLE`, `FACILITY_MATURITY_YEAR`, `DRAW_CONDITION`, `SUPPORT_AGREEMENT`, `GUARANTEE`, `RECOURSE`다. 금액은 유한한 비음수 Decimal이며 통화·단위를 명시한다. 연도는 `YEAR` bucket일 뿐 지급일로 바꾸지 않는다. 서술형은 `TEXT`/`NOT_APPLICABLE`, 직접 공시 조건의 태그는 `F`다. instrument/entity 관계, **참조한 exact receipt**의 hash·권리·cutoff와 시각을 검증한다. 같은 source ID의 다른 적격 receipt로 늦거나 부적격인 snapshot을 대신 승인하지 않는다.
+
+`debt_facilities.csv`에 `unit` 열을 추가했다. 기존 header-only case는 호환되지만 금액행에는 통화와 일치하는 단위가 필요하다. 공시 nominal commitment−drawn 대사와 실제 drawable cash는 다른 상태다. M3의 공시 산술 점검은 Core normalized fact ID를 참조하는 독립 검산이며 새 baseline이나 가용자금 계산을 소유하지 않는다.
+

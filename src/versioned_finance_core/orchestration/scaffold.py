@@ -7,6 +7,8 @@ import shutil
 from datetime import datetime
 from pathlib import Path
 
+from versioned_finance_core.contracts.build_recipe import BuildRecipe
+from versioned_finance_core.contracts.json_io import strict_json_loads
 from versioned_finance_core.contracts.models import CaseContract
 from versioned_finance_core.evidence import load_provenanced_facts, load_source_ledger
 
@@ -103,12 +105,12 @@ def initialize_case(case_id: str, cases_dir: Path, template_dir: Path) -> Path:
     cases_dir.mkdir(parents=True, exist_ok=True)
     shutil.copytree(template_dir, destination)
     case_path = destination / "00_charter" / "case.json"
-    data = json.loads(case_path.read_text(encoding="utf-8"))
+    data = strict_json_loads(case_path.read_text(encoding="utf-8"))
     data["case_id"] = case_id
     data["status"] = "DRAFT"
     case_path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     manifest_path = destination / "release" / "release_manifest.json"
-    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    manifest = strict_json_loads(manifest_path.read_text(encoding="utf-8"))
     manifest["case_id"] = case_id
     manifest_path.write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
@@ -158,7 +160,7 @@ def validate_case(case_dir: Path, release_ready: bool = False) -> tuple[list[str
     contract: CaseContract | None = None
     if case_path.is_file():
         try:
-            data = json.loads(case_path.read_text(encoding="utf-8"))
+            data = strict_json_loads(case_path.read_text(encoding="utf-8"))
             contract = CaseContract.from_mapping(data)
             if case_dir.name != "_template" and contract.case_id != case_dir.name:
                 errors.append("case.json case_id does not match the case directory")
@@ -173,7 +175,7 @@ def validate_case(case_dir: Path, release_ready: bool = False) -> tuple[list[str
     manifest_path = case_dir / "release" / "release_manifest.json"
     if case_dir.name != "_template" and manifest_path.is_file():
         try:
-            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            manifest = strict_json_loads(manifest_path.read_text(encoding="utf-8"))
             if not isinstance(manifest, dict):
                 raise TypeError("manifest must be a JSON object")
             if manifest.get("case_id") != case_dir.name:
@@ -190,6 +192,17 @@ def validate_case(case_dir: Path, release_ready: bool = False) -> tuple[list[str
                         errors.append("release_manifest.json cutoff differs from case.json")
         except (ValueError, TypeError, json.JSONDecodeError) as exc:
             errors.append(f"Invalid release_manifest.json: {exc}")
+
+    recipe_path = case_dir / "00_charter" / "build_recipe.json"
+    if recipe_path.exists():
+        try:
+            if recipe_path.is_symlink():
+                raise ValueError("build recipe cannot be a symlink")
+            recipe = BuildRecipe.from_mapping(strict_json_loads(recipe_path.read_text(encoding="utf-8")))
+            if contract:
+                recipe.validate_modules(tuple(data["active_modules"]))
+        except (ValueError, TypeError, KeyError, json.JSONDecodeError) as exc:
+            errors.append(f"Invalid build_recipe.json: {exc}")
 
     return errors, warnings
 

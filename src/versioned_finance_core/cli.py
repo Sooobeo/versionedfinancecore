@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import csv
 from pathlib import Path
 
 from versioned_finance_core.orchestration.core_build import build_core
@@ -35,6 +36,28 @@ def build_parser() -> argparse.ArgumentParser:
     core_parser = subparsers.add_parser("build-core", help="Build the D0 core cash slice")
     core_parser.add_argument("case_dir", type=Path)
     core_parser.add_argument("--build-root", type=Path, default=Path("build"))
+
+    case_parser = subparsers.add_parser(
+        "build-case", help="Reproduce a declared offline case recipe and stage a review bundle"
+    )
+    case_parser.add_argument("case_dir", type=Path)
+    case_parser.add_argument("--build-root", type=Path, default=Path("build"))
+
+    verify_parser = subparsers.add_parser(
+        "verify-build", help="Verify review bundle hashes and controls without publishing"
+    )
+    verify_parser.add_argument("stage_dir", type=Path)
+
+    reproduce_parser = subparsers.add_parser(
+        "reproduce-case", help="Run two fresh builds and record automated handover checks"
+    )
+    reproduce_parser.add_argument("case_dir", type=Path)
+    reproduce_parser.add_argument("--output-dir", type=Path, required=True)
+
+    handover_parser = subparsers.add_parser(
+        "verify-reproduction", help="Verify a two-build handover bundle without human sign-off"
+    )
+    handover_parser.add_argument("bundle_dir", type=Path)
 
     stage_parser = subparsers.add_parser("stage-release", help="Stage a withheld case snapshot")
     stage_parser.add_argument("case_dir", type=Path)
@@ -87,6 +110,43 @@ def main(argv: list[str] | None = None) -> int:
             print(f"Built core staging: {target}")
             return 0
 
+        if args.command == "build-case":
+            from versioned_finance_core.orchestration.case_build import build_case
+
+            target = build_case(args.case_dir, args.build_root)
+            print(f"Built case review: {target}")
+            print("Reproduction succeeded; publication remains WITHHELD.")
+            print(f"Review memo: {target / 'outputs/review_memo.md'}")
+            return 0
+
+        if args.command == "verify-build":
+            from versioned_finance_core.orchestration.case_build import verify_case_build
+
+            result = verify_case_build(args.stage_dir)
+            print(f"Review build integrity: {result['integrity_state']}")
+            print(f"Publication: {result['publication_state']}; release ready: {result['release_ready']}")
+            print(f"Output hash: {result['output_hash']}")
+            return 0
+
+        if args.command == "reproduce-case":
+            from versioned_finance_core.orchestration.reproduction import reproduce_case
+
+            target = reproduce_case(args.case_dir, args.output_dir)
+            print(f"Automated reproduction handover: {target}")
+            print("Two fresh builds matched; independent human review was not performed.")
+            print("Publication remains WITHHELD; source case gates were not changed.")
+            return 0
+
+        if args.command == "verify-reproduction":
+            from versioned_finance_core.orchestration.reproduction import verify_reproduction
+
+            result = verify_reproduction(args.bundle_dir)
+            print(f"Reproduction bundle integrity: {result['integrity_state']}")
+            print(f"Automated reproduction: {result['automated_reproduction_state']}")
+            print(f"Human review: {result['human_review_state']}; publication: WITHHELD")
+            print(f"Output ID: {result['output_id']}")
+            return 0
+
         if args.command == "stage-release":
             external = {
                 f"outputs/{name}": args.core_build / name
@@ -115,7 +175,7 @@ def main(argv: list[str] | None = None) -> int:
             target = publish_release(args.stage_dir, args.releases_root)
             print(f"Published immutable release: {target}")
             return 0
-    except (FileExistsError, FileNotFoundError, ValueError) as exc:
+    except (FileExistsError, FileNotFoundError, ValueError, TypeError, KeyError, csv.Error) as exc:
         print(f"ERROR: {exc}")
         return 2
 

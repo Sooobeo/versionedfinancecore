@@ -16,6 +16,7 @@ from hashlib import sha256
 from pathlib import Path
 
 from versioned_finance_core.contracts.enums import AccessClass
+from versioned_finance_core.contracts.json_io import strict_json_loads
 from versioned_finance_core.contracts.models import CaseContract
 from versioned_finance_core.evidence import load_provenanced_facts, load_source_ledger, sha256_file
 from versioned_finance_core.orchestration.scaffold import validate_case
@@ -32,6 +33,9 @@ CASE_ID_PATTERN = re.compile(r"^[a-z0-9][a-z0-9_-]*$")
 MANIFEST_PATHS = {"release/release_manifest.json", "release_manifest.json"}
 MATERIAL_FINDING_SEVERITIES = {"BLOCKING", "CRITICAL", "MATERIAL"}
 RESOLVED_FINDING_STATES = {"CLOSED", "RESOLVED"}
+PIPELINE_REVIEW_REPORT_PATH = "outputs/review_report.json"
+PIPELINE_REVIEW_SCHEMA_VERSION = 1
+PIPELINE_REVIEW_KIND = "CASE_BUILD_REVIEW"
 
 
 def _hash_json(value: object) -> str:
@@ -168,7 +172,7 @@ def _gate_policy(
 ) -> tuple[tuple[str, ...], dict[str, tuple[str, ...]], list[str]]:
     issues: list[str] = []
     try:
-        config = json.loads(gate_config_path.read_text(encoding="utf-8"))
+        config = strict_json_loads(gate_config_path.read_text(encoding="utf-8"))
         common = config["common_gates"]
         module_config = config["module_gates"]
         if not isinstance(common, list) or not common or not isinstance(module_config, dict):
@@ -177,7 +181,7 @@ def _gate_policy(
             raise ValueError("Common release gate IDs must be nonempty strings")
         if config.get("schema_version") != case.get("schema_version"):
             raise ValueError("Release gate policy schema version differs from the case")
-    except (FileNotFoundError, KeyError, TypeError, ValueError, json.JSONDecodeError) as exc:
+    except (FileNotFoundError, KeyError, TypeError, ValueError) as exc:
         return (), {}, [f"Release gate policy is unavailable or invalid: {exc}"]
 
     module_rules: dict[str, tuple[str, ...]] = {}
@@ -198,14 +202,14 @@ def _activation_issues(
 ) -> list[str]:
     path = case_dir / "00_charter" / "activation_gates.json"
     try:
-        activation = json.loads(path.read_text(encoding="utf-8"))
+        activation = strict_json_loads(path.read_text(encoding="utf-8"))
         states = activation["module_states"]
         if not isinstance(states, dict):
             raise ValueError("module_states must be an object")  # noqa: TRY004
         case_gates = activation["case_gates"]
         if not isinstance(case_gates, list) or not case_gates:
             raise ValueError("case_gates must be a nonempty list")
-    except (FileNotFoundError, KeyError, TypeError, ValueError, json.JSONDecodeError) as exc:
+    except (FileNotFoundError, KeyError, TypeError, ValueError) as exc:
         return [f"Module activation states are unavailable or invalid: {exc}"]
     issues = [
         f"Module activation gate did not pass: {gate_id}"
@@ -236,7 +240,11 @@ def _review_finding_issues(case_dir: Path) -> list[str]:
             reader = csv.DictReader(source)
             if not reader.fieldnames or not required.issubset(reader.fieldnames):
                 raise ValueError("review_findings.csv is missing required columns")
+            if len(reader.fieldnames) != len(set(reader.fieldnames)):
+                raise ValueError("review_findings.csv has duplicate columns")
             rows = list(reader)
+        if any(None in row or any(value is None for value in row.values()) for row in rows):
+            raise ValueError("review_findings.csv has invalid row width")
     except (OSError, ValueError, csv.Error) as exc:
         return [f"Review finding ledger is unavailable or invalid: {exc}"]
 
@@ -305,7 +313,7 @@ def case_release_readiness_issues(case_dir: Path) -> list[str]:
     """
 
     case_dir = Path(case_dir)
-    case = json.loads((case_dir / "00_charter" / "case.json").read_text(encoding="utf-8"))
+    case = strict_json_loads((case_dir / "00_charter" / "case.json").read_text(encoding="utf-8"))
     contract = CaseContract.from_mapping(case)
     _, source_issues = _source_snapshot_fingerprint(case_dir, contract.analysis_cutoff)
     gate_path = PROJECT_ROOT / "config" / "defaults" / "release_gates.json"
@@ -359,8 +367,8 @@ def _memo_issues(
             continue
         path = Path(external[name]) if name in external else case_dir / name
         try:
-            canonical_ids.update(_collect_output_ids(json.loads(path.read_text(encoding="utf-8"))))
-        except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+            canonical_ids.update(_collect_output_ids(strict_json_loads(path.read_text(encoding="utf-8"))))
+        except (OSError, UnicodeError, ValueError) as exc:
             issues.append(f"Selected JSON output cannot be read for memo reconciliation: {name}: {exc}")
     for name in memo_paths:
         if name not in file_hashes:
@@ -378,8 +386,8 @@ def _memo_issues(
             continue
         if path.suffix.lower() == ".json":
             try:
-                references = _collect_output_ids(json.loads(body))
-            except json.JSONDecodeError as exc:
+                references = _collect_output_ids(strict_json_loads(body))
+            except ValueError as exc:
                 issues.append(f"Memo JSON is invalid: {name}: {exc}")
                 continue
         else:
@@ -394,6 +402,124 @@ def _memo_issues(
             issues.append(f"Memo has no canonical output ID reference: {name}")
         for output_id in sorted(references - canonical_ids):
             issues.append(f"Memo {name} references an unselected output ID: {output_id}")
+    return issues
+
+
+def _pipeline_review_report_issues(
+    case_dir: Path,
+    contract: CaseContract,
+    output_paths: Sequence[str],
+    external_outputs: Mapping[str, Path],
+    file_hashes: Mapping[str, str],
+) -> list[str]:
+    """Validate an optional generated review report before it can be staged.
+
+    The generic release API remains usable for manually assembled snapshots.  A
+    pipeline-generated report is different: once its canonical path is present,
+    it must be selected and its case, cutoff, modules, and blockers must be
+    reconciled with the case contract.  A manual PASS gate row cannot override
+    a blocker emitted by that report.
+    """
+
+    report_is_present = PIPELINE_REVIEW_REPORT_PATH in file_hashes
+    report_is_selected = PIPELINE_REVIEW_REPORT_PATH in output_paths
+    if not report_is_present:
+        return []
+    if not report_is_selected:
+        return [
+            (
+                "Pipeline review report exists but is not selected as an output: "
+                f"{PIPELINE_REVIEW_REPORT_PATH}"
+            )
+        ]
+
+    report_path = case_dir / PIPELINE_REVIEW_REPORT_PATH
+    for name, path in external_outputs.items():
+        if Path(name).as_posix() == PIPELINE_REVIEW_REPORT_PATH:
+            report_path = Path(path)
+            break
+    if not report_path.is_file() or report_path.is_symlink():
+        return [f"Pipeline review report is missing or unsafe: {PIPELINE_REVIEW_REPORT_PATH}"]
+    try:
+        report = strict_json_loads(report_path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, ValueError) as exc:
+        return [f"Pipeline review report is invalid JSON: {PIPELINE_REVIEW_REPORT_PATH}: {exc}"]
+    if not isinstance(report, dict):
+        return [f"Pipeline review report must be a JSON object: {PIPELINE_REVIEW_REPORT_PATH}"]
+
+    issues: list[str] = []
+    if type(report.get("schema_version")) is not int or (
+        report.get("schema_version") != PIPELINE_REVIEW_SCHEMA_VERSION
+    ):
+        issues.append(
+            "Pipeline review report has an unsupported schema_version: "
+            f"{PIPELINE_REVIEW_REPORT_PATH}"
+        )
+    if report.get("kind") != PIPELINE_REVIEW_KIND:
+        issues.append(f"Pipeline review report has an invalid kind: {PIPELINE_REVIEW_REPORT_PATH}")
+    if report.get("case_id") != contract.case_id:
+        issues.append(f"Pipeline review report case_id differs from case.json: {PIPELINE_REVIEW_REPORT_PATH}")
+
+    report_cutoff = report.get("analysis_cutoff")
+    if not isinstance(report_cutoff, str) or not report_cutoff:
+        issues.append(
+            "Pipeline review report analysis_cutoff is missing or invalid: "
+            f"{PIPELINE_REVIEW_REPORT_PATH}"
+        )
+    else:
+        try:
+            parsed_cutoff = datetime.fromisoformat(report_cutoff)
+            if parsed_cutoff.tzinfo is None or parsed_cutoff.utcoffset() is None:
+                raise ValueError("timestamp has no UTC offset")
+        except ValueError:
+            issues.append(
+                "Pipeline review report analysis_cutoff is missing or invalid: "
+                f"{PIPELINE_REVIEW_REPORT_PATH}"
+            )
+        else:
+            if contract.analysis_cutoff is None or parsed_cutoff != contract.analysis_cutoff:
+                issues.append(
+                    "Pipeline review report analysis_cutoff differs from case.json: "
+                    f"{PIPELINE_REVIEW_REPORT_PATH}"
+                )
+
+    expected_modules = report.get("expected_modules")
+    case_modules = [module.value for module in contract.active_modules]
+    if (
+        not isinstance(expected_modules, list)
+        or any(not isinstance(module, str) or not module for module in expected_modules)
+        or expected_modules != case_modules
+    ):
+        issues.append(
+            "Pipeline review report expected_modules differ from case.json active_modules: "
+            f"{PIPELINE_REVIEW_REPORT_PATH}"
+        )
+    if report.get("publication_state") != "WITHHELD":
+        issues.append(
+            "Pipeline review report publication_state must be WITHHELD: "
+            f"{PIPELINE_REVIEW_REPORT_PATH}"
+        )
+
+    blockers = report.get("release_blockers")
+    if not isinstance(blockers, list):
+        issues.append(
+            "Pipeline review report release_blockers must be a list: "
+            f"{PIPELINE_REVIEW_REPORT_PATH}"
+        )
+        return issues
+    if any(not isinstance(blocker, str) or not blocker.strip() for blocker in blockers):
+        issues.append(
+            "Pipeline review report release_blockers contains a blank or non-string value: "
+            f"{PIPELINE_REVIEW_REPORT_PATH}"
+        )
+        return issues
+    if len(blockers) != len(set(blockers)):
+        issues.append(
+            "Pipeline review report release_blockers contains duplicates: "
+            f"{PIPELINE_REVIEW_REPORT_PATH}"
+        )
+        return issues
+    issues.extend(f"Pipeline review report blocks release: {blocker}" for blocker in blockers)
     return issues
 
 
@@ -424,10 +550,11 @@ def build_manifest(
     """Build a fail-closed manifest; this function never marks a case published."""
 
     case_dir = Path(case_dir)
-    case = json.loads((case_dir / "00_charter" / "case.json").read_text(encoding="utf-8"))
+    case = strict_json_loads((case_dir / "00_charter" / "case.json").read_text(encoding="utf-8"))
     contract = CaseContract.from_mapping(case)
     file_hashes = _case_file_hashes(case_dir)
-    file_hashes.update(_external_file_hashes(external_outputs or {}, file_hashes))
+    external = external_outputs or {}
+    file_hashes.update(_external_file_hashes(external, file_hashes))
     selected_outputs = tuple(dict.fromkeys(output_paths))
     selected_memos = tuple(dict.fromkeys(memo_paths))
     config_dir = config_dir or PROJECT_ROOT / "config" / "defaults"
@@ -458,11 +585,14 @@ def build_manifest(
     memo_hash, memo_issues = _selected_hashes(file_hashes, selected_memos, "memo")
     issues.extend(output_issues + memo_issues)
     issues.extend(_memo_issues(
-        case_dir, selected_memos, selected_outputs, external_outputs or {}, file_hashes
+        case_dir, selected_memos, selected_outputs, external, file_hashes
+    ))
+    issues.extend(_pipeline_review_report_issues(
+        case_dir, contract, selected_outputs, external, file_hashes
     ))
     if any(name not in selected_outputs for name in selected_memos):
         issues.append("Every memo must also be a selected output")
-    if any(name not in selected_outputs for name in (external_outputs or {})):
+    if any(name not in selected_outputs for name in external):
         issues.append("Every external build artifact must be selected as an output")
     input_hashes = {name: digest for name, digest in file_hashes.items() if name not in selected_outputs}
     input_hash = _hash_json(input_hashes) if input_hashes else None
@@ -576,14 +706,33 @@ def stage_release(case_dir: Path, stage_root: Path, **kwargs: object) -> Path:
     if not CASE_ID_PATTERN.fullmatch(case_id):
         raise ValueError("Invalid case_id for a release path")
     destination = Path(stage_root) / case_id / _staging_id(manifest)
-    destination.mkdir(parents=True, exist_ok=False)
-    for name in manifest["file_hashes"]:
-        target = destination / name
-        target.parent.mkdir(parents=True, exist_ok=True)
-        source = external_outputs[name] if name in external_outputs else Path(case_dir) / name
-        shutil.copy2(source, target)
-    _write_new_json(destination / "release_manifest.json", manifest)
-    _assert_exact_stage_files(destination, manifest["file_hashes"])
+    if destination.exists():
+        raise FileExistsError(f"Release stage already exists: {destination}")
+    parent = destination.parent
+    parent.mkdir(parents=True, exist_ok=True)
+    if parent.is_symlink():
+        raise ValueError(f"Release stage parent cannot be a symlink: {parent}")
+    resolved_parent = parent.resolve()
+    staging = Path(tempfile.mkdtemp(prefix=".release_staging_", dir=parent))
+    try:
+        for name in manifest["file_hashes"]:
+            target = staging / name
+            target.parent.mkdir(parents=True, exist_ok=True)
+            source = external_outputs[name] if name in external_outputs else Path(case_dir) / name
+            shutil.copy2(source, target)
+        _write_new_json(staging / "release_manifest.json", manifest)
+        _assert_exact_stage_files(staging, manifest["file_hashes"])
+        if (staging.resolve().parent != resolved_parent
+                or destination.resolve().parent != resolved_parent):
+            raise ValueError("Release stage or target escaped the build case directory")
+        if destination.exists():
+            raise FileExistsError(f"Release stage already exists: {destination}")
+        staging.rename(destination)
+    finally:
+        if staging.exists():
+            if staging.is_symlink() or staging.resolve().parent != resolved_parent:
+                raise ValueError("Refusing cleanup outside the temporary release directory")
+            shutil.rmtree(staging)
     return destination
 
 
@@ -612,7 +761,9 @@ def publish_release(
     """Publish a validated stage to a new release ID; never replace a release."""
 
     stage_dir = Path(stage_dir)
-    staged = json.loads((stage_dir / "release_manifest.json").read_text(encoding="utf-8"))
+    staged = strict_json_loads((stage_dir / "release_manifest.json").read_text(encoding="utf-8"))
+    if not isinstance(staged, dict):
+        raise ValueError("Stage manifest must be a JSON object")  # noqa: TRY004
     if staged.get("publication_state") != "WITHHELD":
         raise ValueError("Only withheld staging manifests may be published")
     file_hashes = staged.get("file_hashes")

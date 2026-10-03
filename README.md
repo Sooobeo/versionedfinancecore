@@ -16,7 +16,7 @@ P0의 첫 합성 검증 흐름(D0)은 실행 가능하다. 첫 실제 공개자�
 
 ## P1 가치평가 실행 상태
 
-[Walmart P1 공개자료 pilot](cases/walmart_20260521_p1_valuation/)은 2026-05-21 기준의 별도 `CORPORATE_VALUE` 사례다. 공식 SEC 문서 3건에서 161개 연결 재무 fact를 추출해 source·시점·범위·단위를 고정했다. FY26 Core 현금 대사와 FY24–FY26/FY27 Q1 reported 손익·재무상태 11개 항등식의 잔차는 0이다. Core가 FCFE와 근거가 있을 때의 FCFF를 소유하고, M1은 Core 출력 ID를 받아 claim에 맞는 가치평가·민감도·검토 gate를 적용한다. 실제 Walmart의 linked forecast·무차입 현금세금·할인율·terminal·청구권 대사 및 독립 검토는 아직 없어 수치 기업가치와 release는 `WITHHELD`다. [P1 실행 상태](docs/p1_execution_status.md)에 재현 절차와 남은 근거를 기록한다.
+[Walmart P1 공개자료 pilot](cases/walmart_20260521_p1_valuation/)은 2026-05-21 기준의 별도 `CORPORATE_VALUE` 사례다. 기존 SEC 문서 3건·receipt 4개에서 205개 연결 재무 fact를 보존했고, 리스·현금세금 진단용 10-K HTML receipt를 별도로 추가했다. FY26 Core 현금 대사와 reported 손익·재무상태 항등식을 검증하고, 조건부 연결 3표·FCFF/FCFE·WACC·DCF·부분 청구권 bridge를 재현한다. 전망은 사후 작성한 분석가 시나리오다. 시장자료 시점·권리, 미래 리스·현금세금, terminal, 평가일 현금·청구권 및 독립 검토가 미해결이므로 기업가치·주주가치·투자의견 release는 `WITHHELD`다. [P1 실행 상태](docs/p1_execution_status.md)에 세부 근거를 기록한다.
 
 세부 범위와 남은 gate는 [P0 실행 상태](docs/p0_execution_status.md), 사례 선택 이유는 [case 목록](cases/README.md)에 기록한다.
 
@@ -52,6 +52,19 @@ python -m pytest
 
 `init-case`는 기존 경로를 덮어쓰지 않는다. 생성된 `case.json`의 의사결정 질문, 관점, 기준시점, 관할, 통화와 활성 모듈을 채운 뒤 데이터 수집을 시작한다.
 근거·mapping·version·현금 대사 입력을 채운 case는 `python -m versioned_finance_core build-core cases/sample_case`로 `build/`에 계산 결과를 만들 수 있다. 같은 입력의 기존 build는 덮어쓰지 않는다. `stage-release`는 검토용 `WITHHELD` snapshot을 만들고, `publish-release`는 모든 필수 gate가 통과한 stage에만 적용된다.
+
+다섯 공개자료 사례는 공통 `build-case` 명령으로 지원되는 계산과 검토 보고서를 함께 재현한다.
+
+```powershell
+python -m versioned_finance_core build-case cases/walmart_20260521_p1_valuation --build-root build/case_review
+python -m versioned_finance_core verify-build <출력된-stage-경로>
+```
+
+생성된 `outputs/review_memo.md`에 실행 범위와 남은 gate·finding이 있다. 재실행 비교는 새 build root를 사용한다. 성공한 build도 publication은 `WITHHELD`이며 계산 성공이 의사결정 승인으로 바뀌지 않는다. [지원 범위·재현·남은 작업](docs/case_build.md)을 참조한다. GitHub Actions는 Python 3.11/3.12에서 오프라인 테스트·compile·Ruff를 실행하도록 구성했다.
+
+두 번의 새 계산과 hash 대조는 `reproduce-case cases/<case_id> --output-dir <new-directory>`로 자동 실행한다. `verify-reproduction <directory>`는 양쪽 stage와 인수인계 receipt를 검증한다. 사람 검토는 `NOT_PERFORMED`로 남기며 source case gate를 자동 통과시키지 않는다.
+
+[2026-10-03 후속 작업](docs/nonhuman_followup_20261003.md)은 이번에 보강한 구현·공개근거와 사람 검토 외에도 남아 있는 자료 제약을 구분한다.
 
 오리온 pilot의 재현 순서와 제한사항은 [R0 상태 문서](docs/p0_execution_status.md)에 적었다. `ruff`는 설치된 Python 모듈을 `python -m ruff check src tests`로 실행한다.
 

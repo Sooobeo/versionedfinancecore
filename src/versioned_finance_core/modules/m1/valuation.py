@@ -781,6 +781,7 @@ def bridge_enterprise_to_equity(
 class LeaseValuationTreatment(StrEnum):
     OPERATING_COST_INCLUDED = "OPERATING_COST_INCLUDED"
     CAPITALIZED_FINANCING = "CAPITALIZED_FINANCING"
+    MIXED_OPERATING_AND_FINANCE = "MIXED_OPERATING_AND_FINANCE"
     NOT_APPLICABLE = "NOT_APPLICABLE"
     UNRESOLVED = "UNRESOLVED"
 
@@ -997,6 +998,7 @@ def bridge_enterprise_to_equity_partial(
     expected_lease_flags = {
         LeaseValuationTreatment.OPERATING_COST_INCLUDED: (True, False, False),
         LeaseValuationTreatment.CAPITALIZED_FINANCING: (False, True, True),
+        LeaseValuationTreatment.MIXED_OPERATING_AND_FINANCE: (True, True, True),
         LeaseValuationTreatment.NOT_APPLICABLE: (False, False, False),
     }
     if expected_lease_flags.get(lease_policy.treatment) != lease_flags:
@@ -1096,6 +1098,7 @@ def bridge_enterprise_to_equity_dated(
     expected_lease_flags = {
         LeaseValuationTreatment.OPERATING_COST_INCLUDED: (True, False, False),
         LeaseValuationTreatment.CAPITALIZED_FINANCING: (False, True, True),
+        LeaseValuationTreatment.MIXED_OPERATING_AND_FINANCE: (True, True, True),
         LeaseValuationTreatment.NOT_APPLICABLE: (False, False, False),
     }
     observed_lease_flags = (

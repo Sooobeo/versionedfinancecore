@@ -55,3 +55,9 @@ source -> raw fact -> normalized fact -> one financial identity
 
 UI는 위 경로와 release gate가 안정된 뒤 reporting adapter로 추가한다.
 
+## 공통 검토 실행 경로
+
+`orchestration/case_build.py`는 data-only `BuildRecipe`의 내장 step을 순서대로 실행한다. D0 cash, guidance 비교, DFS 산술 재현, 조건부 연결 전망·가치평가, 공개 신용근거의 제한 상태가 지원된다. case별 selector와 숫자 가정은 case config에 남기고, adapter는 공통 Core/M1/M2/M3 함수를 호출한다. case가 지정한 임의 Python script나 shell command는 실행하지 않는다.
+
+모든 선택 output은 해당 실행에서 새로 계산한다. 검토 보고서는 source case의 gate·finding, 실행 범위와 계산 artifact hash를 모으고 `reporting/case_review.py`가 그대로 표시한다. 보고서의 blocker는 release gate에 반영된다. 공통 명령은 의사결정 근거가 부족한 상태를 제거하지 않으며, 모든 모듈의 완전한 생산용 실행 adapter를 의미하지 않는다.
+

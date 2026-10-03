@@ -1,0 +1,393 @@
+{
+  "schema_version": 1,
+  "version_id": "wmt_conditional_analyst_base_20260521_v1",
+  "scenario_id": "wmt_conditional_base_v1",
+  "model_origin": "RETROSPECTIVE_CONSTRUCTION_2026-10-01",
+  "opening_date": "2026-04-30",
+  "forecast_periods": [
+    {"period_id": "FY27_REMAINING", "start": "2026-05-01", "end": "2027-01-31", "partial_fiscal_period": true, "net_sales_growth": "0.0305", "other_revenue_growth": "0.04", "capex_rate": "0.035", "interest_usd": "2061000000", "debt_issuance_usd": "3896000000", "debt_repayment_usd": "3896000000", "dividends_declared_usd": "0", "dividends_paid_usd": "5921000000"},
+    {"period_id": "FY28", "start": "2027-02-01", "end": "2028-01-31", "net_sales_growth": "0.04", "other_revenue_growth": "0.04", "capex_rate": "0.0377", "interest_usd": "2681000000", "debt_issuance_usd": "0", "debt_repayment_usd": "0", "dividends_declared_usd": "7500000000", "dividends_paid_usd": "7500000000"},
+    {"period_id": "FY29", "start": "2028-02-01", "end": "2029-01-31", "net_sales_growth": "0.0375", "other_revenue_growth": "0.0375", "capex_rate": "0.0377", "interest_usd": "2681000000", "debt_issuance_usd": "0", "debt_repayment_usd": "0", "dividends_declared_usd": "7500000000", "dividends_paid_usd": "7500000000"},
+    {"period_id": "FY30", "start": "2029-02-01", "end": "2030-01-31", "net_sales_growth": "0.035", "other_revenue_growth": "0.035", "capex_rate": "0.0377", "interest_usd": "2681000000", "debt_issuance_usd": "0", "debt_repayment_usd": "0", "dividends_declared_usd": "7500000000", "dividends_paid_usd": "7500000000"},
+    {"period_id": "FY31", "start": "2030-02-01", "end": "2031-01-31", "net_sales_growth": "0.0325", "other_revenue_growth": "0.0325", "capex_rate": "0.0377", "interest_usd": "2681000000", "debt_issuance_usd": "0", "debt_repayment_usd": "0", "dividends_declared_usd": "7500000000", "dividends_paid_usd": "7500000000"}
+  ],
+  "opening_groups": {
+    "cash": ["cash_and_equivalents"],
+    "receivables": ["receivables"],
+    "inventory": ["inventory"],
+    "other_operating_assets": ["prepaid_other_current_assets"],
+    "ppe_net": ["ppe_net"],
+    "other_long_lived_assets": ["operating_lease_rou_assets", "finance_lease_rou_assets", "goodwill", "other_long_term_assets"],
+    "payables": ["accounts_payable"],
+    "accrued_operating_liabilities": ["accrued_liabilities"],
+    "tax_payable": ["accrued_income_taxes"],
+    "debt_carrying": ["short_term_borrowings", "current_debt", "noncurrent_debt"],
+    "dividends_payable": ["dividends_payable"],
+    "other_liabilities": ["operating_lease_current", "operating_lease_long_term", "finance_lease_current", "finance_lease_long_term", "deferred_taxes_other_liabilities", "redeemable_nci"],
+    "equity": ["total_equity"]
+  },
+  "base_drivers": {
+    "operating_margin_of_total_revenue": {"value": "0.0418", "id": "A_FY26_GAAP_OPERATING_MARGIN_PROXY", "sources": ["wmt_fy26_10k_xbrl_20260313"], "note": "FY26 EBIT divided by total revenue is about 4.18%; same margin held in conditional path."},
+    "depreciation_rate_of_total_revenue": {"value": "0.0199", "id": "A_FY26_DA_RATIO_PROXY", "sources": ["wmt_fy26_10k_xbrl_20260313"], "note": "FY26 depreciation/amortization divided by total revenue is about 1.99%."},
+    "receivables_rate_of_fiscal_net_sales": {"value": "0.0158", "id": "A_FY26_AR_RATIO", "sources": ["wmt_fy26_10k_xbrl_20260313"], "note": "Approximate FY26 closing receivables to sales ratio."},
+    "inventory_rate_of_fiscal_net_sales": {"value": "0.0833", "id": "A_FY26_INVENTORY_RATIO", "sources": ["wmt_fy26_10k_xbrl_20260313"], "note": "Approximate FY26 closing inventory to sales ratio."},
+    "other_operating_assets_rate_of_fiscal_net_sales": {"value": "0.00584", "id": "A_FY26_PREPAID_RATIO", "sources": ["wmt_fy27q1_8k_ex991_20260521"], "note": "Jan 2026 comparative prepaid and other current assets to FY26 sales."},
+    "payables_rate_of_fiscal_net_sales": {"value": "0.0893", "id": "A_FY26_AP_RATIO", "sources": ["wmt_fy26_10k_xbrl_20260313"], "note": "Approximate FY26 closing accounts payable to sales ratio."},
+    "accrued_operating_liabilities_rate_of_fiscal_net_sales": {"value": "0.0442", "id": "A_FY26_ACCRUED_RATIO", "sources": ["wmt_fy26_10k_xbrl_20260313"], "note": "Approximate FY26 closing accrued liabilities to sales ratio."},
+    "cash_other_income": {"value": "0", "id": "A_OTHER_GAIN_ZERO_SCENARIO", "sources": ["wmt_fy27q1_8k_ex991_20260521"], "note": "Hypothetical zero future noninterest gains/losses, not a missing value imputation."},
+    "tax_rate_on_pretax_income": {"value": "0.24", "id": "A_TAX_RATE_24", "sources": ["wmt_fy27q1_8k_ex991_20260521"], "note": "24% within FY27 company GAAP tax-rate guidance; held flat as analyst scenario."},
+    "cash_tax_rate_on_pretax_income": {"value": "0.24", "id": "A_CASH_TAX_EQUAL_PROVISION", "sources": ["wmt_fy27q1_8k_ex991_20260521"], "note": "Conditional cash taxes equal provision; temporary differences not modeled."},
+    "ppe_noncash_change": {"value": "0", "id": "A_NO_PPE_NONCASH_MOVEMENT", "sources": ["wmt_fy27q1_8k_ex991_20260521"], "note": "Simplifying scenario: no disposal/FX/acquisition PPE movement."},
+    "other_long_lived_assets_investing_cash_change": {"value": "0", "id": "A_NO_OTHER_LONG_ASSET_INVESTMENT", "sources": ["wmt_fy27q1_8k_ex991_20260521"], "note": "Simplifying scenario, not evidence of zero goodwill or lease additions."},
+    "other_long_lived_assets_noncash_change": {"value": "0", "id": "A_STATIC_OTHER_LONG_ASSETS", "sources": ["wmt_fy27q1_8k_ex991_20260521"], "note": "Lease ROU, goodwill and other long assets held flat; material limitation."},
+    "debt_carrying_noncash_change": {"value": "0", "id": "A_NO_DEBT_NONCASH_MOVEMENT", "sources": ["wmt_fy27q1_8k_ex991_20260521"], "note": "No FX, amortization or reclassification adjustment in scenario."},
+    "other_liabilities_operating_cash_change": {"value": "0", "id": "A_STATIC_OTHER_LIABILITY_OPERATING", "sources": ["wmt_fy27q1_8k_ex991_20260521"], "note": "No modeled deferred tax/lease operating movement; material limitation."},
+    "other_liabilities_financing_cash_change": {"value": "0", "id": "A_STATIC_OTHER_LIABILITY_FINANCING", "sources": ["wmt_fy27q1_8k_ex991_20260521"], "note": "No modeled finance lease cash movement; material limitation."},
+    "other_liabilities_noncash_change": {"value": "0", "id": "A_STATIC_OTHER_LIABILITY_NONCASH", "sources": ["wmt_fy27q1_8k_ex991_20260521"], "note": "No modeled lease remeasurement/FX; material limitation."},
+    "share_issuance": {"value": "0", "id": "A_NO_SHARE_ISSUANCE", "sources": ["wmt_fy26_10k_xbrl_20260313"], "note": "Hypothetical future financing choice."},
+    "share_repurchases": {"value": "0", "id": "A_NO_SHARE_BUYBACK", "sources": ["wmt_fy26_10k_xbrl_20260313"], "note": "Hypothetical future financing choice despite Walmart historical repurchases."},
+    "other_comprehensive_income": {"value": "0", "id": "A_NO_FUTURE_OCI", "sources": ["wmt_fy27q1_8k_ex991_20260521"], "note": "Hypothetical flat OCI/FX, not an observed zero."}
+  },
+  "unlevered_cash_tax_rate": "0.24",
+  "terminal": {"ebit_growth": "0.02", "growth": "0.02", "cash_tax_rate": "0.24", "sustainable_roic": "0.12", "rationale": "Analyst long-run screen only. Macro 2% Fed SEP is context, not Walmart firm-specific support; ROIC is unvalidated."},
+  "wacc_screen": {"risk_free_rate": "0.0457", "beta": "0.90", "erp": "0.0424", "marginal_tax_rate": "0.24", "share_price_usd": "121.34", "shares_outstanding": "7972402501", "debt_value_usd": "58129000000", "debt_spread": "0.0043"},
+  "source_availability_review": "WITHHELD",
+  "adapter_metadata": {
+    "schema_version": 1,
+    "review_status": "WITHHELD",
+    "assumption_evidence_path": "01_evidence_core/assumption_evidence.csv",
+    "source_ledger_path": "01_evidence_core/source_ledger.csv",
+    "version_type": "SCENARIO",
+    "scenario_purpose": "ANALYST_BASE",
+    "fact_contract": {
+      "currency": "USD",
+      "unit": "USD",
+      "accounting_scope": "CONSOLIDATED",
+      "economic_scope_id": "walmart_consolidated_group"
+    },
+    "source_versions": {
+      "opening": {
+        "version_id": "wmt_actual_fy27q1_8k_20260521",
+        "source_id": "wmt_fy27q1_8k_ex991_20260521",
+        "period_end": "2026-04-30"
+      },
+      "historical": {
+        "version_id": "wmt_actual_fy26_10k_20260313",
+        "source_id": "wmt_fy26_10k_xbrl_20260313",
+        "period_end": "2026-01-31"
+      }
+    },
+    "historical_source_version_key": "historical",
+    "opening_balance": {
+      "source_version_key": "opening",
+      "asset_total_metric_id": "total_assets",
+      "liabilities_equity_total_metric_id": "total_liabilities_equity"
+    },
+    "historical_fact_selectors": {
+      "full_year_net_sales": {
+        "metric_id": "net_sales_year",
+        "period_start": "2025-02-01",
+        "period_end": "2026-01-31",
+        "source_version_key": "historical"
+      },
+      "full_year_total_revenue": {
+        "metric_id": "total_revenue_year",
+        "period_start": "2025-02-01",
+        "period_end": "2026-01-31",
+        "source_version_key": "historical"
+      },
+      "prior_quarter_net_sales": {
+        "metric_id": "net_sales_quarter",
+        "period_start": "2025-02-01",
+        "period_end": "2025-04-30",
+        "source_version_key": "opening"
+      },
+      "prior_quarter_other_revenue": {
+        "metric_id": "membership_and_other_income_quarter",
+        "period_start": "2025-02-01",
+        "period_end": "2025-04-30",
+        "source_version_key": "opening"
+      },
+      "current_quarter_net_sales": {
+        "metric_id": "net_sales_quarter",
+        "period_start": "2026-02-01",
+        "period_end": "2026-04-30",
+        "source_version_key": "opening"
+      },
+      "current_quarter_other_revenue": {
+        "metric_id": "membership_and_other_income_quarter",
+        "period_start": "2026-02-01",
+        "period_end": "2026-04-30",
+        "source_version_key": "opening"
+      },
+      "current_quarter_capex": {
+        "metric_id": "capital_expenditure_payments_quarter",
+        "period_start": "2026-02-01",
+        "period_end": "2026-04-30",
+        "source_version_key": "opening"
+      }
+    },
+    "claim_aggregates": {
+      "debt": {
+        "source_version_key": "opening",
+        "balance_date": "2026-04-30",
+        "aggregate_name": "APR30_DEBT_AND_FINANCE_LEASES",
+        "metrics": [
+          "short_term_borrowings",
+          "current_debt",
+          "noncurrent_debt",
+          "finance_lease_current",
+          "finance_lease_long_term"
+        ]
+      },
+      "minority": {
+        "source_version_key": "opening",
+        "balance_date": "2026-04-30",
+        "aggregate_name": "APR30_REDEEMABLE_AND_NONREDEEMABLE_NCI",
+        "metrics": ["redeemable_nci", "nonredeemable_nci"]
+      }
+    },
+    "lease_policy": {
+      "treatment": "UNRESOLVED",
+      "assumption_id": "A_LEASE_CLAIM_POLICY_UNRESOLVED",
+      "source_version_keys": ["opening", "historical"],
+      "operating_lease_expense_in_fcff": false,
+      "finance_lease_interest_in_fcff": false,
+      "lease_liability_in_debt_like_claims": false
+    },
+    "wacc": {
+      "assumption_id": "A_WMT_WACC_CONDITIONAL_SCREEN_V1",
+      "rate_basis": "NOMINAL",
+      "beta_basis": "SECTOR_PROXY",
+      "debt_value_basis": "CARRYING_PROXY",
+      "debt_value_field": "debt_value_usd",
+      "parameters": {
+        "risk_free_rate": {
+          "assumption_id": "A_UST10Y_PAR_YIELD_PROXY",
+          "source_ids": ["usd_ust10y_20260521"],
+          "observation_date": "2026-05-21",
+          "rationale": "Treasury par-yield proxy; exact first public time unverified.",
+          "unit": "DECIMAL_RATE"
+        },
+        "beta": {
+          "assumption_id": "A_SECTOR_BETA_0_90",
+          "source_ids": ["us_retail_general_beta_202601", "us_retail_grocery_beta_202601"],
+          "observation_date": "2026-01-01",
+          "rationale": "Analyst selection between two sector betas, not Walmart measured beta.",
+          "unit": "DECIMAL_RATE"
+        },
+        "erp": {
+          "assumption_id": "A_NYU_ERP_SUSTAINABLE_4_24",
+          "source_ids": ["us_implied_erp_20260501"],
+          "observation_date": "2026-05-01",
+          "rationale": "NYU author estimate; first-public and rights unverified.",
+          "unit": "DECIMAL_RATE"
+        },
+        "marginal_tax_rate": {
+          "assumption_id": "A_MARGINAL_TAX_RATE_24_PROXY",
+          "source_ids": ["wmt_fy27_etr_guidance_20260521"],
+          "observation_date": "2026-05-21",
+          "rationale": "24% within FY27 company guidance, not a durable marginal rate.",
+          "unit": "DECIMAL_RATE"
+        },
+        "share_price_usd": {
+          "assumption_id": "A_NASDAQ_CLOSE_SCREEN",
+          "source_ids": ["wmt_close_20260521"],
+          "observation_date": "2026-05-21",
+          "rationale": "Retrospectively retrieved close; public timestamp unverified.",
+          "unit": "USD"
+        },
+        "shares_outstanding": {
+          "assumption_id": "A_MARCH_SHARE_COUNT_PROXY",
+          "source_ids": ["wmt_shares_20260311"],
+          "observation_date": "2026-03-11",
+          "rationale": "Latest cover-date count, stale at valuation date.",
+          "unit": "SHARES"
+        },
+        "debt_value_usd": {
+          "assumption_id": "A_APRIL_BOOK_DEBT_PROXY",
+          "observation_date": "2026-04-30",
+          "rationale": "April book short/long debt plus finance leases; market value and lease policy unresolved.",
+          "unit": "USD"
+        },
+        "debt_spread": {
+          "assumption_id": "A_APRIL_2036_SPREAD_PROXY",
+          "source_ids": ["wmt_2036_bond_spread_20260427"],
+          "observation_date": "2026-04-27",
+          "rationale": "April issue spread added to May 21 UST par yield; not May 21 traded debt yield.",
+          "unit": "DECIMAL_RATE"
+        }
+      }
+    },
+    "terminal": {
+      "assumption_id": "A_TERMINAL_OPERATING_ECONOMICS_V1",
+      "ebit_growth_assumption_id": "A_TERMINAL_EBIT_GROWTH_2_PERCENT",
+      "cash_tax_rate_assumption_id": "A_TERMINAL_CASH_TAX_24_PERCENT",
+      "roic_assumption_id": "A_TERMINAL_ROIC_12_PERCENT",
+      "growth_assumption_id": "A_TERMINAL_GROWTH_2_PERCENT",
+      "basis_source_ids": [
+        "fed_longrun_real_gdp_20260318",
+        "fed_longrun_pce_20260318",
+        "wmt_fy26_10k_xbrl_20260313"
+      ],
+      "units": {
+        "ebit_growth": "DECIMAL_RATE",
+        "growth": "DECIMAL_RATE",
+        "cash_tax_rate": "DECIMAL_RATE",
+        "sustainable_roic": "DECIMAL_RATE"
+      }
+    },
+    "unlevered_cash_tax": {
+      "assumption_id": "A_UNLEVERED_CASH_TAX_24_PERCENT_EBIT_PROXY",
+      "method_id": "EBIT_TIMES_24_PERCENT_SCREEN",
+      "unit": "DECIMAL_RATE",
+      "source_ids": ["wmt_fy27_etr_guidance_20260521"],
+      "rationale": "EBIT times 24%; temporary differences and jurisdictional tax attributes omitted."
+    },
+    "dcf": {
+      "cash_flow_claim": "FCFF",
+      "discount_rate_claim": "WACC",
+      "rate_basis": "NOMINAL",
+      "discount_timing": "ACT_365_FIXED",
+      "discount_rate_rationale": "Retrospective conditional WACC screen; source availability and lease fit unresolved."
+    },
+    "artifacts": {
+      "amount_suffix": "usd",
+      "assumption_available_at_semantics": "Hypothetical May 21 scenario effective time; retrospective market locator first-public availability is not established and cannot pass release review.",
+      "market_input_evidence_ids": [
+        "wmt_close_20260521",
+        "usd_ust10y_20260521",
+        "wmt_2036_bond_spread_20260427",
+        "us_implied_erp_20260501",
+        "us_retail_general_beta_202601",
+        "us_retail_grocery_beta_202601",
+        "wmt_shares_20260311",
+        "wmt_fy27_etr_guidance_20260521"
+      ],
+      "memo_fields": [
+        {
+          "name": "conditional_forecast_review_status",
+          "value": "WITHHELD",
+          "output_ref": "baseline"
+        },
+        {
+          "name": "conditional_dcf_release_status",
+          "value": "WITHHELD",
+          "output_ref": "dcf"
+        },
+        {
+          "name": "common_equity_value_state",
+          "value": "UNKNOWN",
+          "output_ref": "bridge"
+        }
+      ]
+    },
+    "review_csv": {
+      "baseline_source_version_key": "opening",
+      "driver_mechanism": "CORE_LINKED_DRIVER",
+      "driver_dependency_group": "CONSOLIDATED_BASE",
+      "assumption_mechanism": "ANALYST_CONDITIONAL_SCENARIO",
+      "assumption_owner": "personal_analyst_simulation",
+      "assumption_trigger": "new filing or source review",
+      "valuation_method": "FCFF_WACC_DCF_ACT_365F",
+      "thesis_break": "NOT_TESTABLE_FROM_PUBLIC_DATA",
+      "valuation_limitation": "See conditional_valuation_screen.json; market vintage, lease and claims unresolved",
+      "wacc_assumption_basis": "Retrospective WACC screen; exact first-public and/or fit checks remain unresolved.",
+      "currency_driver_names": [
+        "comparable_prior_net_sales",
+        "comparable_prior_other_revenue",
+        "fiscal_year_net_sales_to_date",
+        "fiscal_year_other_revenue_to_date",
+        "fiscal_year_capex_to_date",
+        "interest_expense",
+        "cash_other_income",
+        "ppe_noncash_change",
+        "other_long_lived_assets_investing_cash_change",
+        "other_long_lived_assets_noncash_change",
+        "debt_issuance",
+        "debt_repayment",
+        "debt_carrying_noncash_change",
+        "other_liabilities_operating_cash_change",
+        "other_liabilities_financing_cash_change",
+        "other_liabilities_noncash_change",
+        "dividends_declared",
+        "dividends_paid",
+        "share_issuance",
+        "share_repurchases",
+        "other_comprehensive_income"
+      ],
+      "driver_assumptions": {
+        "net_sales_growth_rate": {
+          "period_field": "net_sales_growth",
+          "unit": "DECIMAL_RATE",
+          "source_ids": ["wmt_fy26_10k_xbrl_20260313", "wmt_fy27q1_8k_ex991_20260521"],
+          "basis": "Analyst growth on comparable fiscal period; FY27 remaining 3.05% yields approximately 4% full-year reported USD growth."
+        },
+        "other_revenue_growth_rate": {
+          "period_field": "other_revenue_growth",
+          "unit": "DECIMAL_RATE",
+          "source_ids": ["wmt_fy26_10k_xbrl_20260313", "wmt_fy27q1_8k_ex991_20260521"],
+          "basis": "Analyst other-revenue growth scenario."
+        },
+        "capex_rate_of_fiscal_net_sales": {
+          "period_field": "capex_rate",
+          "unit": "DECIMAL_RATE",
+          "source_ids": ["wmt_fy27_capex_sales_guidance_20260521", "wmt_fy26_10k_xbrl_20260313"],
+          "basis": "Full-year capex to sales; FY27 deducts already reported Q1 capex."
+        },
+        "interest_expense": {
+          "period_field": "interest_usd",
+          "unit": "USD",
+          "source_ids": ["wmt_fy26_net_interest", "wmt_fy27q1_net_interest", "wmt_fy27_net_interest_increase_guidance_20260521"],
+          "basis": "Net P&L interest used as cash-interest proxy; FY27 remaining follows guidance midpoint."
+        },
+        "debt_issuance": {
+          "period_field": "debt_issuance_usd",
+          "unit": "USD",
+          "source_ids": ["wmt_fy27q1_8k_ex991_20260521"],
+          "basis": "Hypothetical rollover; not committed funding."
+        },
+        "debt_repayment": {
+          "period_field": "debt_repayment_usd",
+          "unit": "USD",
+          "source_ids": ["wmt_fy27q1_8k_ex991_20260521"],
+          "basis": "Hypothetical rollover; not debt maturity proof."
+        },
+        "dividends_declared": {
+          "period_field": "dividends_declared_usd",
+          "unit": "USD",
+          "source_ids": ["wmt_fy27q1_8k_ex991_20260521"],
+          "basis": "Declared dividend schedule scenario."
+        },
+        "dividends_paid": {
+          "period_field": "dividends_paid_usd",
+          "unit": "USD",
+          "source_ids": ["wmt_fy27q1_8k_ex991_20260521"],
+          "basis": "Payment of opening dividend payable then annual policy scenario."
+        }
+      },
+      "full_year_no_prior_ytd": {
+        "assumption_id_template": "A_{period_id}_FULL_YEAR_NO_PRIOR_YTD",
+        "variable": "full_year_prior_ytd_flows",
+        "value": "0",
+        "unit": "USD",
+        "source_ids": ["02_financial_core/conditional_model_config.json"],
+        "basis": "Full fiscal forecast period begins on February 1; no earlier actual YTD flow is added."
+      }
+    }
+  },
+  "limitations": [
+    "Built retrospectively on 2026-10-01; no May 21 frozen analyst forecast existed, so it is not an out-of-time backtest.",
+    "Some market locator observations have no verified first_public_at or rights; WACC is an illustrative screening assumption.",
+    "Reported USD GAAP net sales scenario is not a conversion of constant-currency or adjusted company guidance.",
+    "FY27 remaining sales growth of 3.05% on the FY26 comparable nine months gives approximately 4% full-year reported USD growth after the already-reported Q1; it is an analyst choice, not company guidance.",
+    "Future lease, FX, goodwill, restricted cash, deferred tax and share buyback changes are intentionally held static in this scenario without evidence they would be zero.",
+    "Historical total depreciation and amortization is used as modeled PPE depreciation; amortization of lease or other assets is not separately identified, so asset economics are incomplete.",
+    "FY27 year-end working-capital ratios applied to the seasonal April opening balances create a cash release; an observed FY27 year-end working-capital path is unavailable.",
+    "Interest driver uses net P&L interest as a proxy while the cash schedule treats it as paid; the difference from cash interest and finance lease classification is unresolved.",
+    "FCFF unlevered cash tax is an EBIT times 24% proxy, not jurisdictional cash tax evidence.",
+    "Current-date excess cash, nonoperating asset and other senior claim amounts are unknown; April 30 debt and NCI amounts are book balances and date-stale at the May 21 valuation date.",
+    "The terminal g/ROIC policy implies a material upward FCFF step from the final explicit year; its reinvestment transition is not evidenced.",
+    "The first forecast spans May 1-January 31, while dated DCF discounts its entire flow from May 21; unobserved May 1-20 cash realization is not separated."
+  ]
+}

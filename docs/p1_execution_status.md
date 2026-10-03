@@ -1,6 +1,8 @@
-# P1 execution status - October 1, 2026
+# P1 execution status - October 3, 2026
 
 P1 is M1 Valuation over the shared P0 financial Core. The public-data case is [Walmart corporate value research at the May 21, 2026 cutoff](../cases/walmart_20260521_p1_valuation/). This is personal research and portfolio work, not investment advice or a Walmart internal model.
+
+The checked-in October 1 numerical screens below remain the **v1 historical artifacts**, not the current v2 build. The October 3 config keeps an exact [v1 config snapshot](../cases/walmart_20260521_p1_valuation/02_financial_core/conditional_model_config_v1.json), adds historical lease/cash-tax diagnostics and a fail-closed dated-stub boundary, and explicitly separates an April issue-yield proxy from a May 21 marginal borrowing rate. Use a fresh build for current outputs; old numerical files have not been overwritten. See the [nonhuman follow-up record](nonhuman_followup_20261003.md).
 
 ## Implemented and reviewable
 
@@ -9,7 +11,21 @@ P1 is M1 Valuation over the shared P0 financial Core. The public-data case is [W
 | Source facts and history | The [SEC evidence record](../cases/walmart_20260521_p1_valuation/01_evidence_core/evidence_pilot.md) preserves the original 161 facts and 44 additional Q1 balance-sheet facts under a separate retrieval receipt, for 205 consolidated facts in total. FY26 restricted-cash and reported statement arithmetic reconciles. | The new retrieval did not overwrite the original. Later Q1 10-Q and Q2 results are excluded from May 21 inputs. |
 | Conditional linked forecast | The [Core remaining-FY27-through-FY31 statements and FCFF/FCFE](../cases/walmart_20260521_p1_valuation/02_financial_core/conditional_linked_forecast.json) use the April 30 reported opening balance sheet and [declared assumptions](../cases/walmart_20260521_p1_valuation/02_financial_core/conditional_model_config.json). Cash, debt, tax, PPE, dividend, and balance-sheet identities and cash-component IDs are recorded. | This is one retrospective October 1 analyst path. Constant-currency or adjusted company guidance is not presented as reported-USD GAAP forecast. Lease, D&A, noncash movement, and cash-tax assumptions are not validated. |
 | Conditional M1 screen | The [WACC, terminal, DCF, and partial bridge](../cases/walmart_20260521_p1_valuation/03_m1_operating_forecast_valuation/conditional_valuation_screen.json) consume Core FCFF IDs. [Assumption locators](../cases/walmart_20260521_p1_valuation/01_evidence_core/assumption_evidence.csv) and the [method review](../cases/walmart_20260521_p1_valuation/03_m1_operating_forecast_valuation/method_screen.md) distinguish observations from eligibility. | As-of market availability and rights, company beta, lease policy, terminal ROIC, the May 1-20 cash-flow stub, and valuation-date claims remain unresolved. The partial bridge has `equity_value=None`. |
-| Review and reproduction | The [handover](../cases/walmart_20260521_p1_valuation/07_validation_governance/handover.md) records fresh Core and conditional-model build commands. The [findings](../cases/walmart_20260521_p1_valuation/07_validation_governance/review_findings.csv) retain the unresolved questions. | The user's earlier review is acknowledged. No independent reviewer challenge, response, and retest for these artifacts or out-of-time test of a contemporaneously frozen analyst valuation is recorded. |
+| Review and reproduction | The [handover](../cases/walmart_20260521_p1_valuation/07_validation_governance/handover.md) records fresh Core and conditional-model build commands. The [case build guide](case_build.md) now creates one review stage from the declared recipe; the [official-source follow-up](../cases/walmart_20260521_p1_valuation/07_validation_governance/evidence_followup_20261003.md) records what the FY26 10-K, Q1 exhibit, and April term sheet do—and do not—resolve. The [findings](../cases/walmart_20260521_p1_valuation/07_validation_governance/review_findings.csv) retain the unresolved questions. | The user's earlier review is acknowledged. No independent reviewer challenge, response, and retest for these artifacts or out-of-time test of a contemporaneously frozen analyst valuation is recorded. |
+
+## Current reproduction
+
+From the repository root, use a fresh staging root for each comparison:
+
+```powershell
+$env:PYTHONPATH = 'src'
+python -m versioned_finance_core reproduce-case cases/walmart_20260521_p1_valuation --output-dir build/walmart_handover
+python -m versioned_finance_core verify-reproduction build/walmart_handover
+```
+
+The command reproduces the declared Core-cash and conditional-valuation steps
+twice into new review stages and compares their stable identities. The output directory must not already exist. It preserves `WITHHELD`; it does not publish a valuation or
+convert the retrospective model into a contemporaneously frozen forecast.
 
 ## P1 release decision
 

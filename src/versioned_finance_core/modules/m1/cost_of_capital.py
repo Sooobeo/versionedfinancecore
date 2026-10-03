@@ -211,6 +211,7 @@ def calculate_wacc(inputs: WaccInputs) -> WaccResult:
     expected_lease_flags = {
         LeaseValuationTreatment.OPERATING_COST_INCLUDED: (True, False, False),
         LeaseValuationTreatment.CAPITALIZED_FINANCING: (False, True, True),
+        LeaseValuationTreatment.MIXED_OPERATING_AND_FINANCE: (True, True, True),
         LeaseValuationTreatment.NOT_APPLICABLE: (False, False, False),
     }
     observed_lease_flags = (

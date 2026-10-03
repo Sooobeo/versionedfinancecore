@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "steps": ["dfs_reproduction"],
+  "scope_limitations": [
+    "Public DFS arithmetic at 100% project scope is reproduced; no incremental option-minus-status-quo valuation is inferred.",
+    "Remaining expenditure dates, no-build/defer opportunity costs, JV allocation and committed funding remain unavailable."
+  ]
+}

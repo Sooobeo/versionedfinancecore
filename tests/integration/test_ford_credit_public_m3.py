@@ -42,12 +42,24 @@ def test_ford_credit_case_replays_2025_without_2026_outcome() -> None:
     assert case.analysis_cutoff is not None
     decision_receipts = load_source_ledger(EVIDENCE)
     outcome_receipts = load_source_ledger(OUTCOME)
-    assert len(decision_receipts) == len(outcome_receipts) == 1
-    assert decision_receipts[0].content_sha256 == (
+    assert len(decision_receipts) == 2
+    assert len(outcome_receipts) == 1
+    by_source = {receipt.source_id: receipt for receipt in decision_receipts}
+    assert set(by_source) == {"sec_fmcc_2025_10k", "sec_fmcc_2025_10k_terms_20261003"}
+    original = by_source["sec_fmcc_2025_10k"]
+    supplementary = by_source["sec_fmcc_2025_10k_terms_20261003"]
+    assert original.content_sha256 == (
         "3b5a7914fdb73a6e1425bf5745f8e20fbca6fd3703bdfc4fb3cfc865cc2bdc3b"
     )
+    assert supplementary.content_sha256 != original.content_sha256
+    assert supplementary.metadata.document_id == original.metadata.document_id
+    assert supplementary.metadata.retrieved_at > original.metadata.retrieved_at
+    assert "historical content identity remains unverified" in supplementary.metadata.notes
+    assert all(receipt.metadata.cutoff_eligible and receipt.first_public_at <= case.analysis_cutoff
+               for receipt in decision_receipts)
     assert outcome_receipts[0].first_public_at > case.analysis_cutoff
-    assert not decision_receipts[0].metadata.retention_right
+    assert outcome_receipts[0].source_id not in by_source
+    assert all(not receipt.metadata.retention_right for receipt in decision_receipts)
     assert not outcome_receipts[0].metadata.retention_right
 
     eligible = select_known_facts(load_provenanced_facts(EVIDENCE), case.analysis_cutoff)

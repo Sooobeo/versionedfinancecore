@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "steps": ["core_cash", "conditional_valuation"],
+  "scope_limitations": [
+    "The analyst scenario was created retrospectively; this build is not a contemporaneously frozen forecast backtest.",
+    "Lease and cash-tax assumptions, valuation-date claims and the May 1-20 cash-flow stub remain unresolved.",
+    "Market-input availability and rights, terminal sustainability, downside and independent review are required before a valuation release."
+  ]
+}

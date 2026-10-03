@@ -29,12 +29,16 @@ def _module(name: str, path: Path):
 def test_dfs_arithmetic_is_reproducible_but_not_an_incremental_decision() -> None:
     evidence_dir = CASE_DIR / "01_evidence_core"
     receipts = load_source_ledger(evidence_dir)
-    assert len(receipts) == 1
-    receipt = receipts[0]
-    assert receipt.snapshot_id == receipt_id(
-        receipt.source_id, receipt.metadata.retrieved_at, receipt.content_sha256
-    )
-    assert not receipt.metadata.retention_right
+    assert {receipt.source_id for receipt in receipts} == {
+        "sec_sli_swa_dfs_20251014",
+        "sec_sli_40f_20250324",
+        "sec_sli_doe_grant_20250116",
+    }
+    for receipt in receipts:
+        assert receipt.snapshot_id == receipt_id(
+            receipt.source_id, receipt.metadata.retrieved_at, receipt.content_sha256
+        )
+        assert not receipt.metadata.retention_right
     assert load_provenanced_facts(evidence_dir) == ()
 
     check = _module("swa_dfs_check", CASE_DIR / "07_validation_governance" / "reproduce_dfs.py")

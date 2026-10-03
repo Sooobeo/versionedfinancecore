@@ -32,5 +32,17 @@ source receipt는 권리·cutoff의 `YES`/`NO` 형식과 receipt ID를 검증한
 
 `content_hash`는 cutoff와 source/input/config/code/output/memo hash로 계산한다. `release_id`에는 content hash와 gate·review·limitation 판정이 포함된다. `generated_at`과 `released_at`은 이 식별자에서 제외되므로 같은 계산 입력과 코드에서 같은 결과 hash를 재현할 수 있다. `runtime_environment`, `reproduction_command`, review 상태와 알려진 제한사항은 manifest에 남긴다.
 
-현재 실제 분석 case 상태는 `SCAFFOLD_ONLY`다. 합성 D0 실행 경로가 있어도 템플릿의 미평가 gate와 빈 source ledger로는 발행할 수 없으며, 실제 회사 결론이나 release는 없다.
+현재 다섯 공개자료 case는 `FEASIBILITY_ONLY`이며 의사결정 publication은 `WITHHELD`다. 계산 재현 및 검토용 stage가 있어도 실제 회사의 투자·자본배분·신용 release가 완료된 것은 아니다.
+
+## 공통 case 검토 build
+
+`build-case <case_dir> --build-root <fresh-root>`는 `00_charter/build_recipe.json`에 선언된 내장 adapter만 실행한다. 원천 CSV에서 Core와 모듈 산출물을 새로 계산한 후, case snapshot·계산 output·검토 보고서·memo를 하나의 stage로 만든다. 기존 case에 저장된 forecast/valuation JSON을 최신 계산인 것처럼 복사해 선택하지 않는다. 입력·코드·기본 config가 계산 중 바뀌면 build를 중단한다. 같은 입력·코드·config의 output hash는 같으며 같은 stage를 덮어쓰지 않는다.
+
+명령이 성공했다는 뜻은 재현 실행이 성공했다는 것이다. 자동 실행은 독립적인 사람의 검토가 아니며 publication은 `WITHHELD`다. `outputs/review_memo.md`에서 실행한 범위와 남은 작업을 읽고, `outputs/review_report.json`에서 원본 gate·finding·output hash를 확인한다. M1/M2/M3 함수 전체를 모든 회사에 자동 적용하는 범용 재무모델은 아니다. 지원되는 공개자료 재현 경로는 [case build 안내](case_build.md)에 명시한다.
+
+검토 보고서의 v1 계약은 `kind=CASE_BUILD_REVIEW`, `schema_version=1`, `case_id`, 시간대 있는 `analysis_cutoff`, 차터 순서와 같은 `expected_modules`, `publication_state=WITHHELD`, 중복 없는 문자열 목록 `release_blockers`다. 보고서가 stage에 있으면 selected output에 포함해야 한다. 형식 오류, 다른 case/cutoff/module, 누락된 selection 또는 비어 있지 않은 blocker는 release를 차단한다. gate CSV를 수기로 PASS로 바꿔도 계산 보고서의 blocker를 상쇄하지 못한다.
+
+`verify-build <stage_dir>`는 파일 목록·해시·report output ID·계산 artifact 참조와 현재 코드/config 및 gate를 확인한다. 계산 재실행이나 재무 판단의 타당성 검토를 대신하지 않는다. 재실행 비교는 새 build root에서 `build-case`를 다시 실행하고 `output_hash`를 비교한다. stage는 임시 디렉터리에서 완성·검증한 뒤 최종 경로로 이동하므로 중간 복사 실패가 완성 stage로 남지 않는다.
+
+`reproduce-case <case_dir> --output-dir <new-directory>`는 이 반복 재실행과 비교를 자동화한다. `verify-reproduction <directory>`로 두 build와 자동 인수인계 receipt를 함께 검증한다. `AUTOMATED_REPRODUCTION_HANDOVER`의 PASS는 계산 재현에만 한정되며 source case의 `REPRODUCTION_HANDOVER`, `REVIEW` 또는 다른 release gate를 자동 승격하지 않는다. 원천·가정·재무 판단이 미완성인 case의 전체 인수인계가 끝났다고 주장하지 않는다.
 

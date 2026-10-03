@@ -41,13 +41,16 @@ def _fact(
 
 def test_walmart_p1_source_receipts_are_cutoff_pinned_and_locator_only() -> None:
     receipts = load_source_ledger(EVIDENCE)
-    assert len(receipts) == 4
+    assert len(receipts) == 5
     expected = {
         "wmt_fy25_10k_xbrl_20250314": {"5fcf3e216138d1e38cd8365f789f7f76a083295f5424fa0b4e1794c43f2a40ff"},
         "wmt_fy26_10k_xbrl_20260313": {"07c72faa90cf8515eb1ff1ca264361ca8741c2663202d2f5a25ff9c694f4ef67"},
         "wmt_fy27q1_8k_ex991_20260521": {
             "0107dd5fe2d6677d96f95b409c9a59d420da337eba515e4204fc34ea0e66b93d",
             "1da651ebab33b75f8057857ddc7c75d01ef3bf20642d169ac94321a311e49a1a",
+        },
+        "wmt_fy26_10k_html_20260313": {
+            "a6d5f447032adbd1c57c812defda41d55da2017ce1589925d58c7be262022f3d",
         },
     }
     cutoff = datetime.fromisoformat("2026-05-21T23:59:59-04:00")
@@ -170,7 +173,7 @@ def test_walmart_p1_q1_supplement_transport_and_dash_are_offline() -> None:
 
 def test_walmart_p1_assumption_locators_keep_publication_and_rights_limits() -> None:
     rows = _load_rows(EVIDENCE / "assumption_evidence.csv")
-    assert len(rows) == 20
+    assert len(rows) == 32
     assert len({row["evidence_id"] for row in rows}) == len(rows)
     cutoff = datetime.fromisoformat("2026-05-21T23:59:59-04:00")
     for row in rows:
@@ -191,6 +194,7 @@ def test_walmart_p1_assumption_locators_keep_publication_and_rights_limits() -> 
     assert by_id["wmt_close_20260521"]["first_public_at"] == ""
     assert by_id["usd_ust10y_20260521"]["observed_value"] == "4.57"
     assert by_id["wmt_2036_bond_spread_20260427"]["observed_value"] == "43"
+    assert by_id["wmt_2036_bond_ytm_20260427"]["observed_value"] == "4.758"
     assert by_id["us_implied_erp_20260501"]["observed_value"] == "4.24"
     assert by_id["us_retail_general_beta_202601"]["observed_value"] == "0.81"
     assert by_id["us_retail_grocery_beta_202601"]["observed_value"] == "1.12"
@@ -198,6 +202,11 @@ def test_walmart_p1_assumption_locators_keep_publication_and_rights_limits() -> 
     assert by_id["wmt_fy27_adj_oi_growth_guidance_cc_20260521"]["observed_value"] == "6.0-8.0"
     assert by_id["wmt_fy27_capex_sales_guidance_20260521"]["observed_value"] == "3.5"
     assert by_id["wmt_fy27_etr_guidance_20260521"]["observed_value"] == "23.5-24.5"
+    assert by_id["wmt_fy26_total_da_20260131"]["observed_value"] == "14203"
+    assert by_id["wmt_fy26_finance_lease_rou_amortization_20260131"]["observed_value"] == "888"
+    assert by_id["wmt_fy26_finance_lease_income_statement_interest_20260131"]["observed_value"] == "481"
+    assert by_id["wmt_fy26_cash_taxes_paid_20260131"]["observed_value"] == "5364"
+    assert by_id["wmt_fy27q1_period_covered_through_20260430"]["observed_value"] == "2026-04-30"
     assert all("LOCATOR_ONLY" in row["rights_state"] for row in rows)
 
 

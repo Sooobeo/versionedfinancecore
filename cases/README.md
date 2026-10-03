@@ -24,4 +24,6 @@ M2의 [Simulations Plus 합병 공시](https://www.sec.gov/Archives/edgar/data/1
 
 ## P1 가치평가 착수
 
-[Walmart 2026-05-21 가치평가 후보](walmart_20260521_p1_valuation/)는 기존 실적 비교와 별도의 `CORPORATE_VALUE` case다. 공식 SEC 자료 3건의 locator·문서 해시와 161개 재무 fact를 기록했고, 동일 source vintage의 reported 손익·재무상태 11개 항등식과 FY26·FY27 Q1 현금 대사를 확인했다. 실제 Walmart 연결 전망·FCFF·WACC·terminal·청구권 bridge와 독립 검토는 아직 없다. M1 Valuation과 release는 `WITHHELD`다.
+[Walmart 2026-05-21 가치평가 후보](walmart_20260521_p1_valuation/)는 기존 실적 비교와 별도의 `CORPORATE_VALUE` case다. 공식 SEC 자료 3건·receipt 4개의 locator·문서 해시와 205개 재무 fact를 기록했다. 공시 산술과 조건부 연결 전망·FCFF·WACC·terminal·부분 청구권 bridge를 재현한다. 입력 적격성·terminal 경제성·평가일 청구권 및 독립 검토는 미완료이며 M1 Valuation release는 `WITHHELD`다.
+
+다섯 사례의 `00_charter/build_recipe.json`에 지원 계산 경로가 선언되어 있다. 공통 `build-case`와 `verify-build`의 사용법, 자동 계산과 사람 검토의 경계는 [case build 안내](../docs/case_build.md)를 따른다.

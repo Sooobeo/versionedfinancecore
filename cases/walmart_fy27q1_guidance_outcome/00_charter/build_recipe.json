@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "steps": ["guidance_comparison"],
+  "scope_limitations": [
+    "Company guidance ranges and reported outcomes are compared on matched definitions; their midpoint is not an analyst forecast.",
+    "Driver attribution, integrated statements, reforecast and independent review remain incomplete."
+  ]
+}

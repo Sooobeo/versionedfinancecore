@@ -2,6 +2,10 @@
 
 기준일: 2026-09-29. 이 표는 **재사용 가능한 코드 검증**과 **실제 공개자료 case의 release gate**를 구분한다. 합성 fixture의 통과를 오리온의 전망·투자·신용 판단으로 옮기지 않는다.
 
+2026-10-03 실행 연결 보강: 다섯 공개자료 사례에 `build-case` recipe를 추가했다. 공통 명령으로 지원되는 계산을 재실행하고 output hash·검토 memo·남은 gate/finding을 immutable review stage에 묶는다. `verify-build`는 파일과 현재 코드/config 일치를 검사한다. Ford Credit은 같은 Core cash output을 M3의 채무자 현금·covenant 제한상태 평가에 연결했다. 모든 실제 의사결정 release는 계속 `WITHHELD`다. 상세 명령과 남은 작업은 [case build 안내](case_build.md)를 따른다.
+
+같은 날 후속 보강으로 M1 과거 리스·세금 진단과 평가일 stub 통제, M2 공개근거 충족 검사, M3 공시 부채·만기·시설 조건 대사, 두 fresh build를 비교하는 `reproduce-case` / `verify-reproduction`을 연결했다. [후속 구현·제한사항 기록](nonhuman_followup_20261003.md)은 사람 검토와 공개자료 미확인을 구분한다. 이 작업이 아래 확장 기능 전체의 구현이나 실제 회사 release 완료를 의미하지는 않는다.
+
 | 단계 | 구현·검증된 범위 | 오리온 진천센터 case |
 |---|---|---|
 | D0 — 공통 계약·release 골격 | source/fact lineage, cutoff·scope·version·지식상태, 정규화, 현금 포함 규칙, 결정적 build hash, fail-closed release staging | `FEASIBILITY_ONLY`; publication `WITHHELD` |

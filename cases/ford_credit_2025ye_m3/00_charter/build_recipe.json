@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "steps": ["core_cash", "credit_evidence"],
+  "scope_limitations": [
+    "M3 consumes the Core cash reference and preserves missing obligor cash and incomplete covenant states.",
+    "The build does not establish a dated obligor cash path, draw eligibility, refinancing gap, first failure date or recovery value."
+  ]
+}

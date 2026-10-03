@@ -22,6 +22,13 @@ from versioned_finance_core.modules.m2.option_evaluation import (
     ReviewTopic,
     evaluate_incremental_option,
 )
+from versioned_finance_core.modules.m2.public_evidence import (
+    M2PublicEvidenceCriterion,
+    PublicEvidenceCoverage,
+    PublicM2EvidenceAssessment,
+    PublicM2EvidenceItem,
+    assess_public_m2_evidence,
+)
 
 __all__ = [
     "CashWorld",
@@ -35,10 +42,15 @@ __all__ = [
     "FundingLineResult",
     "FundingPlanResult",
     "IncrementalPeriod",
+    "M2PublicEvidenceCriterion",
     "OptionCashPeriod",
     "OptionValuation",
+    "PublicEvidenceCoverage",
+    "PublicM2EvidenceAssessment",
+    "PublicM2EvidenceItem",
     "ReviewDisposition",
     "ReviewTopic",
+    "assess_public_m2_evidence",
     "evaluate_funding_plan",
     "evaluate_incremental_option",
     "incremental_cash_flow",

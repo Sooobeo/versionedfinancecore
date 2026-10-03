@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "steps": ["core_cash", "capital_evidence"],
+  "scope_limitations": [
+    "The filed parent standalone cash identity and public M2 evidence coverage are reproduced; M1 forecast, M2 option cash values and M3 obligor liquidity are not evaluated.",
+    "Project-specific remaining payments, legal deferral rights and accessible funding are unavailable."
+  ]
+}

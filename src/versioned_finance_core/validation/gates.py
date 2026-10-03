@@ -32,8 +32,12 @@ def load_gate_results(path: Path) -> list[GateResult]:
         reader = csv.DictReader(source)
         if not reader.fieldnames or not {"gate_id", "status"}.issubset(reader.fieldnames):
             raise ValueError("gate_results.csv requires gate_id and status columns")
+        if len(reader.fieldnames) != len(set(reader.fieldnames)):
+            raise ValueError("gate_results.csv has duplicate columns")
         results: list[GateResult] = []
         for line_number, row in enumerate(reader, start=2):
+            if None in row or any(value is None for value in row.values()):
+                raise ValueError(f"gate_results.csv line {line_number}: invalid row width")
             gate_id = (row.get("gate_id") or "").strip()
             if not gate_id:
                 raise ValueError(f"gate_results.csv line {line_number}: gate_id is blank")

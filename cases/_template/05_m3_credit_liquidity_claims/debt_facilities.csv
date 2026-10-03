@@ -1,2 +1,2 @@
-instrument_id,obligor_entity_id,instrument_type,seniority,secured_state,guarantee_state,currency,opening_face,closing_face,carrying_amount,commitment,drawn,nominal_undrawn,drawability_state,rate_type,benchmark,margin,floor,cap,source_id,review_status
+instrument_id,obligor_entity_id,instrument_type,seniority,secured_state,guarantee_state,currency,opening_face,closing_face,carrying_amount,commitment,drawn,nominal_undrawn,drawability_state,rate_type,benchmark,margin,floor,cap,source_id,review_status,unit
 
